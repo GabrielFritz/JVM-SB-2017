@@ -51,7 +51,6 @@ union {
  *  inner_name_index (u2): Zero ou Índice válido para constant_pool
  *  inner_class_access_flags(u2): Máscara especificando permissões de acesso e propriedades da classe ou interface declaradas
  * */
-
 typedef struct {
     u2  inner_class_info_index;
     u2  outer_class_info_index;
@@ -240,3 +239,4 @@ void load_methods(ClassFile* cf,FILE* fd);
 void load_attribute(attribute_info* att,ClassFile* cf,FILE* fd);
 ClassFile* readClass(FILE* fd);
 #endif
+

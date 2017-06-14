@@ -6,22 +6,22 @@ else
 	CFLAGS += -lm -ggdb -std=c99
 endif
 
-all: leitor
+all: jvm
 
-leitor: main.o leitor_exibidor.o exibidor.o util.o
-	gcc $(CFLAGS) main.o leitor_exibidor.o exibidor.o util.o -o leitorexibidor
+jvm: main.o leitor_exibidor.o exibidor.o util.o
+	gcc $(CFLAGS) main.o leitor_exibidor.o exibidor.o util.o -o jvm
 
 main.o: main.c
 	gcc $(CFLAGS) -c main.c
 
-leitor_exibidor.o: leitor_exibidor.c
-	gcc $(CFLAGS) -c leitor_exibidor.c
+leitor_exibidor.o: classloader/leitor_exibidor.c
+	gcc $(CFLAGS) -c classloader/leitor_exibidor.c
 
-exibidor.o: exibidor.c
-	gcc $(CFLAGS) -c exibidor.c
+exibidor.o: classloader/exibidor.c
+	gcc $(CFLAGS) -c classloader/exibidor.c
 
-util.o: util.c
-	gcc $(CFLAGS) -c util.c
+util.o: classloader/util.c
+	gcc $(CFLAGS) -c classloader/util.c
 
 clean:
 	find . -name '*.o' -exec rm '{}' \;

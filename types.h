@@ -40,7 +40,7 @@ union {
 } u4tofloat;
 
 union {
-    long Long;
+    long long Long;
     double Double;
 } longtodouble;
 

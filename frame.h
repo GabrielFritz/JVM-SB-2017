@@ -1,7 +1,7 @@
 #ifndef FRAME_H
 #define FRAME_H
 
-#include "constantpool.h"
+#include "classfile.h"
 
 typedef union _operand_type {
     int Int;

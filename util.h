@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <inttypes.h>
 #include "types.h"
-#include "constantpool.h"
+#include "classfile.h"
 
 void shutdown(FILE *fd, FILE *fout, ClassFile* cf);
 int findtype(char* type);

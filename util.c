@@ -5,7 +5,7 @@
 #include <inttypes.h>
 #include <errno.h>
 #include "util.h"
-#include "constantpool.h"
+#include "classfile.h"
 
 int findtype(char* type) {
     if (!strcmp(type, "ConstantValue")) {

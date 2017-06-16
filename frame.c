@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "constantpool.h"
+#include "classfile.h"
 #include "frame.h"
 
 int operandheap_isempty(operand_heap* top) { return top==NULL;  }

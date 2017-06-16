@@ -1,6 +1,6 @@
 #ifndef HEAP_H
 #define HEAP_H
-#include "classloader.h"
+#include "classfile.h"
 
 typedef union {
     int Int;

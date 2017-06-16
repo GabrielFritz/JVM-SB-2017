@@ -1,5 +1,5 @@
-#ifndef CP_H
-#define CP_H
+#ifndef CF_H
+#define CF_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

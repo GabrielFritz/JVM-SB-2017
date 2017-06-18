@@ -1176,9 +1176,23 @@ int i2s(execution *e){
 // int dcmpg(execution *e){
 // 	return;
 // }  
-// int ifeq(execution *e){
-// 	return;
-// }  
+int ifeq(execution *e) {
+ 	operand_type value = pop_op(&(e->frame->top));
+    int8_t o1 = u1ReadFrame(e->frame);
+    int8_t o2 = u1ReadFrame(e->frame);
+    int16_t off = o1;
+    
+    if (value.Int == 0) { //unica diferenca entre ifeq, ifne, iflt, ifge, ifgt, ifle sera essa comparacao
+    	off <<= 8;
+    	off |= o2;
+    	off-=3; //por que 3?
+    	e->frame->pc += off; // (valor -2 para voltar para a instrucao ifeq)
+    }
+    else {
+		e->frame->pc++; //incremento de instrucao
+    }
+	return 0;
+}
 // int ifne(execution *e){
 // 	return;
 // }  
@@ -1194,7 +1208,7 @@ int i2s(execution *e){
 // int ifle(execution *e){
 // 	return;
 // }  
-// int if_icmpeq(execution *e){
+// int if_icmpeq(execution *e){ //SEMELHANTE A ifeq MAS FAZ POP EM OUTRO OPERANDO E COMPARA OS DOIS, EM VEZ DE COMPARAR COM 0
 // 	return;
 // }  
 // int if_icmpne(execution *e){
@@ -1218,9 +1232,16 @@ int i2s(execution *e){
 // int if_acmpne(execution *e){
 // 	return;
 // }  
-// int goto_(execution *e){
-// 	return;
-// } 
+int goto_(execution *e){
+	int8_t o1 = u1ReadFrame(e->frame);
+    int8_t o2 = u1ReadFrame(e->frame);
+    int16_t off = o1;
+    off <<= 8;
+    off |= o2;
+    off-=3; //por que 3?
+    e->frame->pc += off;
+	return 0;
+} 
 // int jsr(execution *e){
 // 	return;
 // } 
@@ -1382,7 +1403,7 @@ int ifnonnull(execution *e){
     if(op.Ref != NULL) e->frame->pc += off;
 	return 0;
 } 
-int goto_w(execution *e){
+int goto_w(execution *e){ //por que nau usar u4ReadFrame?
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
     unsigned int off = o1;
@@ -1392,7 +1413,7 @@ int goto_w(execution *e){
     e->frame->pc += off;
 	return 0;
 } 
-int jsr_w(execution *e){
+int jsr_w(execution *e){ //por que nau usar u4ReadFrame?
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
     unsigned int off = o1;

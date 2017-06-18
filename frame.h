@@ -2,6 +2,7 @@
 #define FRAME_H
 
 #include "classfile.h"
+#include "heap.h"
 
 typedef union _operand_type {
     int Int;
@@ -19,7 +20,6 @@ typedef struct _vector {
 typedef struct _operand_heap {
     operand_type op;
     int type;
-    struct _operand_type;
     struct _operand_heap* below;
 } operand_heap;
 

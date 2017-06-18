@@ -1,4 +1,10 @@
+#include <math.h>
 #include "instruction_set.h"
+#include "execution.h"
+#include "classfile.h"
+#include "types.h"
+#include "frame.h"
+#include "heap.h"
 
 int (*instr_array[])(execution *p) = {
     nop, // 0x00
@@ -343,7 +349,7 @@ int ldc(execution *e){
     operand_type op;
     u1 i = u1ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGER:
+        case INTEGERTYPE:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -365,7 +371,7 @@ int ldc_w(execution *e){
     operand_type op;
     u2 i = u2ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGER:
+        case INTEGERTYPE:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -413,131 +419,131 @@ int ldc2_w(execution *e){
 } 
 int iload(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    operand_type op = e->frame->arr[i];
+    operand_type op = e->frame->local_arr[i];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 }
 int iload_0(execution *e){
-    operand_type op = e->frame->arr[0];
+    operand_type op = e->frame->local_arr[0];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int iload_1(execution *e){
-    operand_type op = e->frame->arr[1];
+    operand_type op = e->frame->local_arr[1];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int iload_2(execution *e){
-    operand_type op = e->frame->arr[2];
+    operand_type op = e->frame->local_arr[2];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int iload_3(execution *e){
-    operand_type op = e->frame->arr[3];
+    operand_type op = e->frame->local_arr[3];
     push_op(&(e->frame->top),op,1);
     return 0;
 }
 int fload(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    operand_type op = e->frame->arr[i];
+    operand_type op = e->frame->local_arr[i];
     push_op(&(e->frame->top),op,1);
     return 0;
 }
 int fload_0(execution *e){
-    operand_type op = e->frame->arr[0];
+    operand_type op = e->frame->local_arr[0];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int fload_1(execution *e){
-    operand_type op = e->frame->arr[1];
+    operand_type op = e->frame->local_arr[1];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int fload_2(execution *e){
-    operand_type op = e->frame->arr[2];
+    operand_type op = e->frame->local_arr[2];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int fload_3(execution *e){
-    operand_type op = e->frame->arr[3];
+    operand_type op = e->frame->local_arr[3];
     push_op(&(e->frame->top),op,1);
     return 0;
 } 
 int lload(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    operand_type op = e->frame->arr[i];
+    operand_type op = e->frame->local_arr[i];
 	push_op(&(e->frame->top),op,2);
 	return 0;
 }
 int lload_0(execution *e){
-    operand_type op = e->frame->arr[0];
+    operand_type op = e->frame->local_arr[0];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int lload_1(execution *e){
-    operand_type op = e->frame->arr[1];
+    operand_type op = e->frame->local_arr[1];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int lload_2(execution *e){
-    operand_type op = e->frame->arr[2];
+    operand_type op = e->frame->local_arr[2];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int lload_3(execution *e){
-    operand_type op = e->frame->arr[3];
+    operand_type op = e->frame->local_arr[3];
     push_op(&(e->frame->top),op,2);
     return 0;
 }
 int dload(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    operand_type op = e->frame->arr[i];
+    operand_type op = e->frame->local_arr[i];
 	push_op(&(e->frame->top),op,2);
 	return 0;
 }
 int dload_0(execution *e){
-    operand_type op = e->frame->arr[0];
+    operand_type op = e->frame->local_arr[0];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int dload_1(execution *e){
-    operand_type op = e->frame->arr[1];
+    operand_type op = e->frame->local_arr[1];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int dload_2(execution *e){
-    operand_type op = e->frame->arr[2];
+    operand_type op = e->frame->local_arr[2];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int dload_3(execution *e){
-    operand_type op = e->frame->arr[3];
+    operand_type op = e->frame->local_arr[3];
     push_op(&(e->frame->top),op,2);
     return 0;
 } 
 int aload(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    operand_type op = e->frame->arr[i];
+    operand_type op = e->frame->local_arr[i];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 }
 int aload_0(execution *e){
-    operand_type op = e->frame->arr[0];
+    operand_type op = e->frame->local_arr[0];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
 int aload_1(execution *e){
-    operand_type op = e->frame->arr[1];
+    operand_type op = e->frame->local_arr[1];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
 int aload_2(execution *e){
-    operand_type op = e->frame->arr[2];
+    operand_type op = e->frame->local_arr[2];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
 int aload_3(execution *e){
-    operand_type op = e->frame->arr[3];
+    operand_type op = e->frame->local_arr[3];
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
@@ -577,23 +583,23 @@ int aaload(execution *e){
     return 0;
 } 
 int store(execution *e){
-    e->frame->arr[u1ReadFrame(e->frame)] = pop_op(&(e->frame->top));
+    e->frame->local_arr[u1ReadFrame(e->frame)] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int store_0(execution *e){
-    e->frame->arr[0] = pop_op(&(e->frame->top));
+    e->frame->local_arr[0] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int store_1(execution *e){
-    e->frame->arr[1] = pop_op(&(e->frame->top));
+    e->frame->local_arr[1] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int store_2(execution *e){
-    e->frame->arr[2] = pop_op(&(e->frame->top));
+    e->frame->local_arr[2] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int store_3(execution *e){
-    e->frame->arr[3] = pop_op(&(e->frame->top));
+    e->frame->local_arr[3] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int iastore(execution *e){
@@ -723,16 +729,16 @@ int dup2_x1(execution *e){
 	return 0;
 } 
 int dup2_x2(execution *e){
-    int type1 = e->frame->top->type;
+    int type1 = e->frame.top.type;
     operand_type op1 = pop_op(&(e->frame->top));
     if(type1==1) {
-        int type2 = e->frame->top->type;
+        int type2 = e->frame.top.type;
         operand_type op2 = pop_op(&(e->frame->top));
     }
-    int type3 = e->frame->top->type;
+    int type3 = e->frame.top.type;
         operand_type op3 = pop_op(&(e->frame->top)); 
     if(type3 == 1) {
-        int type4 = e->frame->top->type;
+        int type4 = e->frame.top.type;
         operand_type op4 = pop_op(&(e->frame->top));  
     }
     if(type1==1 && type3==1) {
@@ -902,14 +908,14 @@ int lrem(execution *e){
 int frem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float %= op2.Float;
+    op1.Float = remainder(op1.Float,op2.Float);
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int drem_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Double %= op2.Double;
+    op1.Double = remainder(op1.Double,op2.Double);
     push_op(&(e->frame->top),op1,2);
 	return 0;
 }  
@@ -1054,7 +1060,7 @@ int lxor(execution *e){
 int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
     char c = u1ReadFrame(e->frame);
-    e->frame->arr[i].Int++;
+    e->frame->local_arr[i].Int++;
 	return 0;
 } 
 int i2l(execution *e){
@@ -1155,131 +1161,192 @@ int i2s(execution *e){
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
-int lcmp(execution *e){
-	return;
-}  
-int fcmpl(execution *e){
-	return;
-}  
-int fcmpg(execution *e){
-	return;
-}  
-int dcmpl(execution *e){
-	return;
-}  
-int dcmpg(execution *e){
-	return;
-}  
-int ifeq(execution *e){
-	return;
-}  
-int ifne(execution *e){
-	return;
-}  
-int iflt(execution *e){
-	return;
-}  
-int ifge(execution *e){
-	return;
-}  
-int ifgt(execution *e){
-	return;
-}  
-int ifle(execution *e){
-	return;
-}  
-int if_icmpeq(execution *e){
-	return;
-}  
-int if_icmpne(execution *e){
-	return;
-}  
-int if_icmplt(execution *e){
-	return;
-}  
-int if_icmpge(execution *e){
-	return;
-}  
-int if_icmpgt(execution *e){
-	return;
-}  
-int if_icmple(execution *e){
-	return;
-}  
-int if_acmpeq(execution *e){
-	return;
-}  
-int if_acmpne(execution *e){
-	return;
-}  
-int goto_(execution *e){
-	return;
-} 
-int jsr(execution *e){
-	return;
-} 
-int ret(execution *e){
-	return;
-} 
-int tableswitch(execution *e){
-	return;
-} 
-int lookupswitch(execution *e){
-	return;
-} 
-int ireturn(execution *e){
-	return;
-}  
-int lreturn(execution *e){
-	return;
-}  
-int freturn(execution *e){
-	return;
-}  
-int dreturn(execution *e){
-	return;
-}  
-int areturn(execution *e){
-	return;
-}  
-int return_(execution *e){
-	return;
-}  
-int getstatic(execution *e){
-	return;
-} 
-int putstatic(execution *e){
-	return;
-} 
-int getfield(execution *e){
-	return;
-} 
-int putfield(execution *e){
-	return;
-} 
-int invokevirtual(execution *e){
-	return;
-} 
-int invokespecial(execution *e){
-	return;
-} 
-int invokestatic(execution *e){
-	return;
-} 
-int new_(execution *e){
-	return;
-} 
+// int lcmp(execution *e){
+// 	return;
+// }  
+// int fcmpl(execution *e){
+// 	return;
+// }  
+// int fcmpg(execution *e){
+// 	return;
+// }  
+// int dcmpl(execution *e){
+// 	return;
+// }  
+// int dcmpg(execution *e){
+// 	return;
+// }  
+// int ifeq(execution *e){
+// 	return;
+// }  
+// int ifne(execution *e){
+// 	return;
+// }  
+// int iflt(execution *e){
+// 	return;
+// }  
+// int ifge(execution *e){
+// 	return;
+// }  
+// int ifgt(execution *e){
+// 	return;
+// }  
+// int ifle(execution *e){
+// 	return;
+// }  
+// int if_icmpeq(execution *e){
+// 	return;
+// }  
+// int if_icmpne(execution *e){
+// 	return;
+// }  
+// int if_icmplt(execution *e){
+// 	return;
+// }  
+// int if_icmpge(execution *e){
+// 	return;
+// }  
+// int if_icmpgt(execution *e){
+// 	return;
+// }  
+// int if_icmple(execution *e){
+// 	return;
+// }  
+// int if_acmpeq(execution *e){
+// 	return;
+// }  
+// int if_acmpne(execution *e){
+// 	return;
+// }  
+// int goto_(execution *e){
+// 	return;
+// } 
+// int jsr(execution *e){
+// 	return;
+// } 
+// int ret(execution *e){
+// 	return;
+// } 
+// int tableswitch(execution *e){
+// 	return;
+// } 
+// int lookupswitch(execution *e){
+// 	return;
+// } 
+// int ireturn(execution *e){
+// 	return;
+// }  
+// int lreturn(execution *e){
+// 	return;
+// }  
+// int freturn(execution *e){
+// 	return;
+// }  
+// int dreturn(execution *e){
+// 	return;
+// }  
+// int areturn(execution *e){
+// 	return;
+// }  
+// int return_(execution *e){
+// 	return;
+// }  
+// int getstatic(execution *e){
+// 	return;
+// } 
+// int putstatic(execution *e){
+// 	return;
+// } 
+// int getfield(execution *e){
+// 	return;
+// } 
+// int putfield(execution *e){
+// 	return;
+// } 
+// int invokevirtual(execution *e){
+// 	return;
+// } 
+// int invokespecial(execution *e){
+// 	return;
+// }
+// int invokestatic(execution *e){
+// 	return;
+// }
+// int new_(execution *e){
+// 	return 0;
+// } 
 int newarray(execution *e){
-	return;
+    vector* v = (vector*) malloc(sizeof(vector));
+    v->type = u1ReadFrame(e->frame);
+    operand_type c = pop_op(&(e->frame->top));
+    v->size = c.Int;
+    switch(v->type) {
+        case BOOLEANTYPE:
+        case CHARTYPE:
+        case FLOATTYPE:
+        case DOUBLETYPE:
+        case BYTETYPE:
+        case SHORTTYPE:
+        case INTEGERTYPE:
+        case LONGTYPE:
+            v->array = (operand_type*) calloc(v->size,sizeof(operand_type));
+            break;
+        default:
+            printf("NEWARRAY ERROR.\n");
+            exit(1);
+    }
+    operand_type arr;
+    arr.Ref = v;
+    push_op(&(e->frame->top),arr,1);
+	return 0;
 } 
 int anewarray(execution *e){
-	return;
+    vector* v = (vector*)calloc(1,sizeof(vector));
+    u2 i = u2ReadFrame(e->frame);
+    operand_type c = pop_op(&(e->frame->top));
+    if(c.Int<0) {
+        printf("ANEWARRAY ERROR. size < 0.\n");
+        exit(1);
+    }
+    v->size = c.Int;
+    v->type = INTEGERTYPE;
+    v->array = (operand_type*)calloc(v->size,sizeof(operand_type));
+    operand_type arr;
+    arr.Ref = v;
+    push_op(&(e->frame->top),arr,1);
+	return 0;
 } 
 int arraylength(execution *e){
-	return;
+    operand_type ref = pop_op(&(e->frame->top));
+    vector* v = ref.Ref;
+    operand_type l;
+    l.Int = v->size;
+    push_op(&(e->frame->top),l,1);
+	return 0;
 }
 
-
+vector* alocate_multirray(int dim, int* aux) {
+    vector* a = (vector*) malloc(sizeof(vector));
+    vector* a2;
+    if(dim == 1) {
+        a->size = aux[0];
+        a->type = INTEGERTYPE;
+        a->array = (operand_type*) calloc(aux[0],sizeof(operand_type));
+    } else {
+        a->size = aux[0];
+        a->type = INTEGERTYPE;
+        a->array = (operand_type*) calloc(aux[0],sizeof(operand_type));
+        int* auxTam = (int*)calloc(dim-1,sizeof(int));
+        for(int i=1;i<dim;++i) {
+            auxTam[i-1] = aux[i];
+        }
+        for(int i=0;i<aux[0];++i) {
+            a2 = alocate_multirray(dim-1,auxTam);
+            a->array[i].Ref = a2;
+        }
+    }
+    return a;
+}
 
 int multianewarray(execution *e){
 
@@ -1318,9 +1385,9 @@ int ifnonnull(execution *e){
 int goto_w(execution *e){
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
-    unsigned int off = off1;
+    unsigned int off = o1;
     off <<= 16;
-    off |= off2;
+    off |= o2;
     off-=5;
     e->frame->pc += off;
 	return 0;
@@ -1328,9 +1395,9 @@ int goto_w(execution *e){
 int jsr_w(execution *e){
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
-    unsigned int off = off1;
+    unsigned int off = o1;
     off <<= 16;
-    off |= off2;
+    off |= o2;
     off-=5;
     operand_type op1;
     op1.Ref = e->frame->pc;

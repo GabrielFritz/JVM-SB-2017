@@ -7,6 +7,14 @@
 #include <stdint.h>
 #include <inttypes.h>
 
+#define BOOLEANTYPE   4
+#define CHARTYPE      5
+#define FLOATTYPE         6
+#define DOUBLETYPE    7
+#define BYTETYPE        8
+#define SHORTTYPE         9
+#define INTEGERTYPE          10
+#define LONGTYPE       11
 
 #define CONTINUED 0
 #define CLASS 7

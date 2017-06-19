@@ -129,6 +129,8 @@ void load_attributes(ClassFile* cf, FILE* fd);
 void load_methods(ClassFile* cf,FILE* fd);
 void load_attribute(attribute_info* att,ClassFile* cf,FILE* fd);
 ClassFile* readClass(FILE* fd);
+ClassFile* load_ClassFile(char* name);
+method_info* search_method(char* name,char* descriptor);
 int is_true(int code, int id);
 void print_permissions(int code,FILE* fout);
 void print_magic(ClassFile* cf,FILE* fout);

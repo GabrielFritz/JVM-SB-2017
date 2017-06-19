@@ -36,4 +36,7 @@ typedef struct _class_heap {
     struct _class_heap* next;
 } class_heap;
 
+void classheap_init(class_heap** ch);
+void push_class(class_heap** ch,ClassFile cf);
+ClassFile* search_classheap(class_heap* ch, char* name);
 #endif

@@ -936,93 +936,267 @@ int i2s(execution *e){
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
-// int lcmp(execution *e){
-// 	return;
-// }  
-// int fcmpl(execution *e){
-// 	return;
-// }  
-// int fcmpg(execution *e){
-// 	return;
-// }  
-// int dcmpl(execution *e){
-// 	return;
-// }  
-// int dcmpg(execution *e){
-// 	return;
-// }  
+int lcmp(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
+    if(op1.Long>op2.Long){
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Long<op2.Long) {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    } else {
+        operand_type aux;
+        aux.Int = 0;
+        push_op(&(e->frame->top),aux,1);
+    }
+	return 0;
+}  
+int fcmpl(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
+    if(op1.Float>op2.Float){
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Float<op2.Float) {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Float==op2.Float){
+        operand_type aux;
+        aux.Int = 0;
+        push_op(&(e->frame->top),aux,1);
+    } else {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    }
+    return 0;
+}  
+int fcmpg(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
+    if(op1.Float>op2.Float){
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Float<op2.Float) {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Float==op2.Float){
+        operand_type aux;
+        aux.Int = 0;
+        push_op(&(e->frame->top),aux,1);
+    } else {
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    }
+    return 0;
+}  
+int dcmpl(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
+    if(op1.Double>op2.Double){
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Double<op2.Double) {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Double==op2.Double){
+        operand_type aux;
+        aux.Int = 0;
+        push_op(&(e->frame->top),aux,1);
+    } else {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    }
+    return 0;
+}  
+int dcmpg(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
+    if(op1.Double>op2.Double){
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Double<op2.Double) {
+        operand_type aux;
+        aux.Int = -1;
+        push_op(&(e->frame->top),aux,1);
+    } else if(op1.Double==op2.Double){
+        operand_type aux;
+        aux.Int = 0;
+        push_op(&(e->frame->top),aux,1);
+    } else {
+        operand_type aux;
+        aux.Int = 1;
+        push_op(&(e->frame->top),aux,1);
+    }
+    return 0;
+}  
 int ifeq(execution *e) {
  	operand_type value = pop_op(&(e->frame->top));
-    int8_t o1 = signed1ReadFrame(e->frame);
-    int8_t o2 = signed1ReadFrame(e->frame);
-    int16_t off = o1;
-    
-    if (value.Int == 0) { //unica diferenca entre ifeq, ifne, iflt, ifge, ifgt, ifle sera essa comparacao
-    	off <<= 8;
-    	off |= o2;
-    	off-=3; //por que 3?
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int == 0) { 
     	e->frame->pc += off;
-    }
-    else {
-		e->frame->pc++; //incremento de instrucao
     }
 	return 0;
 }
-// int ifne(execution *e){
-// 	return;
-// }  
-// int iflt(execution *e){
-// 	return;
-// }  
-// int ifge(execution *e){
-// 	return;
-// }  
-// int ifgt(execution *e){
-// 	return;
-// }  
-// int ifle(execution *e){
-// 	return;
-// }  
-// int if_icmpeq(execution *e){ //SEMELHANTE A ifeq MAS FAZ POP EM OUTRO OPERANDO E COMPARA OS DOIS, EM VEZ DE COMPARAR COM 0
-// 	return;
-// }  
-// int if_icmpne(execution *e){
-// 	return;
-// }  
-// int if_icmplt(execution *e){
-// 	return;
-// }  
-// int if_icmpge(execution *e){
-// 	return;
-// }  
-// int if_icmpgt(execution *e){
-// 	return;
-// }  
-// int if_icmple(execution *e){
-// 	return;
-// }  
-// int if_acmpeq(execution *e){
-// 	return;
-// }  
-// int if_acmpne(execution *e){
-// 	return;
-// }  
+int ifne(execution *e){
+    operand_type value = pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int != 0) { 
+        e->frame->pc += off;
+    }
+    return 0;
+}  
+int iflt(execution *e){
+    operand_type value = pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int < 0) { 
+        e->frame->pc += off;
+    }
+    return 0;
+}  
+int ifge(execution *e){
+    operand_type value = pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int >= 0) { 
+        e->frame->pc += off;
+    }
+    return 0;
+}  
+int ifgt(execution *e){
+    operand_type value = pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int > 0) { 
+        e->frame->pc += off;
+    }
+    return 0;
+}  
+int ifle(execution *e){
+    operand_type value = pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if (value.Int <= 0) { 
+        e->frame->pc += off;
+    }
+    return 0;
+}  
+int if_icmpeq(execution *e){ 
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int == value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_icmpne(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int != value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_icmplt(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int < value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_icmpge(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int >= value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_icmpgt(execution *e){
+	operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int > value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_icmple(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Int <= value2.Int){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_acmpeq(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Ref == value2.Ref){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
+int if_acmpne(execution *e){
+    operand_type value1 = pop_op(&(e->frame->top));
+    operand_type value2 =pop_op(&(e->frame->top));
+    short off = (short) u2ReadFrame(e->frame);
+    off-=3;
+    if(value1.Ref != value2.Ref){
+        e->frame->pc +=off;
+    }
+    return 0;
+}  
 int goto_(execution *e){
-	int8_t o1 = signed1ReadFrame(e->frame);
-    int8_t o2 = signed1ReadFrame(e->frame);
-    int16_t off = o1;
-    off <<= 8;
-    off |= o2;
-    off-=3; //por que 3?
+	short off = (short)u2ReadFrame(e->frame);
+    off-=3;
+    operand_type op;
     e->frame->pc += off;
 	return 0;
 } 
-// int jsr(execution *e){
-// 	return;
-// } 
-// int ret(execution *e){
-// 	return;
-// } 
+int jsr(execution *e){
+    u2 off = u2ReadFrame(e->frame);
+    off-=3;
+    operand_type op;
+    op.Ref = e->frame->pc;
+    push_op(&(e->frame->top),op,1);
+    e->frame->pc += off;
+    return 0;
+}
+int ret(execution *e){
+	u1 i = u1ReadFrame(e->frame);
+    e->frame->pc = e->frame->local_arr[i].Ref;
+    return 0;
+} 
 // int tableswitch(execution *e){
 // 	return;
 // } 

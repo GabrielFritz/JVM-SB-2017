@@ -213,6 +213,8 @@ int (*instr_array[])(execution *p) = {
 
 u1 u1ReadFrame(frame* f) { return *(++f->pc) }
 
+int8_t signed1ReadFrame(frame* f) { return *(++f->pc) }
+
 u2 u2ReadFrame(frame* f) {
     u2 aux = *(f->pc++);
     aux<<=8;
@@ -1178,15 +1180,15 @@ int i2s(execution *e){
 // }  
 int ifeq(execution *e) {
  	operand_type value = pop_op(&(e->frame->top));
-    int8_t o1 = u1ReadFrame(e->frame);
-    int8_t o2 = u1ReadFrame(e->frame);
+    int8_t o1 = signed1ReadFrame(e->frame);
+    int8_t o2 = signed1ReadFrame(e->frame);
     int16_t off = o1;
     
     if (value.Int == 0) { //unica diferenca entre ifeq, ifne, iflt, ifge, ifgt, ifle sera essa comparacao
     	off <<= 8;
     	off |= o2;
     	off-=3; //por que 3?
-    	e->frame->pc += off; // (valor -2 para voltar para a instrucao ifeq)
+    	e->frame->pc += off;
     }
     else {
 		e->frame->pc++; //incremento de instrucao
@@ -1233,8 +1235,8 @@ int ifeq(execution *e) {
 // 	return;
 // }  
 int goto_(execution *e){
-	int8_t o1 = u1ReadFrame(e->frame);
-    int8_t o2 = u1ReadFrame(e->frame);
+	int8_t o1 = signed1ReadFrame(e->frame);
+    int8_t o2 = signed1ReadFrame(e->frame);
     int16_t off = o1;
     off <<= 8;
     off |= o2;

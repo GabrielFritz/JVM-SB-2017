@@ -13,7 +13,7 @@ typedef union {
 } field_type;
 
 typedef struct {
-    char* nome;
+    char* name;
     char* descriptor;
     field_type value;
 } field;

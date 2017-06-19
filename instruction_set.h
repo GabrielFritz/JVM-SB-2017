@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "execution.h"
+#include "util.h"
 int (*instr_array[])(execution *p);
 int nop(execution *e);
 int aconst_null(execution *e); 

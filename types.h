@@ -1,11 +1,9 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdint.h>
 #include <inttypes.h>
+#include "frame.h"
 
 #define BOOLEANTYPE   4
 #define CHARTYPE      5
@@ -37,10 +35,14 @@
 typedef uint8_t     u1;
 typedef uint16_t    u2;
 typedef uint32_t    u4;
+typedef int8_t      i1;
 
 u1 u1Read(FILE* fd);
 u2 u2Read(FILE* fd);
 u4 u4Read(FILE* fd);
+u1 u1ReadFrame(frame* f);
+i1 signed1ReadFrame(frame* f);
+
 
 union {
     u4 U4;
@@ -51,14 +53,4 @@ union {
     long long Long;
     double Double;
 } longtodouble;
-
-typedef struct {
-    char sign[50];
-    unsigned short count;
-    unsigned int* index;
-} opcode;
-
-opcode* opcodes;
-void load_opcodes();
-
 #endif

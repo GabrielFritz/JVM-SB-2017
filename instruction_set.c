@@ -5,6 +5,7 @@
 #include "types.h"
 #include "frame.h"
 #include "heap.h"
+#include "util.h"
 
 int (*instr_array[])(execution *p) = {
     nop, // 0x00
@@ -211,29 +212,6 @@ int (*instr_array[])(execution *p) = {
     jsr_w// 0xC9
 };
 
-u1 u1ReadFrame(frame* f) { return *(++f->pc) }
-
-int8_t signed1ReadFrame(frame* f) { return *(++f->pc) }
-
-u2 u2ReadFrame(frame* f) {
-    u2 aux = *(f->pc++);
-    aux<<=8;
-    aux|=*(f->pc++);
-    return aux;
-}
-
-u4 u4ReadFrame(frame* f) {
-    u4 aux;
-    aux = *(f->pc++);
-    aux<<=8;
-    aux|=*(f->pc++);
-    aux<<=8;
-    aux|=*(f->pc++);
-    aux<<=8;
-    aux|=*(f->pc++);
-    return aux;
-}
-
 int nop(execution* e) {
     return 0;
 }
@@ -340,12 +318,6 @@ int sipush(execution *e){
     op.Int = u2ReadFrame(e->frame);
 	push_op(&(e->frame->top),op,1);
 	return 0;
-}
-u1 search_tag(cp_info* cp, u2 i) { return cp[i].tag; }
-int search_int(cp_info* cp, u2 i) { return (int)cp[i].info.Integer_info.bytes;}
-int search_float(cp_info* cp, u2 i) {
-    u4tofloat.U4 = cp[i].info.Float_info.bytes;
-    return u4tofloat.Float;
 }
 int ldc(execution *e){
     operand_type op;

@@ -7,6 +7,15 @@
 #include "util.h"
 #include "classfile.h"
 
+u1 search_tag(cp_info* cp, u2 i) { return cp[i].tag; }
+
+int search_int(cp_info* cp, u2 i) { return (int)cp[i].info.Integer_info.bytes;}
+
+int search_float(cp_info* cp, u2 i) {
+    u4tofloat.U4 = cp[i].info.Float_info.bytes;
+    return u4tofloat.Float;
+}
+
 int findtype(char* type) {
     if (!strcmp(type, "ConstantValue")) {
         return CONSTANTVALUE;

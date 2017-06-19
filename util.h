@@ -10,6 +10,9 @@
 #include "types.h"
 #include "classfile.h"
 
+u1 search_tag(cp_info* cp, u2 i);
+int search_int(cp_info* cp, u2 i);
+int search_float(cp_info* cp, u2 i);
 void shutdown(FILE *fd, FILE *fout, ClassFile* cf);
 int findtype(char* type);
 FILE* open_file(char *nomearquivo);

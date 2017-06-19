@@ -1197,35 +1197,140 @@ int ret(execution *e){
     e->frame->pc = e->frame->local_arr[i].Ref;
     return 0;
 } 
-// int tableswitch(execution *e){
-// 	return;
-// } 
-// int lookupswitch(execution *e){
-// 	return;
-// } 
-// int ireturn(execution *e){
-// 	return;
-// }  
-// int lreturn(execution *e){
-// 	return;
-// }  
-// int freturn(execution *e){
-// 	return;
-// }  
-// int dreturn(execution *e){
-// 	return;
-// }  
-// int areturn(execution *e){
-// 	return;
-// }  
-// int return_(execution *e){
-// 	return;
-// }  
-// int getstatic(execution *e){
-// 	return;
-// } 
+int tableswitch(execution *e){
+	u1* return_pc = e->frame->pc-1;
+    int delta = (e->frame->pc - e->frame->code);
+    int pad_size = (4-delta%4);
+    for(int i=0;i<pad_size;++i) u1ReadFrame(e->frame);
+    int default_offset = (int) u4ReadFrame(e->frame);
+    int lowcase_off = (int) u4ReadFrame(e->frame);
+    int highcase_off = (int) u4ReadFrame(e->frame);
+    int size_switch = (highcase_off-lowcase_off+1);
+    if(size_switch<0){
+        printf("ERRO. Tableswitch LOWOFF greater than HIGHOFF.\n");
+        exit(1);
+    }
+    int* off = (int*)calloc(size_switch,sizeof(int));
+    for(int i=0;i<size_switch;++i) off[i]=u4ReadFrame(e->frame);
+    e->frame->pc = return_pc;
+    operand_type i = pop_op(&(e->frame->top));
+    if(i.Int < lowcase_off || i.Int>highcase_off)
+        e->frame->pc = e->frame->pc+default_offset;
+    else
+        e->frame->pc = e->frame->pc +(off[i.Int-lowcase_off]);
+    free(off);
+    return 0;
+}  
+int lookupswitch(execution *e){
+	u1* return_pc = e->frame->pc-1;
+    operand_type a = pop_op(&(e->frame->top));
+    int delta = (e->frame->pc - e->frame->code);
+    int pad_size = (4-delta%4);
+    for(int i=0;i<pad_size;++i) u1ReadFrame(e->frame);
+    int default_offset = (int) u4ReadFrame(e->frame);
+    int pairs = u4ReadFrame(e->frame);
+    int off[pairs][2];
+    for(int i=0;i<pairs;++i) {
+        off[i][0] = u4ReadFrame(e->frame);
+        off[i][1] = u4ReadFrame(e->frame);
+    }
+    e->frame->pc = return_pc;
+    for(int i=0;i<pairs;++i)
+        if(a.Int == off[i][0]){
+            e->frame->pc +=off[i][1];
+            return 0;
+        }
+    e->frame->pc +=default_offset;
+    return 0;
+}
+int ireturn(execution *e){
+    operand_type op = pop_op(&(e->frame->top));
+    pop_frame(&(e->frame));
+    push_op(&(e->frame->top),op,1);
+	return 1;
+}  
+int lreturn(execution *e){
+    operand_type op = pop_op(&(e->frame->top));
+    pop_frame(&(e->frame));
+    push_op(&(e->frame->top),op,2);
+    return 1;
+}  
+int freturn(execution *e){
+    operand_type op = pop_op(&(e->frame->top));
+    pop_frame(&(e->frame));
+    push_op(&(e->frame->top),op,1);
+    return 1;
+}  
+int dreturn(execution *e){
+    operand_type op = pop_op(&(e->frame->top));
+    pop_frame(&(e->frame));
+    push_op(&(e->frame->top),op,2);
+    return 1;
+}  
+int areturn(execution *e){
+    operand_type op = pop_op(&(e->frame->top));
+    pop_frame(&(e->frame));
+    push_op(&(e->frame->top),op,1);
+    return 1;
+}  
+int return_(execution *e){
+	pop_frame(&(e->frame));
+    return 1;
+}  
+int getstatic(execution *e){
+    u2 fieldi = u2ReadFrame(e->frame);
+    u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
+    u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
+    u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
+    u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* classname = search_utf8(e->frame->constant_pool,classnamei);
+    char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+
+    if(!strcmp(classname,"java/lang/System")
+        && !strcmp(fieldname,"out")
+        && !strcmp(descriptor,"Ljava/io/PrintStream"))
+    {
+        operand_type op;
+        op.Long = 0;
+        push_op(&(e->frame->top),op,1);
+    } else {
+        ClassFile* cf = check_class(e,classname);
+        field* f  = search_staticfield(e->start,classname,fieldname);
+        if(!f){
+            printf("ERRO. Field not found on getstatic.\n");
+            exit(1);
+        } else {
+            operand_type op;
+            if(descriptor[0]=='B'||descriptor[0]=='C') {
+                op.Int = f->value.Char;
+                push_op(&(e->frame->top),op,1);
+            } else if(descriptor[0]=='S') {
+                op.Int = f->value.Short;
+                push_op(&(e->frame->top),op,1);
+            } else if(descriptor[0] == 'I' || descriptor[0]=='Z') {
+                op.Int = f->value.Int;
+                push_op(&(e->frame->top),op,1);
+            } else if(descriptor[0] == 'F') {
+                op.Float = f->value.Float;
+                push_op(&(e->frame->top),op,1);
+            } else if(descriptor[0]=='L' ||descriptor[0]=='['){
+                op.Ref = f->value.Ref;
+                push_op(&(e->frame->top),op,1);
+            } else if(descriptor[0] =='D') {
+                op.Double = f->value.Double;
+                push_op(&(e->frame->top),op,2);
+            } else if(descriptor[0] =='J') {
+                op.Long = f->value.Long;
+                push_op(&(e->frame->top),op,2);
+            }
+        }
+    }
+    return 0;
+}
 // int putstatic(execution *e){
-// 	return;
+//     return 0;
 // } 
 // int getfield(execution *e){
 // 	return;

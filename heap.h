@@ -41,4 +41,6 @@ typedef struct _class_heap {
 void classheap_init(class_heap** ch);
 void push_class(class_heap** ch,ClassFile cf);
 ClassFile* search_classheap(class_heap* ch, char* name);
+field* search_field(char* name, char* descr, object* o);
+field* search_staticfield(class_heap* start, char* class, char* field);
 #endif

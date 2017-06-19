@@ -54,3 +54,30 @@ ClassFile* search_classheap(class_heap* ch, char* name) {
     }
     return NULL;
 }
+
+field* search_field(char* name, char* descr, object* o) {
+    field* aux
+    for(aux = o->fields;aux<o->fields+o->fields_count;++aux) {
+        if(!strcmp(name,aux->name)
+            && !strcmp(descr,aux->descriptor)) {
+            return aux;
+        }
+    }
+    return NULL;
+}
+
+field* search_staticfield(class_heap* start, char* class, char* field) {
+    class_heap* aux = start;
+    while(aux) {
+        if(!strcmp(class,search_utf8(aux->cf.constant_pool,
+            aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index))) {
+            for(int i=0;i<aux->num_static;++i) {
+                if(!strcmp(field,aux->static_fields[i].name))
+                    return &(aux->static_fields[i]);
+            }
+            return NULL;
+        }
+        aux=aux->next;
+    }
+    return NULL;
+}

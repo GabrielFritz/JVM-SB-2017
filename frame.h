@@ -1,8 +1,10 @@
 #ifndef FRAME_H
 #define FRAME_H
 
+#include "types.h"
 #include "classfile.h"
 #include "heap.h"
+#include "util.h"
 
 typedef union _operand_type {
     int Int;
@@ -43,4 +45,8 @@ void push_frame(frame** s);
 void pop_frame(frame** s);
 void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name, char* descriptor);
 
+u1 u1ReadFrame(frame* f);
+i1 signed1ReadFrame(frame* f);
+u2 u2ReadFrame(frame* f);
+u4 u4ReadFrame(frame* f);
 #endif

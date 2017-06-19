@@ -283,7 +283,7 @@ ClassFile* load_ClassFile(char* name) {
   char filename[128];
   strcpy(filename,name);
   strcat(filename,".class");
-  FILE* fd = fopen(filename,'rb');
+  FILE* fd = fopen(filename,"rb");
   if(!fd) {
     printf("ERRO. Not found %s.\n",filename);
     exit(1);
@@ -296,7 +296,8 @@ method_info* search_method(ClassFile* cf ,char* name,char* descriptor) {
   for(aux = cf->methods;aux<cf->methods+cf->methods_count;++aux) {
     int nameflag = strcmp(name,search_utf8(cf->constant_pool,aux->name_index));
     int descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->name_index));
-  } if(!nameflag && !descrflag) return aux;
+  }
+  if(!nameflag && !descrflag) return aux;
   return NULL;
 }
 

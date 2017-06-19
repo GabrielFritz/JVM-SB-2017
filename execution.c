@@ -3,6 +3,7 @@
 #include "frame.h"
 #include "types.h"
 #include "heap.h"
+#include "instruction_set.h"
 
 void execute_method(execution* e) {
     int flag =0;
@@ -19,7 +20,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
     int sizeindex =0;
     if(e->frame->below) {
         operand_heap* opaux;
-        operandheap_init(&opaux);
+        init_opheap(&opaux);
         for(int i=0;i<args;++i) {
             int type = e->frame->below->top->type;
             operand_type new = pop_op(&(e->frame->below->top));
@@ -29,7 +30,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
         }
         for(int i=0;i<args;++i) {
             int type = opaux->type;
-            operand_type* new = pop_op(&opaux);
+            operand_type new = pop_op(&opaux);
             push_op(&(e->frame->below->top),new,type);
         }
         for(int i=sizeindex-1;i>-1;--i) {
@@ -42,11 +43,10 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
     if(!cf) {
-        cf = (ClassFile*) malloc(sizeof(ClassFile));
-        *cf = load_ClassFile(name);
+        cf = load_ClassFile(name);
         push_class(&(e->start),*cf);
 
-        if(search_method(*cf,MNAME,MDESCR)) {
+        if(search_method(cf,MNAME,MDESCR)) {
             init_methodexecution(e,name,MNAME,MDESCR,0);
             execute_method(e);
         }

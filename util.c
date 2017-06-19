@@ -16,7 +16,9 @@ float search_float(cp_info* cp, u2 i) {
     return u4tofloat.Float;
 }
 
-char* search_utf8(cp_info* cp, u2 i) { return (char)cp_info[i].info.Utf8_info.bytes; }
+char* search_utf8(cp_info* cp, u2 i) {
+  return (char*)cp[i].info.Utf8_info.bytes;
+}
 
 int findtype(char* type) {
     if (!strcmp(type, "ConstantValue")) {

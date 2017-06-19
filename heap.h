@@ -1,6 +1,8 @@
 #ifndef HEAP_H
 #define HEAP_H
 #include "classfile.h"
+#include "util.h"
+#include "types.h"
 
 typedef union {
     int Int;

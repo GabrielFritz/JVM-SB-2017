@@ -5,9 +5,16 @@
 #include "frame.h"
 #include "heap.h"
 
+#define MNAME "<clinit>"
+#define MDESCR "()V"
+
 typedef struct {
     frame* frame;
     class_heap* start;
 } execution;
+
+void execute_method(execution* e);
+void init_methodexecution(execution* e,char* class,char* method, char* descriptor, int args);
+ClassFile* check_class(execution* e, char* name);
 
 #endif

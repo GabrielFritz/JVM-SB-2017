@@ -4,9 +4,6 @@
 #include "types.h"
 #include "heap.h"
 
-#define MNAME "<clinit>"
-#define MDESCR "()V"
-
 void execute_method(execution* e) {
     int flag =0;
     while(!flag) {
@@ -15,7 +12,7 @@ void execute_method(execution* e) {
     }
 }
 
-void init_methodexecution(char* class,char* method, char* descriptor, execution* e,int args){
+void init_methodexecution(execution* e,char* class,char* method, char* descriptor, int args){
     ClassFile* cf = check_class(e,class);
     push_frame(&(e->frame));
     frame_init(e->start,*cf,e->frame,method,descriptor);
@@ -50,7 +47,7 @@ ClassFile* check_class(execution* e, char* name) {
         push_class(&(e->start),*cf);
 
         if(search_method(*cf,MNAME,MDESCR)) {
-            init_methodexecution(name,MNAME,MDESCR,e,0);
+            init_methodexecution(e,name,MNAME,MDESCR,0);
             execute_method(e);
         }
     }    

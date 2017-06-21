@@ -1424,15 +1424,106 @@ int putfield(execution *e){
     }
 	return 0;
 } 
-// int invokevirtual(execution *e){
-// 	return;
-// } 
-// int invokespecial(execution *e){
-// 	return;
-// }
-// int invokestatic(execution *e){
-// 	return;
-// }
+int invokevirtual(execution *e){
+    u2 methodi = u2ReadFrame(e->frame);
+    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    char* namem = search_utf8(e->frame->constant_pool,namei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    if((!strcmp(namec,"java/io/PrintStream") && (!strcmp(namem,"println")|| !strcmp(namem,"print"))))
+    {
+        int n = count_args(descriptor);
+        ClassFile* cf = check_class(e,namec);
+        init_methodexecution(e,namec,namem,descriptor,n);
+        execute_method(e);
+    } else {
+        operand_type op;
+        switch (descriptor[1]) {
+            case '[':
+                op = pop_op(&(e->frame->top));
+                printf("%p",op.Ref);
+            break;
+            case 'Z':
+                op = pop_op(&(e->frame->top));
+                printf("%s",op.Int?"true":"false");
+            break;
+            case 'J':
+                op = pop_op(&(e->frame->top));
+                printf("%lld",op.Long);
+            break;
+            case 'C':
+                op = pop_op(&(e->frame->top));
+                printf("%c",(char)op.Int);
+            break;
+            case 'B':
+                op = pop_op(&(e->frame->top));
+                printf("%d",op.Int);
+            break;
+            case 'I':
+                op = pop_op(&(e->frame->top));
+                printf("%d",op.Int);
+            break;
+            case 'S':
+                op = pop_op(&(e->frame->top));
+                printf("%hi",(short)op.Int);
+            break;
+            case 'D':
+                op = pop_op(&(e->frame->top));
+                printf("%lf",op.Double);
+            break;
+            case 'F':
+                op = pop_op(&(e->frame->top));
+                printf("%f",op.Float);
+            break;
+            case 'L':
+                op = pop_op(&(e->frame->top));
+                if(strstr(descriptor,"java/lang/String"))
+                    printf("%s",(char*)op.Ref);
+                else
+                    printf("%p",op.Ref);
+            break;
+        }
+        if(!strcmp(namem,"println")) printf("\n");
+        pop_op(&(e->frame->top));
+    }
+	return 0;
+} 
+int invokespecial(execution *e){
+    u2 methodi = u2ReadFrame(e->frame);
+    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    char* namem = search_utf8(e->frame->constant_pool,namei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    int n = count_args(descriptor);
+    ClassFile* cf = check_class(e,namec);
+    init_methodexecution(e,namec,namem,descriptor,n);
+    execute_method(e);
+	return 0;
+}
+int invokestatic(execution *e){
+    u2 methodi = u2ReadFrame(e->frame);
+    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    char* namem = search_utf8(e->frame->constant_pool,namei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    int n = count_args(descriptor);
+    if(!(!strcmp(namec,"java/lang/Object") && !strcmp(namem,"registerNatives") && !strcmp(descriptor,"(V)")))
+    {
+        ClassFile* cf = check_class(e,namec);
+        init_methodexecution(e,namec,namem,descriptor,n);
+        execute_method(e);
+    }
+	return 0;
+}
 
 int num_fields(execution* e, ClassFile* cf) {
     int n =0;

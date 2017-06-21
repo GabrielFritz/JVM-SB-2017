@@ -157,8 +157,8 @@ int dreturn(execution *e);
 int areturn(execution *e);  
 int return_(execution *e);  
 int getstatic(execution *e); 
-// int putstatic(execution *e); 
-// int getfield(execution *e); 
+int putstatic(execution *e); 
+int getfield(execution *e); 
 // int putfield(execution *e); 
 // int invokevirtual(execution *e); 
 // int invokespecial(execution *e); 
@@ -352,8 +352,8 @@ int (*instr_array[])(execution *p) = {
     areturn,// 0xB0
     return_,// 0xB1
     getstatic,// 0xB2
-    // putstatic,// 0xB3
-    // getfield,// 0xB4
+    putstatic,// 0xB3
+    getfield,// 0xB4
     // putfield,// 0xB5
     // invokevirtual,// 0xB6
     // invokespecial,// 0xB7

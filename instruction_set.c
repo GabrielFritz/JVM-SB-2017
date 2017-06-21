@@ -1370,12 +1370,60 @@ int putstatic(execution *e){
 
     return 0;
 } 
-// int getfield(execution *e){
-// 	return;
-// } 
-// int putfield(execution *e){
-// 	return;
-// } 
+int getfield(execution *e){
+    u2 i = u2ReadFrame(e->frame);
+    u2 nameandtypei = e->frame->constant_pool[i].info.Fieldref_info.name_and_type_index;
+	u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* name = search_utf8(e->frame->constant_pool,namei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    operand_type ref = pop_op(&(e->frame->top));
+    object* o = (object*) ref.Ref;
+    field* f = search_field(name,descriptor,o);
+    operand_type op;
+    if(descriptor[0]=='B'||descriptor[0]=='C') {
+        op.Int = f->value.Char;
+        push_op(&(e->frame->top),op,1);
+    } else if(descriptor[0]=='S') {
+        op.Int = f->value.Short;
+        push_op(&(e->frame->top),op,1);
+    } else if(descriptor[0] == 'I' || descriptor[0]=='Z') {
+        op.Int = f->value.Int;
+        push_op(&(e->frame->top),op,1);
+    } else if(descriptor[0] == 'F') {
+        op.Float = f->value.Float;
+        push_op(&(e->frame->top),op,1);
+    } else if(descriptor[0]=='L' ||descriptor[0]=='['){
+        op.Ref = f->value.Ref;
+        push_op(&(e->frame->top),op,1);
+    } else if(descriptor[0] =='D') {
+        op.Double = f->value.Double;
+        push_op(&(e->frame->top),op,2);
+    } else if(descriptor[0] =='J') {
+        op.Long = f->value.Long;
+        push_op(&(e->frame->top),op,2);
+    }
+    return 0;
+} 
+int putfield(execution *e){
+    u2 i = u2ReadFrame(e->frame);
+    u2 nameandtypei = e->frame->constant_pool[i].info.Fieldref_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* name = search_utf8(e->frame->constant_pool,namei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    operand_type aux = pop_op(&(e->frame->top));
+    operand_type ref = pop_op(&(e->frame->top));
+    object* o = (object*) ref.Ref;
+    field* f = search_field(name,descriptor,o);
+    if(!f) {
+        printf("ERRO in putfield. field is NULL");
+        exit(1);
+    } else {
+        f->value.Long = aux.Long;
+    }
+	return 0;
+} 
 // int invokevirtual(execution *e){
 // 	return;
 // } 

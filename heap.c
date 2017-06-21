@@ -56,8 +56,8 @@ ClassFile* search_classheap(class_heap* ch, char* name) {
 }
 
 field* search_field(char* name, char* descr, object* o) {
-    field* aux
-    for(aux = o->fields;aux<o->fields+o->fields_count;++aux) {
+    field* aux;
+    for(aux = o->fields;aux<o->fields+o->num_fields;++aux) {
         if(!strcmp(name,aux->name)
             && !strcmp(descr,aux->descriptor)) {
             return aux;

@@ -1329,9 +1329,47 @@ int getstatic(execution *e){
     }
     return 0;
 }
-// int putstatic(execution *e){
-//     return 0;
-// } 
+
+void put_static(class_heap* start, char* class, char* field, operand_type op) {
+    class_heap* aux = start;
+    while(aux) {
+        if(!strcmp(class,search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index)))
+        {
+            for(int s=0;s<aux->num_static;++s) {
+                if(!strcmp(field,aux->static_fields[s].name)) {
+                    aux->static_fields[s].value.Long = op.Long;
+                    return;
+                }
+            }
+            return;
+        }
+        aux=aux->next;
+    }
+}
+
+int putstatic(execution *e){
+    u2 fieldi = u2ReadFrame(e->frame);
+    u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
+    u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
+    u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
+    u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    char* classname = search_utf8(e->frame->constant_pool,classnamei);
+    char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
+    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+
+    ClassFile* cf = check_class(e,classname);
+    field* f  = search_staticfield(e->start,classname,fieldname);
+    if(f) {
+        operand_type op = pop_op(&(e->frame->top));
+        put_static(e->start,classname,fieldname,op);
+    } else {
+        printf("ERRO: field not found on putstatic.\n");
+        exit(1);
+    }
+
+    return 0;
+} 
 // int getfield(execution *e){
 // 	return;
 // } 
@@ -1347,9 +1385,75 @@ int getstatic(execution *e){
 // int invokestatic(execution *e){
 // 	return;
 // }
-// int new_(execution *e){
-// 	return 0;
-// } 
+
+int num_fields(execution* e, ClassFile* cf) {
+    int n =0;
+    for(field_info* aux=cf->fields; aux<cf->fields+cf->fields_count;++aux) {
+        if(is_static(aux->access_flags)) ++n;
+    }
+    ClassFile* aux = cf;
+    while(aux->super_class) {
+        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        char* supername;
+        strcpy(supername,search_utf8(aux->constant_pool, supernamei));
+        aux = check_class(e,supername);
+        if(aux) {
+            for(field_info* f = aux->fields;f<aux->fields+aux->fields_count;++f) {
+                if(is_static(f->access_flags)) ++n;
+            }
+        }
+    }
+    return n;
+}
+
+void field_init(execution* e,ClassFile* cf, field* f) {
+    int i=0;
+    for(field_info* aux=cf->fields; aux<cf->fields+cf->fields_count;++aux) {
+        char* descriptor = search_utf8(cf->constant_pool,aux->descriptor_index);
+        char* name = search_utf8(cf->constant_pool,aux->name_index);
+        if(is_static(aux->access_flags)) {
+            f[i].descriptor = descriptor;
+            f[i].name = name;
+            f[i++].value.Long = 0;
+        }
+    }
+    ClassFile* aux = cf;
+    while(aux->super_class) {
+        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        char* supername;
+        strcpy(supername,search_utf8(aux->constant_pool, supernamei));
+        aux = check_class(e,supername);
+        if(aux) {
+            for(field_info* a = aux->fields;a<aux->fields+aux->fields_count;++a) {
+                char* descriptor = search_utf8(aux->constant_pool,a->descriptor_index);
+                char* name = search_utf8(aux->constant_pool,a->name_index);
+                if(is_static(aux->access_flags)) {
+                    f[i].descriptor = descriptor;
+                    f[i].name = name;
+                    f[i++].value.Long = 0;
+                }
+            }
+        } else {
+            printf("ERRO in field_init: Not Found super.\n");
+            exit(1);
+        }
+    }
+}
+
+int new_(execution *e){
+    u2 classi = u2ReadFrame(e->frame);
+    u2 classnamei = e->frame->constant_pool[classi].info.Class_info.name_index;
+    char* classname = search_utf8(e->frame->constant_pool,classnamei);
+    ClassFile* cf = check_class(e,classname);
+    object* o = (object*) malloc(sizeof(object));
+    o->num_fields = num_fields(e,cf);
+    o->fields = (field*) malloc(sizeof(field)*o->num_fields);
+    field_init(e,cf,o->fields);
+    operand_type op;
+    op.Ref = o;
+    push_op(&(e->frame->top),op,1);
+	return 0;
+} 
 int newarray(execution *e){
     vector* v = (vector*) malloc(sizeof(vector));
     v->type = u1ReadFrame(e->frame);

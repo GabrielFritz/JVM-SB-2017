@@ -163,7 +163,7 @@ int getstatic(execution *e);
 // int invokevirtual(execution *e); 
 // int invokespecial(execution *e); 
 // int invokestatic(execution *e); 
-// int new_(execution *e); 
+int new_(execution *e); 
 int newarray(execution *e); 
 int anewarray(execution *e); 
 int arraylength(execution *e); 
@@ -321,46 +321,46 @@ int (*instr_array[])(execution *p) = {
     i2c,// 0x91
     i2c,// 0x92
     i2s,// 0x93
-    // lcmp,// 0x94
-    // fcmpl,// 0x95
-    // fcmpg,// 0x96
-    // dcmpl,// 0x97
-    // dcmpg,// 0x98
-    // ifeq,// 0x99
-    // ifne,// 0x9A
-    // iflt,// 0x9B
-    // ifge,// 0x9C
-    // ifgt,// 0x9D
-    // ifle,// 0x9E
-    // if_icmpeq,// 0x9F
-    // if_icmpne,// 0xA0
-    // if_icmplt,// 0xA1
-    // if_icmpge,// 0xA2
-    // if_icmpgt,// 0xA3
-    // if_icmple,// 0xA4
-    // if_acmpeq,// 0XA5
-    // if_acmpne,// 0xA6
-    // goto_,// 0xA7
-    // jsr,// 0xA8
-    // ret,// 0xA9
-    // tableswitch,// 0xAA
-    // lookupswitch,// 0xAB
-    // ireturn,// 0xAC
-    // lreturn,// 0xAD
-    // freturn,// 0xAE
-    // dreturn,// 0xAF
-    // areturn,// 0xB0
-    // return_,// 0xB1
-    // getstatic,// 0xB2
+    lcmp,// 0x94
+    fcmpl,// 0x95
+    fcmpg,// 0x96
+    dcmpl,// 0x97
+    dcmpg,// 0x98
+    ifeq,// 0x99
+    ifne,// 0x9A
+    iflt,// 0x9B
+    ifge,// 0x9C
+    ifgt,// 0x9D
+    ifle,// 0x9E
+    if_icmpeq,// 0x9F
+    if_icmpne,// 0xA0
+    if_icmplt,// 0xA1
+    if_icmpge,// 0xA2
+    if_icmpgt,// 0xA3
+    if_icmple,// 0xA4
+    if_acmpeq,// 0XA5
+    if_acmpne,// 0xA6
+    goto_,// 0xA7
+    jsr,// 0xA8
+    ret,// 0xA9
+    tableswitch,// 0xAA
+    lookupswitch,// 0xAB
+    ireturn,// 0xAC
+    lreturn,// 0xAD
+    freturn,// 0xAE
+    dreturn,// 0xAF
+    areturn,// 0xB0
+    return_,// 0xB1
+    getstatic,// 0xB2
     // putstatic,// 0xB3
     // getfield,// 0xB4
     // putfield,// 0xB5
     // invokevirtual,// 0xB6
     // invokespecial,// 0xB7
     // invokestatic,// 0xB8
-    // nop,//nop,// 0xB9
-    // nop,//nop,// 0xBA
-    // new_,// 0xBB
+    nop,//nop,// 0xB9
+    nop,//nop,// 0xBA
+    new_,// 0xBB
     newarray,// 0xBC
     anewarray,// 0xBD
     arraylength,// 0xBE

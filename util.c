@@ -7,7 +7,7 @@
 #include "util.h"
 #include "classfile.h"
 
-u1 search_tag(cp_info* cp, u2 i) { return cp[i].tag; }
+u1 search_tag(cp_info* cp, u2 i) { return cp[i].tag;}
 
 int search_int(cp_info* cp, u2 i) { return (int)cp[i].info.Integer_info.bytes;}
 
@@ -103,7 +103,7 @@ FILE* open_file(char *nomearquivo) {
     }
 }
 
-FILE * io_handler(int argc, char *argv[], char *nomearquivo, FILE **fout)
+FILE* io_handler(int argc, char *argv[], char *nomearquivo, FILE **fout)
 {
   FILE *fd = NULL;
   char saidaarquivo[1024] = "output_class.txt";

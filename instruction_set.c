@@ -641,10 +641,33 @@ int dmul(execution *e){
 int idiv(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Int /= op2.Int;
-    push_op(&(e->frame->top),op1,1);
+
+    operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
+    
+    if (isnan(op1.Int) || isnan(op2.Int))
+    	result.Int = NaN; //operando Not-A-Number
+    
+    else if (op1.Int == 0) {
+    	if (op2.Int == 0)
+    		result.Int = NaN; //divisao 0/0
+    	else
+    		result.Int = 0; //divisao 0/numero
+    }
+
+    else if (!isfinite(op1.Int)) {
+    	if (!isfinite(op2.Int))
+    		result.Int = NaN; //infinito/infinito
+    	else
+    		result.Int = op1.Int/op2.Int; //infinito/outra coisa - verificar sinais dos operandos
+    }
+
+    else
+    	result.Int = op1.Int / op2.Int; //divisao finito/finito
+
+    push_op(&(e->frame->top),result,1);
 	return 0;
-}  
+}
+
 int ldiv_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));

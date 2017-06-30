@@ -1045,7 +1045,7 @@ int dcmpg(execution *e){
 int ifeq(execution *e) {
  	operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int == 0) { 
     	e->frame->pc += off;
     }
@@ -1288,48 +1288,46 @@ int getstatic(execution *e){
     char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
 
-    if(!strcmp(classname,"java/lang/System")
+    if(!strcmp(classname,"java/lang/System") //
         && !strcmp(fieldname,"out")
-        && !strcmp(descriptor,"Ljava/io/PrintStream"))
+        && !strcmp(descriptor,"Ljava/io/PrintStream")) //Instrucao print
     {
         operand_type op;
         op.Long = 0;
-        push_op(&(e->frame->top),op,1);
+        push_op(&(e->frame->top),op,1); //empilha operando inutil, depois sera retirado
     } else {
-        ClassFile* cf = check_class(e,classname);
-        field* f  = search_staticfield(e->start,classname,fieldname);
+        ClassFile* cf = check_class(e,classname); //checa a classe e carrega se ainda nao tiver sido
+        field* f  = search_staticfield(e->start,classname,fieldname); //encontra o field nas classes
         if(!f){
             printf("ERRO. Field not found on getstatic.\n");
             exit(1);
         } else {
             operand_type op;
-            if(descriptor[0]=='B'||descriptor[0]=='C') {
+            if(descriptor[0]=='B'||descriptor[0]=='C') { //byte ou char
                 op.Int = f->value.Char;
                 push_op(&(e->frame->top),op,1);
-            } else if(descriptor[0]=='S') {
+            } else if(descriptor[0]=='S') { //Short
                 op.Int = f->value.Short;
                 push_op(&(e->frame->top),op,1);
-            } else if(descriptor[0] == 'I' || descriptor[0]=='Z') {
+            } else if(descriptor[0] == 'I' || descriptor[0]=='Z') { //Int
                 op.Int = f->value.Int;
                 push_op(&(e->frame->top),op,1);
-            } else if(descriptor[0] == 'F') {
+            } else if(descriptor[0] == 'F') { //Float
                 op.Float = f->value.Float;
                 push_op(&(e->frame->top),op,1);
-            } else if(descriptor[0]=='L' ||descriptor[0]=='['){
+            } else if(descriptor[0]=='L' ||descriptor[0]=='['){ //Referencia
                 op.Ref = f->value.Ref;
                 push_op(&(e->frame->top),op,1);
-            } else if(descriptor[0] =='D') {
+            } else if(descriptor[0] =='D') { //Double
                 op.Double = f->value.Double;
                 push_op(&(e->frame->top),op,2);
-            } else if(descriptor[0] =='J') {
+            } else if(descriptor[0] =='J') { //Long
                 op.Long = f->value.Long;
                 push_op(&(e->frame->top),op,2);
             }
         }
     }
     return 0;
-}
-
 void put_static(class_heap* start, char* class, char* field, operand_type op) {
     class_heap* aux = start;
     while(aux) {
@@ -1350,6 +1348,7 @@ void put_static(class_heap* start, char* class, char* field, operand_type op) {
 int putstatic(execution *e){
     u2 fieldi = u2ReadFrame(e->frame);
     u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
+
     u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
     u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
     u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
@@ -1593,6 +1592,7 @@ int new_(execution *e){
     push_op(&(e->frame->top),op,1);
 	return 0;
 } 
+
 int newarray(execution *e){
     vector* v = (vector*) malloc(sizeof(vector));
     v->type = u1ReadFrame(e->frame);
@@ -1700,17 +1700,17 @@ int ifnonnull(execution *e){
     if(op.Ref != NULL) e->frame->pc += off;
 	return 0;
 } 
-int goto_w(execution *e){ //por que nau usar u4ReadFrame?
+int goto_w(execution *e){ //por que nao usar u4ReadFrame?
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
     unsigned int off = o1;
     off <<= 16;
     off |= o2;
-    off-=5;
+    off-=5; //a leitura 'ReadFrame' de 4 bytes ja avancou pc 4 vezes; a leitura da instrucao avancou mais 1 vez
     e->frame->pc += off;
 	return 0;
 } 
-int jsr_w(execution *e){ //por que nau usar u4ReadFrame?
+int jsr_w(execution *e){ //por que nao usar u4ReadFrame?
     u2 o1 = u2ReadFrame(e->frame);
     u2 o2 = u2ReadFrame(e->frame);
     unsigned int off = o1;
@@ -1722,4 +1722,4 @@ int jsr_w(execution *e){ //por que nau usar u4ReadFrame?
     push_op(&(e->frame->top),op1,1);
     e->frame->pc += off;
 	return 0;
-} 
+}

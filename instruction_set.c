@@ -478,7 +478,7 @@ int dup2(execution *e){
 int dup2_x1(execution *e){
     int type1 = e->frame->top->type;
     operand_type op1 = pop_op(&(e->frame->top));
-    int type2;
+    int type2 = 0;
     operand_type op2;
     if(type1==1) {
         int type2 = e->frame->top->type;
@@ -502,7 +502,7 @@ int dup2_x1(execution *e){
 int dup2_x2(execution *e){
     int type1 = e->frame->top->type;
     operand_type op1 = pop_op(&(e->frame->top));
-    int type2;
+    int type2 = 0;
     operand_type op2;
     if(type1==1) {
         int type2 = e->frame->top->type;
@@ -510,7 +510,7 @@ int dup2_x2(execution *e){
     }
     int type3 = e->frame->top->type;
     operand_type op3 = pop_op(&(e->frame->top)); 
-    int type4;
+    int type4 = 0;
     operand_type op4;
     if(type3 == 1) {
         int type4 = e->frame->top->type;
@@ -1328,6 +1328,8 @@ int getstatic(execution *e){
         }
     }
     return 0;
+}
+
 void put_static(class_heap* start, char* class, char* field, operand_type op) {
     class_heap* aux = start;
     while(aux) {
@@ -1532,7 +1534,7 @@ int num_fields(execution* e, ClassFile* cf) {
     ClassFile* aux = cf;
     while(aux->super_class) {
         u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
-        char* supername;
+        char* supername = null;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
         if(aux) {
@@ -1558,7 +1560,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
     ClassFile* aux = cf;
     while(aux->super_class) {
         u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
-        char* supername;
+        char* supername = null;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
         if(aux) {
@@ -1654,7 +1656,7 @@ vector* alocate_multirray(int dim, int* aux) {
         a->size = aux[0];
         a->type = INTEGERTYPE;
         a->array = (operand_type*) calloc(aux[0],sizeof(operand_type));
-        int* auxTam = (int*)calloc(dim-1,sizeof(int));
+        int* auxTam = (int*)calloc(dim-1,sizeof(int)); //cppcheck aponta vazamento de memoria no ponteiro
         for(int i=1;i<dim;++i) {
             auxTam[i-1] = aux[i];
         }

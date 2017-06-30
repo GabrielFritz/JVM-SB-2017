@@ -5,6 +5,21 @@
 #include "heap.h"
 #include "instruction_set.h"
 
+int count_args(char* d) {
+    int i=0;
+    int n=0;
+    while(d[i]!=')') {
+        if(d[i]!='(' && d[i]!='[') {
+            ++n;
+            if(d[i] == 'L') {
+                while(d[i]!=';') ++i;
+            }
+        }
+        ++i;
+    }
+    return n;
+}
+
 void execute_method(execution* e) {
     int flag =0;
     while(!flag) {

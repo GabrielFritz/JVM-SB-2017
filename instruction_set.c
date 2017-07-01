@@ -641,52 +641,82 @@ int dmul(execution *e){
 int idiv(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-
-    operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
-    
-    if (isnan(op1.Int) || isnan(op2.Int))
-    	result.Int = NaN; //operando Not-A-Number
-    
-    else if (op1.Int == 0) {
-    	if (op2.Int == 0)
-    		result.Int = NaN; //divisao 0/0
-    	else
-    		result.Int = 0; //divisao 0/numero
+    operand_type result = op1;
+    if (op2.Int == 0) {
+    	printf("ERRO. Divisao por zero.\n");
+        exit(1);
     }
-
-    else if (!isfinite(op1.Int)) {
-    	if (!isfinite(op2.Int))
-    		result.Int = NaN; //infinito/infinito
-    	else
-    		result.Int = op1.Int/op2.Int; //infinito/outra coisa - verificar sinais dos operandos
+    else {
+    	result.Int = op1.Int / op2.Int;
+    	push_op(&(e->frame->top),result,1);
     }
-
-    else
-    	result.Int = op1.Int / op2.Int; //divisao finito/finito
-
-    push_op(&(e->frame->top),result,1);
 	return 0;
 }
 
 int ldiv_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Long /= op2.Long;
-    push_op(&(e->frame->top),op1,2);
+    operand_type result = op1;
+
+    if (op2.Long == 0) {
+    	printf("ERRO. Divisao por zero.\n");
+        exit(1);
+    }
+    else {
+    	result.Long = op1.Long / op2.Long;
+    	push_op(&(e->frame->top),result,1);
+    }
 	return 0;
 }  
 int fdiv(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float /= op2.Float;
-    push_op(&(e->frame->top),op1,1);
+    
+    operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
+
+    if (isnan(op1.Float) || isnan(op2.Float))
+    	result.Float = NaN; //operando Not-A-Number
+    
+    else if (op1.Float == 0) {
+    	if (op2.Float == 0)
+    		result.Float = NaN; //divisao 0/0
+    	else
+    		result.Float = 0; //divisao 0/numero
+    }
+    else if (!isfinite(op1.Float)) {
+    	if (!isfinite(op2.Float))
+    		result.Float = NaN; //infinito/infinito
+    	else
+    		result.Float = op1.Float/op2.Float; //infinito/outra coisa - verificar sinais dos operandos
+    }
+    else
+    	result.Float = op1.Float / op2.Float; //divisao finito/finito
+
+    push_op(&(e->frame->top),result,1);
 	return 0;
 }  
 int ddiv(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Double /= op2.Double;
-    push_op(&(e->frame->top),op1,2);
+    operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
+
+    if (isnan(op1.Double) || isnan(op2.Double))
+    	result.Double = NaN; //operando Not-A-Number
+    
+    else if (op1.Double == 0) {
+    	if (op2.Double == 0)
+    		result.Double = NaN; //divisao 0/0
+    	else
+    		result.Double = 0; //divisao 0/numero
+    }
+    else if (!isfinite(op1.Double)) {
+    	if (!isfinite(op2.Double))
+    		result.Double = NaN; //infinito/infinito
+    	else
+    		result.Double = op1.Double/op2.Double; //infinito/outra coisa - verificar sinais dos operandos
+    }
+    else
+    	result.Double = op1.Double / op2.Double; //divisao finito/finito
+
+    push_op(&(e->frame->top),result,1);
 	return 0;
 }  
 int irem(execution *e){

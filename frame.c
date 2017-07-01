@@ -10,7 +10,7 @@ int operandheap_isempty(operand_heap* top) { return top==NULL;  }
 
 void push_op(operand_heap **top,operand_type op,int op_type)
 {
-    operand_heap* aux = (operand_heap*)malloc(sizeof(operand_heap)); //cppcheck acusa memory leak na variavel
+    operand_heap* aux = (operand_heap*)calloc(sizeof(operand_heap)); //cppcheck acusa memory leak na variavel
     aux->op = op;
     aux->type = op_type;
     aux->below = *top;

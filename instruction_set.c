@@ -414,13 +414,13 @@ int aastore(execution *e){
 int pop(execution *e){
 	if(e->frame->top->type==1) pop_op(&(e->frame->top));
     else {
-        printf("Type 2 POP Error.\n");
+        printf("Type 2 POP Error.\n"); //instrucao pop nao serve para Long e Double
         exit(1);
     }
     return 0;
 } 
-int pop2(execution *e){
-	if(e->frame->top->type==1 && e->frame->top->below->type==1) {
+int pop2(execution *e){ //realiza 2 pops se for Long ou double; realiza 1 pop otherwise
+	if(e->frame->top->type==1 && e->frame->top->below->type==1) { //a comparacao nao eh com == 2?
         pop_op(&(e->frame->top));
         pop_op(&(e->frame->top));
     }
@@ -429,7 +429,7 @@ int pop2(execution *e){
     }
     return 0;
 } 
-int dup(execution *e){
+int dup(execution *e){ //duplica o topo a pilha
     int type = e->frame->top->type;
     operand_type op = pop_op(&(e->frame->top));
     push_op(&(e->frame->top),op,type);
@@ -462,9 +462,11 @@ int dup_x2(execution *e){
 int dup2(execution *e){
     int type1 = e->frame->top->type;
     operand_type op1 = pop_op(&(e->frame->top));
-    if(type1==1) {
-        int type2 = e->frame->top->type;
-        operand_type op2 = pop_op(&(e->frame->top));
+    if(type1==1) { //a comparacao nao eh com == 2? - Se tratam dos casos LONG e DOUBLE
+        
+        int type2 = e->frame->top->type; //tambem espera um valor '2'
+        operand_type op2 = pop_op(&(e->frame->top)); //retira segunda parte do operando
+        
         push_op(&(e->frame->top),op2,type2);
         push_op(&(e->frame->top),op1,type1);
         push_op(&(e->frame->top),op2,type2);
@@ -480,19 +482,19 @@ int dup2_x1(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     int type2 = 0;
     operand_type op2;
-    if(type1==1) {
+    if(type1==1) { //Form 1 - todos tipo 1
         int type2 = e->frame->top->type;
-        operand_type op2 = pop_op(&(e->frame->top));
+        operand_type op2 = pop_op(&(e->frame->top)); 
     }
     int type3 = e->frame->top->type;
     operand_type op3 = pop_op(&(e->frame->top)); 
-    if(type1==1) {
+    if(type1==1) { //Form 1 - todos tipo 1
         push_op(&(e->frame->top),op2,type2);
         push_op(&(e->frame->top),op1,type1);
         push_op(&(e->frame->top),op3,type2);
         push_op(&(e->frame->top),op2,type2);
         push_op(&(e->frame->top),op1,type1);
-    } else {
+    } else { //Form 2 - Value 1  eh do tipo 2
         push_op(&(e->frame->top),op1,type1);
         push_op(&(e->frame->top),op3,type1);
         push_op(&(e->frame->top),op1,type1);
@@ -722,15 +724,29 @@ int ddiv(execution *e){
 int irem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Int %= op2.Int;
-    push_op(&(e->frame->top),op1,1);
+    
+    if (op2.Int == 0) {
+    	printf("ERRO. Divisao por zero.\n");
+        exit(1);
+    }
+    else {
+    	op1.Int %= op2.Int;
+    	push_op(&(e->frame->top),op1,1);
+    }
 	return 0;
 }  
 int lrem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Long %= op2.Long;
-    push_op(&(e->frame->top),op1,2);
+    
+    if (op2.Long == 0) {
+    	printf("ERRO. Divisao por zero.\n");
+        exit(1);
+    }
+    else {
+    	op1.Long %= op2.Long;
+    	push_op(&(e->frame->top),op1,1);
+    }
 	return 0;
 }  
 int frem(execution *e){
@@ -979,14 +995,14 @@ int i2c(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (char)op1.Int;
-    push_op(&(e->frame->top),op2,2);
+    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
 	return 0;
 }  
 int i2s(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (short)op1.Int;
-    push_op(&(e->frame->top),op2,2);
+    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo short na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
 	return 0;
 }  
 int lcmp(execution *e){
@@ -1107,7 +1123,7 @@ int ifeq(execution *e) {
 int ifne(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int != 0) { 
         e->frame->pc += off;
     }
@@ -1116,7 +1132,7 @@ int ifne(execution *e){
 int iflt(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int < 0) { 
         e->frame->pc += off;
     }
@@ -1125,7 +1141,7 @@ int iflt(execution *e){
 int ifge(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int >= 0) { 
         e->frame->pc += off;
     }
@@ -1134,7 +1150,7 @@ int ifge(execution *e){
 int ifgt(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int > 0) { 
         e->frame->pc += off;
     }
@@ -1143,7 +1159,7 @@ int ifgt(execution *e){
 int ifle(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if (value.Int <= 0) { 
         e->frame->pc += off;
     }
@@ -1153,7 +1169,7 @@ int if_icmpeq(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int == value2.Int){
         e->frame->pc +=off;
     }
@@ -1163,7 +1179,7 @@ int if_icmpne(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int != value2.Int){
         e->frame->pc +=off;
     }
@@ -1173,7 +1189,7 @@ int if_icmplt(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int < value2.Int){
         e->frame->pc +=off;
     }
@@ -1183,7 +1199,7 @@ int if_icmpge(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int >= value2.Int){
         e->frame->pc +=off;
     }
@@ -1193,7 +1209,7 @@ int if_icmpgt(execution *e){
 	operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int > value2.Int){
         e->frame->pc +=off;
     }
@@ -1203,7 +1219,7 @@ int if_icmple(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int <= value2.Int){
         e->frame->pc +=off;
     }
@@ -1213,7 +1229,7 @@ int if_acmpeq(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref == value2.Ref){
         e->frame->pc +=off;
     }
@@ -1223,7 +1239,7 @@ int if_acmpne(execution *e){
     operand_type value1 = pop_op(&(e->frame->top));
     operand_type value2 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref != value2.Ref){
         e->frame->pc +=off;
     }
@@ -1231,14 +1247,14 @@ int if_acmpne(execution *e){
 }  
 int goto_(execution *e){
 	short off = (short)u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     operand_type op;
     e->frame->pc += off;
 	return 0;
 } 
 int jsr(execution *e){
     u2 off = u2ReadFrame(e->frame);
-    off-=3;
+    off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     operand_type op;
     op.Ref = e->frame->pc;
     push_op(&(e->frame->top),op,1);
@@ -1297,9 +1313,9 @@ int lookupswitch(execution *e){
     return 0;
 }
 int ireturn(execution *e){
-    operand_type op = pop_op(&(e->frame->top));
-    pop_frame(&(e->frame));
-    push_op(&(e->frame->top),op,1);
+    operand_type op = pop_op(&(e->frame->top)); //retira o operando-topo do frame atual
+    pop_frame(&(e->frame)); //descarta o frame atual
+    push_op(&(e->frame->top),op,1); //coloca o operando no topo do novo frame atual
 	return 1;
 }  
 int lreturn(execution *e){
@@ -1326,7 +1342,7 @@ int areturn(execution *e){
     push_op(&(e->frame->top),op,1);
     return 1;
 }  
-int return_(execution *e){
+int return_(execution *e){ //finaliza sem retornar nenhum valor
 	pop_frame(&(e->frame));
     return 1;
 }  
@@ -1493,9 +1509,9 @@ int invokevirtual(execution *e){
         ClassFile* cf = check_class(e,namec);
         init_methodexecution(e,namec,namem,descriptor,n);
         execute_method(e);
-    } else {
+    } else { //instrucao de escrita, realizar em C
         operand_type op;
-        switch (descriptor[1]) {
+        switch (descriptor[1]) { //define o tipo da variavel a ser mostrada
             case '[':
                 op = pop_op(&(e->frame->top));
                 printf("%p",op.Ref);
@@ -1540,7 +1556,7 @@ int invokevirtual(execution *e){
                     printf("%p",op.Ref);
             break;
         }
-        if(!strcmp(namem,"println")) printf("\n");
+        if(!strcmp(namem,"println")) printf("\n"); //inserir \n final para a instrucao println
         pop_op(&(e->frame->top));
     }
 	return 0;
@@ -1616,7 +1632,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
         char* supername = null;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
-        if(aux) {
+        if(aux) { //superclasse encontrada
             for(field_info* a = aux->fields;a<aux->fields+aux->fields_count;++a) {
                 char* descriptor = search_utf8(aux->constant_pool,a->descriptor_index);
                 char* name = search_utf8(aux->constant_pool,a->name_index);
@@ -1744,15 +1760,17 @@ int multianewarray(execution *e){
 int ifnull(execution *e){
     u2 off = u2ReadFrame(e->frame);
     operand_type op = pop_op(&(e->frame->top));
-    off -= 3;
-    if(op.Ref == NULL) e->frame->pc += off;
+    off -= 3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
+    if(op.Ref == NULL)
+    	e->frame->pc += off;
 	return 0;
 } 
 int ifnonnull(execution *e){
     u2 off = u2ReadFrame(e->frame);
     operand_type op = pop_op(&(e->frame->top));
-    off -= 3;
-    if(op.Ref != NULL) e->frame->pc += off;
+    off -= 3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
+    if(op.Ref != NULL)
+    	e->frame->pc += off;
 	return 0;
 } 
 int goto_w(execution *e){ //por que nao usar u4ReadFrame?
@@ -1771,7 +1789,7 @@ int jsr_w(execution *e){ //por que nao usar u4ReadFrame?
     unsigned int off = o1;
     off <<= 16;
     off |= o2;
-    off-=5;
+    off-=5; //a leitura 'ReadFrame' de 4 bytes ja avancou pc 4 vezes; a leitura da instrucao avancou mais 1 vez
     operand_type op1;
     op1.Ref = e->frame->pc;
     push_op(&(e->frame->top),op1,1);

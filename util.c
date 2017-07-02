@@ -7,12 +7,12 @@
 #include "util.h"
 #include "classfile.h"
 
-u1 search_tag(cp_info* cp, u2 i) { return cp[i].tag;}
+u1 search_tag(cp_info* cp, u2 i) {return cp[i-1].tag;}
 
-int search_int(cp_info* cp, u2 i) { return (int)cp[i].info.Integer_info.bytes;}
+int search_int(cp_info* cp, u2 i) { return (int)cp[i-1].info.Integer_info.bytes;}
 
 float search_float(cp_info* cp, u2 i) {
-    u4tofloat.U4 = cp[i].info.Float_info.bytes;
+    u4tofloat.U4 = cp[i-1].info.Float_info.bytes;
     return u4tofloat.Float;
 }
 

@@ -18,7 +18,7 @@ int main(int argc,char* argv[]){
         execute_method(e);
     }
     else {
-    	printf("Modo de executar: ./jvm <nome-do-.class> \n");
+    	printf("Modo de executar: ./jvm <nome-da-classe> \n");
     }
     return 0;
 }

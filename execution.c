@@ -38,7 +38,15 @@ void execute_method(execution* e) {
     int flag =0;
     while(!flag) {
         u1 i = u1ReadFrame(e->frame);
-        flag = instr_array[i](e);   //termina a execucao quando encontra um nop
+
+        if (i > 0xc4) { //instrucao maxima eh wide, com valor 196
+            printf("Valor lido nao corresponde ao code de uma instrucao.\n");
+            exit(1);
+        }
+        else {
+            printf("Iniciando execucao da instrucao de codigo %d\n", i);
+            flag = instr_array[i](e);   //termina a execucao quando encontra um nop
+        }
     }
 }
 
@@ -63,7 +71,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
     frame_init(e->start,*cf,e->frame,method,descriptor); //
     int sizeindex =0;
     
-    if(e->frame->below) { //se o metodo nao for null...
+    if(e->frame->below) {
         operand_heap* opaux;
         init_opheap(&opaux);
         for(int i=0;i<args;++i) { //pilha auxiliar para contagem de sizeindex
@@ -97,7 +105,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
  * */
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
-    if(!cf) {
+    if(!cf) { //classe ainda nao pertence ao heap de classes
         cf = load_ClassFile(name);
         push_class(&(e->start),*cf);
 

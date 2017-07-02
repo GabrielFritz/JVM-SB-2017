@@ -309,9 +309,11 @@ method_info* search_method(ClassFile* cf ,char* name,char* descriptor) {
 
   for(aux = cf->methods;aux<cf->methods+cf->method_count;++aux) {
     nameflag = strcmp(name,search_utf8(cf->constant_pool,aux->name_index));
-    descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->name_index));
-    if(!nameflag && !descrflag) return aux;
+    descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->descriptor_index));
+    if(!nameflag && !descrflag)
+    	return aux;
   }
+  
   return NULL;
 }
 

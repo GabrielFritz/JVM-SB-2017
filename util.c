@@ -17,7 +17,7 @@ float search_float(cp_info* cp, u2 i) {
 }
 
 char* search_utf8(cp_info* cp, u2 i) {
-  return (char*)cp[i].info.Utf8_info.bytes;
+  return (char*)cp[i-1].info.Utf8_info.bytes;
 }
 
 int findtype(char* type) {

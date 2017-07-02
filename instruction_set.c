@@ -1353,18 +1353,18 @@ int return_(execution *e){ //finaliza sem retornar nenhum valor
 }  
 int getstatic(execution *e){
     u2 fieldi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
-    u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
-    u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
-    u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    u2 classi = e->frame->constant_pool[fieldi-1].info.Fieldref_info.class_index; //VETOR COMECA EM 0
+    u2 classnamei =  e->frame->constant_pool[classi-1].info.Class_info.name_index;
+    u2 nameandtypei = e->frame->constant_pool[fieldi-1].info.Fieldref_info.name_and_type_index;
+    u2 fieldnamei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
     char* classname = search_utf8(e->frame->constant_pool,classnamei);
     char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
 
     if(!strcmp(classname,"java/lang/System") //
         && !strcmp(fieldname,"out")
-        && !strcmp(descriptor,"Ljava/io/PrintStream")) //Instrucao print
+        && !strcmp(descriptor,"Ljava/io/PrintStream;")) //Instrucao print
     {
         operand_type op;
         op.Long = 0;

@@ -114,21 +114,28 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
                                         cf_aux->constant_pool[super_index].info.Class_info.name_index));
 
         cf_aux = search_classheap(start,super_name); // Se nao foi encontrado, ele pesquisa na superclasse
-        if(cf_aux != NULL) super_index = cf_aux->super_class;
+        if(cf_aux != NULL)
+            super_index = cf_aux->super_class;
+        printf("Super name atual eh: %s\n", &super_name);
+        printf("Super index atual eh: %u\n", &super_index);
+        printf("method eh %x\n", method);
     }
     if(!method) {
         printf("ERRO. Method Inexistente: %s %s\n",method_name,descriptor);
-        attribute_info* att_aux;
-        for(att_aux = method->attributes; att_aux<method->attributes+method->attributes_count;++att_aux)
+        exit (1);
+    }
+
+    attribute_info* att_aux;
+    for(att_aux = method->attributes; att_aux<method->attributes+method->attributes_count;++att_aux)
+    {
+        if(!strcmp(search_utf8(cf_aux->constant_pool, //Atributo Code nao encontrado
+            att_aux->attribute_name_index),"Code"))
         {
-            if(!strcmp(search_utf8(cf_aux->constant_pool,
-                att_aux->attribute_name_index),"Code"))
-            {
-                code = *att_aux;
-                break;
-            }
+            code = *att_aux; //avancar na lista de atributos
+            break;
         }
     }
+    
 
     frame->constant_pool = cf_aux->constant_pool;
     init_opheap(&(frame->top));

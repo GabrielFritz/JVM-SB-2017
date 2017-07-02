@@ -17,5 +17,8 @@ int main(int argc,char* argv[]){
         init_methodexecution(e,argv[1],"main","([Ljava/lang/String;)V",0);
         execute_method(e);
     }
+    else {
+    	printf("Modo de executar: ./jvm <nome-do-.class> \n");
+    }
     return 0;
 }

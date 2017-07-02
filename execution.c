@@ -49,26 +49,27 @@ void execute_method(execution* e) {
  * */
 void init_methodexecution(execution* e,char* class,char* method, char* descriptor, int args){
     ClassFile* cf = check_class(e,class);
-    push_frame(&(e->frame));
-    frame_init(e->start,*cf,e->frame,method,descriptor);
+    push_frame(&(e->frame)); //novo frame da nova classe
+    frame_init(e->start,*cf,e->frame,method,descriptor); //
     int sizeindex =0;
-    if(e->frame->below) {
+    
+    if(e->frame->below) { //se o metodo nao for null...
         operand_heap* opaux;
         init_opheap(&opaux);
-        for(int i=0;i<args;++i) {
+        for(int i=0;i<args;++i) { //pilha auxiliar para contagem de sizeindex
             int type = e->frame->below->top->type;
             operand_type new = pop_op(&(e->frame->below->top));
             push_op(&opaux,new,type);
-            if(type==EXCEPTIONS) ++sizeindex;   //type == 2
+            if(type==EXCEPTIONS) ++sizeindex;   //type == 2, aumentar o tamanho necessario
             ++sizeindex;
         }
-        for(int i=0;i<args;++i) {
+        for(int i=0;i<args;++i) { //devolver operandos para pilha original
             int type = opaux->type;
             operand_type new = pop_op(&opaux);
             push_op(&(e->frame->below->top),new,type);
         }
-        for(int i=sizeindex-1;i>-1;--i) {
-            if(e->frame->below->top->type == EXCEPTIONS) --i; //type == 2
+        for(int i=sizeindex-1; i>-1; --i) {
+            if(e->frame->below->top->type == EXCEPTIONS) --i; //type == 2, aumentar indice
             e->frame->local_arr[i] = pop_op(&(e->frame->below->top));
         }
     }

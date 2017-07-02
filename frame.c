@@ -31,6 +31,7 @@ void push_op(operand_heap **top,operand_type op,int op_type)
     aux->op = op;
     aux->type = op_type;
     aux->below = *top;
+    *top = aux;
 }
 
 /*!
@@ -179,20 +180,20 @@ u1 u1ReadFrame(frame* f) { return *(++f->pc); }
 i1 signed1ReadFrame(frame* f) { return *(++f->pc); }
 
 u2 u2ReadFrame(frame* f) {
-    u2 aux = *(f->pc++);
+    u2 aux = *(++f->pc);
     aux<<=8;
-    aux|=*(f->pc++);
+    aux|=*(++f->pc);
     return aux;
 }
 
 u4 u4ReadFrame(frame* f) {
     u4 aux;
-    aux = *(f->pc++);
+    aux = *(++f->pc);
     aux<<=8;
-    aux|=*(f->pc++);
+    aux|=*(++f->pc);
     aux<<=8;
-    aux|=*(f->pc++);
+    aux|=*(++f->pc);
     aux<<=8;
-    aux|=*(f->pc++);
+    aux|=*(++f->pc);
     return aux;
 }

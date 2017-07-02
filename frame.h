@@ -6,6 +6,9 @@
 #include "heap.h"
 #include "util.h"
 
+/*!
+ * Armazena dados de um operando, dependendo de seu tipo.
+ * */
 typedef union _operand_type {
     int Int;
     long long Long;
@@ -19,12 +22,19 @@ typedef struct _vector {
     operand_type* array;
 } vector;
 
+/*!
+ * Pilha de operandos LIFO de um frame. Armazena o valor de constantes e de
+ * variaveis locais ou fields.
+ * */
 typedef struct _operand_heap {
     operand_type op;
     int type;
     struct _operand_heap* below;
 } operand_heap;
 
+/*!
+ * Estrutura utilizada para armazenar dados e resultados parciais
+ * */
 typedef struct _frame {
     cp_info* constant_pool;
     operand_type* local_arr;

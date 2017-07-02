@@ -291,6 +291,17 @@ ClassFile* load_ClassFile(char* name) {
   return readClass(fd);
 }
 
+/*!
+ * Procura por um metodo em uma classe.
+ * @param[in]   cf          Descritor da classe
+ * @param[in]   name        Nome da classe
+ * @param[in]   descriptor  Descritor do metodo
+ * @param[out]  method_info Descritor do metodo encontrado. Nulo caso contrario
+ *
+ * Percorre a lista de metodos da classe, descrita pelo cf. Caso encontre o
+ * metodo procurado com o respectivo descritor, ele retorna o descritor do
+ * metodo.
+ * */
 method_info* search_method(ClassFile* cf ,char* name,char* descriptor) {
   method_info* aux;
   int nameflag;
@@ -299,8 +310,8 @@ method_info* search_method(ClassFile* cf ,char* name,char* descriptor) {
   for(aux = cf->methods;aux<cf->methods+cf->method_count;++aux) {
     nameflag = strcmp(name,search_utf8(cf->constant_pool,aux->name_index));
     descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->name_index));
+    if(!nameflag && !descrflag) return aux;
   }
-  if(!nameflag && !descrflag) return aux;
   return NULL;
 }
 

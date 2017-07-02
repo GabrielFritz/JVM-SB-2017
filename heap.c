@@ -9,6 +9,15 @@ int is_static(u2 access_flag) {
     return (access_flag & FSTATIC) != 0;
 }
 
+/*!
+ * A classe e' colocada na heap de classes carregadas.
+ * @param[in] ch  Heap com as classes carregadas
+ * @param[in] cf  Estrutra que contem os dados do arquivo ponto Class
+ *
+ * O algoritmo consiste em duas etapas. Na primera, os dados do cf sao passados
+ * para uma variavel auxiliar do tipo Class_heap, e na segunda, procura-se o
+ * final da heap, onde insere-se essa variavel auxiliar
+ * */
 void push_class(class_heap** ch,ClassFile cf) {
     class_heap* aux1 = (class_heap*)malloc(sizeof(class_heap));
     aux1->cf = cf;
@@ -41,6 +50,15 @@ void push_class(class_heap** ch,ClassFile cf) {
     }
 }
 
+/*!
+ * Procura por uma classe no heap de classes ja' carregadas.
+ * @param[in]   ch          Ponteiro para o topo da heap de classes carregadas
+ * @param[in]   name        Nome da classe a ser carregada
+ * @param[out]  ClassFile   Ponteiro para o descritor da classe encontrada
+ *
+ * O heap ch e' percorrido ate que seja encontrada a classe com o nome desejado.
+ * E' retornado nulo, caso contrario.
+ * */
 ClassFile* search_classheap(class_heap* ch, char* name) {
     class_heap* aux = ch;
     while(aux) {

@@ -140,7 +140,7 @@ int ldc(execution *e){
         break;
         case STRING:
             op.Ref = (char*) search_utf8(e->frame->constant_pool,
-                                        e->frame->constant_pool[i].info.String_info.string_index);
+                                        e->frame->constant_pool[i-1].info.String_info.string_index);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -162,7 +162,7 @@ int ldc_w(execution *e){
         break;
         case STRING:
             op.Ref = (char*) search_utf8(e->frame->constant_pool,
-                                        e->frame->constant_pool[i].info.String_info.string_index);
+                                        e->frame->constant_pool[i-1].info.String_info.string_index);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -1415,7 +1415,7 @@ int getstatic(execution *e){
 void put_static(class_heap* start, char* class, char* field, operand_type op) {
     class_heap* aux = start;
     while(aux) {
-        if(!strcmp(class,search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index)))
+        if(!strcmp(class,search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index)))
         {
             for(int s=0;s<aux->num_static;++s) {
                 if(!strcmp(field,aux->static_fields[s].name)) {
@@ -1431,7 +1431,7 @@ void put_static(class_heap* start, char* class, char* field, operand_type op) {
 
 int putstatic(execution *e){
     u2 fieldi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
+    u2 classi = e->frame->constant_pool[fieldi-1].info.Fieldref_info.class_index;
 
     u2 classnamei =  e->frame->constant_pool[classi-1].info.Class_info.name_index;
     u2 nameandtypei = e->frame->constant_pool[fieldi-1].info.Fieldref_info.name_and_type_index;
@@ -1621,7 +1621,7 @@ int num_fields(execution* e, ClassFile* cf) {
     }
     ClassFile* aux = cf;
     while(aux->super_class) {
-        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
@@ -1647,7 +1647,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
     }
     ClassFile* aux = cf;
     while(aux->super_class) {
-        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);

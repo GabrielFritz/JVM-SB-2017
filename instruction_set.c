@@ -484,7 +484,7 @@ int dup2_x1(execution *e){
     operand_type op2;
     if(type1==1) { //Form 1 - todos tipo 1
         int type2 = e->frame->top->type;
-        operand_type op2 = pop_op(&(e->frame->top)); 
+        operand_type op2 = pop_op(&(e->frame->top));
     }
     int type3 = e->frame->top->type;
     operand_type op3 = pop_op(&(e->frame->top)); 
@@ -677,17 +677,17 @@ int fdiv(execution *e){
     operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
 
     if (isnan(op1.Float) || isnan(op2.Float))
-    	result.Float = NaN; //operando Not-A-Number
+    	result.Float = (0.0/0.0); //operando Not-A-Number: NaN
     
     else if (op1.Float == 0) {
     	if (op2.Float == 0)
-    		result.Float = NaN; //divisao 0/0
+    		result.Float = 0.0/0.0; //divisao 0/0: NaN
     	else
     		result.Float = 0; //divisao 0/numero
     }
     else if (!isfinite(op1.Float)) {
     	if (!isfinite(op2.Float))
-    		result.Float = NaN; //infinito/infinito
+    		result.Float = 0.0/0.0; //infinito/infinito: NaN
     	else
     		result.Float = op1.Float/op2.Float; //infinito/outra coisa - verificar sinais dos operandos
     }
@@ -698,20 +698,22 @@ int fdiv(execution *e){
 	return 0;
 }  
 int ddiv(execution *e){
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
     operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
 
     if (isnan(op1.Double) || isnan(op2.Double))
-    	result.Double = NaN; //operando Not-A-Number
+    	result.Double = 0.0/0.0; //operando Not-A-Number: NaN
     
     else if (op1.Double == 0) {
     	if (op2.Double == 0)
-    		result.Double = NaN; //divisao 0/0
+    		result.Double = 0.0/0.0; //divisao 0/0: NaN
     	else
     		result.Double = 0; //divisao 0/numero
     }
     else if (!isfinite(op1.Double)) {
     	if (!isfinite(op2.Double))
-    		result.Double = NaN; //infinito/infinito
+    		result.Double = 0.0/0.0; //infinito/infinito: NaN
     	else
     		result.Double = op1.Double/op2.Double; //infinito/outra coisa - verificar sinais dos operandos
     }
@@ -752,7 +754,7 @@ int lrem(execution *e){
 int frem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float = remainder(op1.Float,op2.Float);
+    op1.Float = remainderf(op1.Float,op2.Float);
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
@@ -1603,7 +1605,7 @@ int num_fields(execution* e, ClassFile* cf) {
     ClassFile* aux = cf;
     while(aux->super_class) {
         u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
-        char* supername = null;
+        char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
         if(aux) {
@@ -1629,7 +1631,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
     ClassFile* aux = cf;
     while(aux->super_class) {
         u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
-        char* supername = null;
+        char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
         if(aux) { //superclasse encontrada

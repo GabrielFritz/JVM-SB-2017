@@ -84,7 +84,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
  * carregadas. Caso nao pertenca, ela e' carregada, colocada no heap e e'
  * iniciada a execucao de seu construtor.
  * */
-ClassFile* check_class(execution* e, char* name) {
+ClassFile* check_class(execution* e, char* name) { //funcao sem return; nao e' do tipo void?
     ClassFile* cf = search_classheap(e->start,name);
     if(!cf) {
         cf = load_ClassFile(name);

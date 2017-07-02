@@ -768,28 +768,28 @@ int drem_(execution *e){
 int ineg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Int = 0 - op1.Int;
+    op1.Int = 0 - op2.Int;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int lneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Long = 0 - op1.Long;
+    op1.Long = 0 - op2.Long;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int fneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float = 0 - op1.Float;
+    op1.Float = 0 - op2.Float;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int dneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op1.Double = 0 - op1.Double;
+    op1.Double = 0 - op2.Double;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
@@ -905,7 +905,7 @@ int lxor(execution *e){
 }  
 int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    char c = u1ReadFrame(e->frame);
+    char c = u1ReadFrame(e->frame); //variavel nao utilizada
     e->frame->local_arr[i].Int++;
 	return 0;
 } 
@@ -1250,7 +1250,7 @@ int if_acmpne(execution *e){
 int goto_(execution *e){
 	short off = (short)u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
-    operand_type op;
+    //operand_type op; //variavel nao utilizada
     e->frame->pc += off;
 	return 0;
 } 
@@ -1367,7 +1367,8 @@ int getstatic(execution *e){
         op.Long = 0;
         push_op(&(e->frame->top),op,1); //empilha operando inutil, depois sera retirado
     } else {
-        ClassFile* cf = check_class(e,classname); //checa a classe e carrega se ainda nao tiver sido
+        //ClassFile* cf = check_class(e,classname); //checa a classe e carrega se ainda nao tiver sido
+        check_class(e,classname); //checa a classe e carrega se ainda nao tiver sido
         field* f  = search_staticfield(e->start,classname,fieldname); //encontra o field nas classes
         if(!f){
             printf("ERRO. Field not found on getstatic.\n");
@@ -1425,12 +1426,13 @@ int putstatic(execution *e){
     u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
     u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
     u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    //u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index; //variavel utilizada apenas para definir variavel descriptor
     char* classname = search_utf8(e->frame->constant_pool,classnamei);
     char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
-    char* descriptor = search_utf8(e->frame->constant_pool,descri);
+    //char* descriptor = search_utf8(e->frame->constant_pool,descri); //variavel nao utilizada
 
-    ClassFile* cf = check_class(e,classname);
+    //ClassFile* cf = check_class(e,classname);
+    check_class(e,classname);
     field* f  = search_staticfield(e->start,classname,fieldname);
     if(f) {
         operand_type op = pop_op(&(e->frame->top));
@@ -1508,7 +1510,8 @@ int invokevirtual(execution *e){
     if((!strcmp(namec,"java/io/PrintStream") && (!strcmp(namem,"println")|| !strcmp(namem,"print"))))
     {
         int n = count_args(descriptor);
-        ClassFile* cf = check_class(e,namec);
+        //ClassFile* cf = check_class(e,namec);
+        check_class(e,namec);
         init_methodexecution(e,namec,namem,descriptor,n);
         execute_method(e);
     } else { //instrucao de escrita, realizar em C
@@ -1573,7 +1576,8 @@ int invokespecial(execution *e){
     char* namem = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     int n = count_args(descriptor);
-    ClassFile* cf = check_class(e,namec);
+    //ClassFile* cf = check_class(e,namec); //variavel nao utilizada
+    check_class(e,namec);
     init_methodexecution(e,namec,namem,descriptor,n);
     execute_method(e);
 	return 0;
@@ -1590,7 +1594,8 @@ int invokestatic(execution *e){
     int n = count_args(descriptor);
     if(!(!strcmp(namec,"java/lang/Object") && !strcmp(namem,"registerNatives") && !strcmp(descriptor,"(V)")))
     {
-        ClassFile* cf = check_class(e,namec);
+        //ClassFile* cf = check_class(e,namec); //variavel nao utilizada
+        check_class(e,namec);
         init_methodexecution(e,namec,namem,descriptor,n);
         execute_method(e);
     }
@@ -1693,7 +1698,8 @@ int newarray(execution *e){
 } 
 int anewarray(execution *e){
     vector* v = (vector*)calloc(1,sizeof(vector));
-    u2 i = u2ReadFrame(e->frame);
+    u2 i = u2ReadFrame(e->frame);   //indexbyte da instrucao nao esta sendo utilizado --REVER LOGICA
+    								//"The unsigned indexbyte1 and indexbyte2 are used to construct an index into the run-time constant pool of the current class"
     operand_type c = pop_op(&(e->frame->top));
     if(c.Int<0) {
         printf("ANEWARRAY ERROR. size < 0.\n");
@@ -1741,7 +1747,8 @@ vector* alocate_multirray(int dim, int* aux) {
 
 int multianewarray(execution *e){
 
-    int i = u2ReadFrame(e->frame);
+    u2 i = u2ReadFrame(e->frame);   //indexbyte da instrucao nao esta sendo utilizado --REVER LOGICA
+    								//"The unsigned indexbyte1 and indexbyte2 are used to construct an index into the run-time constant pool of the current class"
     u1 dim = u1ReadFrame(e->frame);
     operand_type c[dim], arrref;
     int aux[dim];

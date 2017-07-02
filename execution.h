@@ -1,7 +1,7 @@
 #ifndef EXEC_H
 #define EXEC_H
 
-#include "classfile.h"
+//#include "classfile.h"
 #include "frame.h"
 #include "heap.h"
 

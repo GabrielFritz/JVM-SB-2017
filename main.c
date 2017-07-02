@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "types.h"
-#include "util.h"
-#include "classfile.h"
-#include "frame.h"
-#include "heap.h"
-#include "instruction_set.h"
+//#include "types.h"
+//#include "util.h"
+//#include "classfile.h"
+//#include "frame.h"
+//#include "heap.h"
+//#include "instruction_set.h"
 #include "execution.h"
 
 int main(int argc,char* argv[]){

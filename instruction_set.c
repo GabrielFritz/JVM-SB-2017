@@ -1,5 +1,8 @@
 #include <math.h>
+#ifndef INSTR_H
+#define INSTR_H
 #include "instruction_set.h"
+#endif
 #include "execution.h"
 #include "classfile.h"
 #include "types.h"

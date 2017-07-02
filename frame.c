@@ -6,6 +6,13 @@
 #include "heap.h"
 #include "frame.h"
 
+/*!
+ * Verifica se a pilha de operandos esta' vazia
+ * @param[in]   s     Pilha de operandos
+ * @param[out]  bool  Verdadeiro ou falso
+ *
+ * Retorna verdadeiro caso a pilha esteja vazia e falso caso contrario
+ * */
 int operandheap_isempty(operand_heap* top) { return top==NULL;  }
 
 /*!
@@ -56,8 +63,21 @@ operand_type pop_op(operand_heap** top)
     return op;
 }
 
+/*!
+ * Verifica se a pilha de frames esta' vazia
+ * @param[in]   s     Pilha de frames
+ * @param[out]  bool  Verdadeiro ou falso
+ *
+ * Retorna verdadeiro caso a pilha esteja vazia e falso caso contrario
+ * */
 int framestack_isempty(frame* f){ return f==NULL; }
 
+/*!
+ * Inicializar uma pilha de framdes
+ * @param[in] s Pilha de frames a ser inicializada
+ *
+ * A pilha tem seu topo inicializado com NULL
+ * */
 void framestack_init(frame** s) { *s = NULL; }
 
 /*!
@@ -74,6 +94,13 @@ void push_frame(frame** s)
     *s = aux;
 }
 
+/*!
+ * Retira destrutivamente o primeiro elemento da pilha de frames
+ * @param[in] s Pilha de frames
+ *
+ * Caso a pilha nao esteja vazia, o topo da pilha passa a apontar para o proximo
+ * elemento e libera-se a memoria do elemento retirado.
+ * */
 void pop_frame(frame** s)
 {
     if(!framestack_isempty(*s)) {

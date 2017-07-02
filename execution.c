@@ -5,6 +5,13 @@
 //#include "heap.h"
 #include "instruction_set.h"
 
+/*!
+ * Realiza a contagem dos argumentos de um metodo
+ * @param[in]   d   String contendo a definicao do metodo
+ * @param[out]  n   Quantidade de argumentos do metodo
+ *
+ * Faz o parse da string d ate encontrar os metodos e incrementa n.
+ * */
 int count_args(char* d) {
     int i=0;
     int n=0;
@@ -21,8 +28,11 @@ int count_args(char* d) {
 }
 
 /*!
- * Executa o metodo de uma classe.
+ * Executa as operacoes do metodo de uma classe.
  * @param[in] e Interpretador
+ *
+ * Enquanto nao e' encontrado um nop, a funcao le uma operacao e chama a funcao
+ * para executa-la de acordo com o ponteiro de funcoes.
  * */
 void execute_method(execution* e) {
     int flag =0;

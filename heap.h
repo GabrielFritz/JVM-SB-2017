@@ -30,6 +30,7 @@ typedef struct _obj_heap {
     struct _obj_heap* next;
 } obj_heap;
 
+/*Contem a lista de classes que ja foram carregadas.*/
 typedef struct _class_heap {
     ClassFile cf;
     int num_static;

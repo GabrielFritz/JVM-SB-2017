@@ -20,14 +20,33 @@ int count_args(char* d) {
     return n;
 }
 
+/*!
+ * Executa o metodo de uma classe.
+ * @param[in] e Interpretador
+ * */
 void execute_method(execution* e) {
     int flag =0;
     while(!flag) {
         u1 i = u1ReadFrame(e->frame);
-        flag = instr_array[i](e);
+        flag = instr_array[i](e);   //termina a execucao quando encontra um nop
     }
 }
 
+/*!
+ * Prepara o frame para a execucao de um metodo.
+ * @param[in] e           Interpretador
+ * @param[in] class       Nome da classe
+ * @param[in] method      Nome do Metodo
+ * @param[in] descriptor  Descritor do Metodo
+ * @param[in] args        Argumentos de Entrada do metodo
+ *
+ * Primeiro, e' checada se a classe ja' esta' carregada. Em seguida, um novo
+ * frame e' inserido na pilha de frames e iniciado com os dados do metodo a ser
+ * executado.
+ * Para cada argumento, e' criada uma entrada na pilha de operandos e na pilha
+ * de tipos. Por fim, os operadores sao colocados no array local da pilha de
+ * frames do interpretador.
+ * */
 void init_methodexecution(execution* e,char* class,char* method, char* descriptor, int args){
     ClassFile* cf = check_class(e,class);
     push_frame(&(e->frame));
@@ -40,7 +59,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
             int type = e->frame->below->top->type;
             operand_type new = pop_op(&(e->frame->below->top));
             push_op(&opaux,new,type);
-            if(type==2) ++sizeindex;
+            if(type==EXCEPTIONS) ++sizeindex;   //type == 2
             ++sizeindex;
         }
         for(int i=0;i<args;++i) {
@@ -49,12 +68,22 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
             push_op(&(e->frame->below->top),new,type);
         }
         for(int i=sizeindex-1;i>-1;--i) {
-            if(e->frame->below->top->type == 2) --i;
+            if(e->frame->below->top->type == EXCEPTIONS) --i; //type == 2
             e->frame->local_arr[i] = pop_op(&(e->frame->below->top));
         }
     }
 }
 
+/*!
+ * Chama a execucao de uma classe que ainda nao foi carregada
+ * @param[out]  cf  Classe carregada
+ * @param[in] e Interpretador que executara a classe
+ * @param[in] name  Nome da classe a ser executada
+ *
+ * Primeiramente, e' verificada se a classe pertence ao heap de classes ja'
+ * carregadas. Caso nao pertenca, ela e' carregada, colocada no heap e e'
+ * iniciada a execucao de seu construtor.
+ * */
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
     if(!cf) {
@@ -65,5 +94,5 @@ ClassFile* check_class(execution* e, char* name) {
             init_methodexecution(e,name,MNAME,MDESCR,0);
             execute_method(e);
         }
-    }    
+    }
 }

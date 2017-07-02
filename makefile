@@ -8,21 +8,12 @@ endif
 
 all: jvm
 
-jvm: main.o leitor_exibidor.o exibidor.o util.o
-	gcc $(CFLAGS) main.o leitor_exibidor.o exibidor.o util.o -o jvm
+jvm: main.o
+	gcc $(CFLAGS) main.o -o jvm
 
 main.o: main.c
 	gcc $(CFLAGS) -c main.c
 
-leitor_exibidor.o: classloader/leitor_exibidor.c
-	gcc $(CFLAGS) -c classloader/leitor_exibidor.c
-
-exibidor.o: classloader/exibidor.c
-	gcc $(CFLAGS) -c classloader/exibidor.c
-
-util.o: classloader/util.c
-	gcc $(CFLAGS) -c classloader/util.c
-
 clean:
 	find . -name '*.o' -exec rm '{}' \;
-	find . -name 'leitorexibidor' -exec rm '{}' \;
+	find . -name 'jvm' -exec rm '{}' \;

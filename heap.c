@@ -3,8 +3,21 @@
 #include "util.h"
 #include "heap.h"
 
+/*!
+ * Inicializa o heap da classe
+ * @param[in] ch  Heap a ser inicializado
+ *
+ * Atribui NULL à heap ch.
+ * */
 void classheap_init(class_heap** ch) { *ch=NULL; }
 
+/*!
+ * Verifica se o metodo e' estatico
+ * @param[in]   access_flag   Flag de acesso do metodo
+ * @param[out]  bool          Verdadeiro ou falso
+ *
+ * Verifica se a flag do metodo e' FSTATIC.
+ * */
 int is_static(u2 access_flag) {
     return (access_flag & FSTATIC) != 0;
 }

@@ -1007,7 +1007,8 @@ int i2c(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (char)op1.Int;
-    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
+    op2.Int &= 0xff;
+    push_op(&(e->frame->top),op2,1); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
 	return 0;
 }  
 int i2s(execution *e){
@@ -1536,7 +1537,7 @@ int invokevirtual(execution *e){
             break;
             case 'C':
                 op = pop_op(&(e->frame->top));
-                printf("%c",(char)op.Int);
+                printf("%c",op.Int);
             break;
             case 'B':
                 op = pop_op(&(e->frame->top));

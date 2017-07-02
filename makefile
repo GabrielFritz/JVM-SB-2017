@@ -8,7 +8,7 @@ endif
 
 all: jvm
 
-jvm: main.o
+jvm: main.o classfile.o execution.o frame.o heap.o instruction_set.o types.o util.o
 	gcc classfile.o execution.o frame.o heap.o instruction_set.o types.o util.o main.o $(CFLAGS) -o jvm
 
 main.o: main.c

@@ -602,28 +602,28 @@ int isub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Int -= op1.Int; //o que foi empilhado primeiro sera "popeado" por ultimo
-    push_op(&(e->frame->top),op1,1);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int lsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Long -= op1.Long;
-    push_op(&(e->frame->top),op1,2);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int fsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Float -= op1.Float;
-    push_op(&(e->frame->top),op1,1);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int dsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Double -= op2.Double;
-    push_op(&(e->frame->top),op1,2);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int imul(execution *e){
@@ -747,7 +747,7 @@ int irem(execution *e){
     }
     else {
     	op2.Int %= op1.Int;
-    	push_op(&(e->frame->top),op1,1);
+    	push_op(&(e->frame->top),op2,1);
     }
 	return 0;
 }  
@@ -761,7 +761,7 @@ int lrem(execution *e){
     }
     else {
     	op2.Long %= op1.Long;
-    	push_op(&(e->frame->top),op1,1);
+    	push_op(&(e->frame->top),op2,1);
     }
 	return 0;
 }  
@@ -769,14 +769,14 @@ int frem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
     op1.Float = remainderf(op2.Float,op1.Float);
-    push_op(&(e->frame->top),op1,1);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int drem_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
     op1.Double = remainder(op2.Double,op1.Double);
-    push_op(&(e->frame->top),op1,2);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int ineg(execution *e){

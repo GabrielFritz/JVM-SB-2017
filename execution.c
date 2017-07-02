@@ -44,7 +44,7 @@ void execute_method(execution* e) {
             exit(1);
         }
         else {
-            printf("Iniciando execucao da instrucao de codigo %d\n", i);
+            //printf("Iniciando execucao da instrucao de codigo %d\n", i);
             flag = instr_array[i](e);   //termina a execucao quando encontra um nop
         }
     }

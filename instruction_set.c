@@ -1018,8 +1018,8 @@ int i2s(execution *e){
 	return 0;
 }  
 int lcmp(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Long>op2.Long){
         operand_type aux;
         aux.Int = 1;
@@ -1036,8 +1036,8 @@ int lcmp(execution *e){
 	return 0;
 }  
 int fcmpl(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Float>op2.Float){
         operand_type aux;
         aux.Int = 1;
@@ -1058,8 +1058,8 @@ int fcmpl(execution *e){
     return 0;
 }  
 int fcmpg(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Float>op2.Float){
         operand_type aux;
         aux.Int = 1;
@@ -1080,8 +1080,8 @@ int fcmpg(execution *e){
     return 0;
 }  
 int dcmpl(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Double>op2.Double){
         operand_type aux;
         aux.Int = 1;
@@ -1102,8 +1102,8 @@ int dcmpl(execution *e){
     return 0;
 }  
 int dcmpg(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Double>op2.Double){
         operand_type aux;
         aux.Int = 1;
@@ -1178,8 +1178,8 @@ int ifle(execution *e){
     return 0;
 }  
 int if_icmpeq(execution *e){ 
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int == value2.Int){
@@ -1188,8 +1188,8 @@ int if_icmpeq(execution *e){
     return 0;
 }  
 int if_icmpne(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int != value2.Int){
@@ -1198,8 +1198,8 @@ int if_icmpne(execution *e){
     return 0;
 }  
 int if_icmplt(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int < value2.Int){
@@ -1208,8 +1208,8 @@ int if_icmplt(execution *e){
     return 0;
 }  
 int if_icmpge(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int >= value2.Int){
@@ -1218,8 +1218,8 @@ int if_icmpge(execution *e){
     return 0;
 }  
 int if_icmpgt(execution *e){
-	operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+	operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int > value2.Int){
@@ -1228,8 +1228,8 @@ int if_icmpgt(execution *e){
     return 0;
 }  
 int if_icmple(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int <= value2.Int){
@@ -1238,8 +1238,8 @@ int if_icmple(execution *e){
     return 0;
 }  
 int if_acmpeq(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref == value2.Ref){
@@ -1248,8 +1248,8 @@ int if_acmpeq(execution *e){
     return 0;
 }  
 int if_acmpne(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref != value2.Ref){

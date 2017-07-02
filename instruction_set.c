@@ -1426,9 +1426,9 @@ int putstatic(execution *e){
     u2 fieldi = u2ReadFrame(e->frame);
     u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
 
-    u2 classnamei =  e->frame->constant_pool[classi].info.Class_info.name_index;
-    u2 nameandtypei = e->frame->constant_pool[fieldi].info.Fieldref_info.name_and_type_index;
-    u2 fieldnamei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
+    u2 classnamei =  e->frame->constant_pool[classi-1].info.Class_info.name_index;
+    u2 nameandtypei = e->frame->constant_pool[fieldi-1].info.Fieldref_info.name_and_type_index;
+    u2 fieldnamei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
     //u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index; //variavel utilizada apenas para definir variavel descriptor
     char* classname = search_utf8(e->frame->constant_pool,classnamei);
     char* fieldname = search_utf8(e->frame->constant_pool,fieldnamei);
@@ -1449,9 +1449,9 @@ int putstatic(execution *e){
 } 
 int getfield(execution *e){
     u2 i = u2ReadFrame(e->frame);
-    u2 nameandtypei = e->frame->constant_pool[i].info.Fieldref_info.name_and_type_index;
-	u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    u2 nameandtypei = e->frame->constant_pool[i-1].info.Fieldref_info.name_and_type_index;
+	u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
     char* name = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     operand_type ref = pop_op(&(e->frame->top));
@@ -1484,9 +1484,9 @@ int getfield(execution *e){
 } 
 int putfield(execution *e){
     u2 i = u2ReadFrame(e->frame);
-    u2 nameandtypei = e->frame->constant_pool[i].info.Fieldref_info.name_and_type_index;
-    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
+    u2 nameandtypei = e->frame->constant_pool[i-1].info.Fieldref_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
     char* name = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     operand_type aux = pop_op(&(e->frame->top));
@@ -1503,21 +1503,16 @@ int putfield(execution *e){
 } 
 int invokevirtual(execution *e){
     u2 methodi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
-    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
-    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
-    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    u2 classi = e->frame->constant_pool[methodi-1].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi-1].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi-1].info.Class_info.name_index);
     char* namem = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
-    if((!strcmp(namec,"java/io/PrintStream") && (!strcmp(namem,"println")|| !strcmp(namem,"print"))))
+    if(strcmp(namec,"java/io/PrintStream") == 0
+        && (strcmp(namem,"println") == 0 || strcmp(namem,"print") == 0)) //eh PrintStrim e (println ou print)
     {
-        int n = count_args(descriptor);
-        //ClassFile* cf = check_class(e,namec);
-        check_class(e,namec);
-        init_methodexecution(e,namec,namem,descriptor,n);
-        execute_method(e);
-    } else { //instrucao de escrita, realizar em C
         operand_type op;
         switch (descriptor[1]) { //define o tipo da variavel a ser mostrada
             case '[':
@@ -1566,16 +1561,23 @@ int invokevirtual(execution *e){
         }
         if(!strcmp(namem,"println")) printf("\n"); //inserir \n final para a instrucao println
         pop_op(&(e->frame->top));
+    } else {
+        int n = count_args(descriptor);
+        //ClassFile* cf = check_class(e,namec);
+        check_class(e,namec);
+        init_methodexecution(e,namec,namem,descriptor,n);
+        execute_method(e);
+        
     }
 	return 0;
 } 
 int invokespecial(execution *e){
     u2 methodi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
-    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
-    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
-    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    u2 classi = e->frame->constant_pool[methodi-1].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi-1].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi-1].info.Class_info.name_index);
     char* namem = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     int n = count_args(descriptor);
@@ -1587,11 +1589,11 @@ int invokespecial(execution *e){
 }
 int invokestatic(execution *e){
     u2 methodi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[methodi].info.Method_info.class_index;
-    u2 nameandtypei = e->frame->constant_pool[methodi].info.Method_info.name_and_type_index;
-    u2 namei = e->frame->constant_pool[nameandtypei].info.NameAndType_info.name_index;
-    u2 descri = e->frame->constant_pool[nameandtypei].info.NameAndType_info.descriptor_index;
-    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi].info.Class_info.name_index);
+    u2 classi = e->frame->constant_pool[methodi-1].info.Method_info.class_index;
+    u2 nameandtypei = e->frame->constant_pool[methodi-1].info.Method_info.name_and_type_index;
+    u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;
+    u2 descri = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.descriptor_index;
+    char* namec = search_utf8(e->frame->constant_pool,e->frame->constant_pool[classi-1].info.Class_info.name_index);
     char* namem = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     int n = count_args(descriptor);
@@ -1661,7 +1663,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
 
 int new_(execution *e){
     u2 classi = u2ReadFrame(e->frame);
-    u2 classnamei = e->frame->constant_pool[classi].info.Class_info.name_index;
+    u2 classnamei = e->frame->constant_pool[classi-1].info.Class_info.name_index;
     char* classname = search_utf8(e->frame->constant_pool,classnamei);
     ClassFile* cf = check_class(e,classname);
     object* o = (object*) malloc(sizeof(object));

@@ -1,8 +1,8 @@
 #include "execution.h"
-#include "classfile.h"
-#include "frame.h"
-#include "types.h"
-#include "heap.h"
+//#include "classfile.h"
+//#include "frame.h"
+//#include "types.h"
+//#include "heap.h"
 #include "instruction_set.h"
 
 int count_args(char* d) {

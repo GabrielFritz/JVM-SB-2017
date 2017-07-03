@@ -36,15 +36,16 @@ int count_args(char* d) {
  * */
 void execute_method(execution* e) {
     int flag =0;
+
     while(!flag) {
         u1 i = u1ReadFrame(e->frame);
 
-        if (i > 0xc4) { //instrucao maxima eh wide, com valor 196
-            printf("Valor lido nao corresponde ao code de uma instrucao.\n");
+        if (i > 0xc9) { //instrucao maxima eh jsr_w, com valor 201
+            printf("Valor lido nao corresponde ao code de uma instrucao\n");
             exit(1);
         }
         else {
-            //printf("\tIniciando instrucao de codigo hexa %02x\n", i);
+            printf("\tIniciando instrucao de codigo hexa %02x\n", i);
             flag = instr_array[i](e);   //termina a execucao quando encontra um nop
         }
     }

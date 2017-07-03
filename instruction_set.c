@@ -355,7 +355,7 @@ int daload(execution *e){
 	operand_type i = pop_op(&(e->frame->top));
     operand_type arr_ref = pop_op(&(e->frame->top));
     vector* v = (vector*)arr_ref.Ref;
-    push_op(&(e->frame->top),v->array[i.Int],2);
+    push_op(&(e->frame->top),v->array[(i.Int)],2);
 	return 0;
 } 
 int aaload(execution *e){
@@ -363,6 +363,11 @@ int aaload(execution *e){
     operand_type arr_ref = pop_op(&(e->frame->top));
     vector* v = (vector*)arr_ref.Ref;
     push_op(&(e->frame->top),v->array[i.Int],1);
+
+    /*if (*arr_ref == NULL) {
+        printf ("ERROR: Invalid reference from aaload.");
+        exit(1);
+    }*/
     return 0;
 } 
 int store(execution *e){
@@ -412,7 +417,7 @@ int fastore(execution *e){
 int dastore(execution *e){
     operand_type value = pop_op(&(e->frame->top));
     operand_type i = pop_op(&(e->frame->top));
-    operand_type ref = pop_op(&(e->frame->top));
+    operand_type ref = pop_op(&(e->frame->top)); //ESTA DESEMPILHANDO UMA REFERENCIA INVALIDA
     vector* v = ref.Ref;
     v->array[i.Int].Double = value.Double;
 	return 0;
@@ -915,7 +920,7 @@ int lxor(execution *e){
 }  
 int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    char c = u1ReadFrame(e->frame); //variavel nao utilizada
+    u1ReadFrame(e->frame); //retirar da pilha o valor incrementado, que eh sempre 1
     e->frame->local_arr[i].Int++;
 	return 0;
 } 

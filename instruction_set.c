@@ -168,7 +168,7 @@ double search_double(cp_info* cp, u2 i) {
 }
 
 long long search_long(cp_info* cp, u2 i) {
-    long long Long = ((long long) cp[i].info.Long_info.high_bytes << 32) | (cp[i].info.Long_info.low_bytes);
+    long long Long = ((long long) cp[i-1].info.Long_info.high_bytes << 32) | (cp[i-1].info.Long_info.low_bytes);
     return Long;
 }
 
@@ -180,7 +180,7 @@ int ldc2_w(execution *e){
             op.Double = search_double(e->frame->constant_pool,i);
         break;
         case LONG:
-            op.Float = search_long(e->frame->constant_pool,i);
+            op.Long = search_long(e->frame->constant_pool,i);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -776,8 +776,8 @@ int ineg(execution *e){
 }  
 int lneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Long = 0 - op2.Long;
+    //operand_type op2 = pop_op(&(e->frame->top));
+    op1.Long = 0 - op1.Long;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  

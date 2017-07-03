@@ -622,7 +622,7 @@ int fsub(execution *e){
 int dsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
-    op2.Double -= op2.Double;
+    op2.Double -= op1.Double;
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  

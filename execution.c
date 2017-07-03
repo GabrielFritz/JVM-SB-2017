@@ -44,7 +44,7 @@ void execute_method(execution* e) {
             exit(1);
         }
         else {
-            printf("\tIniciando instrucao de codigo hexa %02x\n", i);
+            //printf("\tIniciando instrucao de codigo hexa %02x\n", i);
             flag = instr_array[i](e);   //termina a execucao quando encontra um nop
         }
     }

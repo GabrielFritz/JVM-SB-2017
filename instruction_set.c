@@ -775,7 +775,7 @@ int frem(execution *e){
 int drem_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
-    op1.Double = remainder(op2.Double,op1.Double);
+    op1.Double = fmod(op2.Double,op1.Double);
     push_op(&(e->frame->top),op1,2);
 	return 0;
 }  
@@ -936,7 +936,7 @@ int i2f(execution *e){
 int i2d(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
-    op2.Float = (double) op1.Int;
+    op2.Double = (double) op1.Int;
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  

@@ -48,7 +48,7 @@ void push_class(class_heap** ch,ClassFile cf) {
     for(field_aux=cf.fields;field_aux<cf.fields+cf.fields_count;++field_aux) {
         if(is_static(field_aux->access_flags)){
             aux1->static_fields[static_index].name = search_utf8(cf.constant_pool,field_aux->name_index);
-            aux1->static_fields[static_index].name = search_utf8(cf.constant_pool,field_aux->descriptor_index);
+            aux1->static_fields[static_index].descriptor = search_utf8(cf.constant_pool,field_aux->descriptor_index);
             aux1->static_fields[static_index].value.Long =0;
             ++static_index;
         }
@@ -101,7 +101,7 @@ field* search_staticfield(class_heap* start, char* class, char* field) {
     class_heap* aux = start;
     while(aux) {
         if(!strcmp(class,search_utf8(aux->cf.constant_pool,
-            aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index))) {
+            aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index))) { //classe encontrada
             for(int i=0;i<aux->num_static;++i) {
                 if(!strcmp(field,aux->static_fields[i].name))
                     return &(aux->static_fields[i]);

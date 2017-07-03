@@ -129,7 +129,7 @@ int ldc(execution *e){
         break;
         case STRING:
             op.Ref = (char*) search_utf8(e->frame->constant_pool,
-                                        e->frame->constant_pool[i].info.String_info.string_index);
+                                        e->frame->constant_pool[i-1].info.String_info.string_index);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -151,7 +151,7 @@ int ldc_w(execution *e){
         break;
         case STRING:
             op.Ref = (char*) search_utf8(e->frame->constant_pool,
-                                        e->frame->constant_pool[i].info.String_info.string_index);
+                                        e->frame->constant_pool[i-1].info.String_info.string_index);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -591,28 +591,28 @@ int isub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Int -= op1.Int; //o que foi empilhado primeiro sera "popeado" por ultimo
-    push_op(&(e->frame->top),op1,1);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int lsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Long -= op1.Long;
-    push_op(&(e->frame->top),op1,2);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int fsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Float -= op1.Float;
-    push_op(&(e->frame->top),op1,1);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int dsub(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op2.Double -= op2.Double;
-    push_op(&(e->frame->top),op1,2);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int imul(execution *e){
@@ -735,8 +735,8 @@ int irem(execution *e){
         exit(1);
     }
     else {
-    	op1.Int %= op2.Int;
-    	push_op(&(e->frame->top),op1,1);
+    	op2.Int %= op1.Int;
+    	push_op(&(e->frame->top),op2,1);
     }
 	return 0;
 }  
@@ -749,23 +749,23 @@ int lrem(execution *e){
         exit(1);
     }
     else {
-    	op1.Long %= op2.Long;
-    	push_op(&(e->frame->top),op1,1);
+    	op2.Long %= op1.Long;
+    	push_op(&(e->frame->top),op2,1);
     }
 	return 0;
 }  
 int frem(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float = remainderf(op1.Float,op2.Float);
-    push_op(&(e->frame->top),op1,1);
+    operand_type op1 = pop_op(&(e->frame->top)); //denominador
+    operand_type op2 = pop_op(&(e->frame->top)); //numerador
+    op1.Float = remainderf(op2.Float,op1.Float);
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int drem_(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Double = remainder(op1.Double,op2.Double);
-    push_op(&(e->frame->top),op1,2);
+    operand_type op1 = pop_op(&(e->frame->top)); //denominador
+    operand_type op2 = pop_op(&(e->frame->top)); //numerador
+    op1.Double = remainder(op2.Double,op1.Double);
+    push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
 int ineg(execution *e){
@@ -1012,8 +1012,8 @@ int i2s(execution *e){
 	return 0;
 }  
 int lcmp(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Long>op2.Long){
         operand_type aux;
         aux.Int = 1;
@@ -1030,8 +1030,8 @@ int lcmp(execution *e){
 	return 0;
 }  
 int fcmpl(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Float>op2.Float){
         operand_type aux;
         aux.Int = 1;
@@ -1052,8 +1052,8 @@ int fcmpl(execution *e){
     return 0;
 }  
 int fcmpg(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Float>op2.Float){
         operand_type aux;
         aux.Int = 1;
@@ -1074,8 +1074,8 @@ int fcmpg(execution *e){
     return 0;
 }  
 int dcmpl(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Double>op2.Double){
         operand_type aux;
         aux.Int = 1;
@@ -1096,8 +1096,8 @@ int dcmpl(execution *e){
     return 0;
 }  
 int dcmpg(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top));
     if(op1.Double>op2.Double){
         operand_type aux;
         aux.Int = 1;
@@ -1172,8 +1172,8 @@ int ifle(execution *e){
     return 0;
 }  
 int if_icmpeq(execution *e){ 
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int == value2.Int){
@@ -1182,8 +1182,8 @@ int if_icmpeq(execution *e){
     return 0;
 }  
 int if_icmpne(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int != value2.Int){
@@ -1192,8 +1192,8 @@ int if_icmpne(execution *e){
     return 0;
 }  
 int if_icmplt(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int < value2.Int){
@@ -1202,8 +1202,8 @@ int if_icmplt(execution *e){
     return 0;
 }  
 int if_icmpge(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int >= value2.Int){
@@ -1212,8 +1212,8 @@ int if_icmpge(execution *e){
     return 0;
 }  
 int if_icmpgt(execution *e){
-	operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+	operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int > value2.Int){
@@ -1222,8 +1222,8 @@ int if_icmpgt(execution *e){
     return 0;
 }  
 int if_icmple(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Int <= value2.Int){
@@ -1232,8 +1232,8 @@ int if_icmple(execution *e){
     return 0;
 }  
 int if_acmpeq(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref == value2.Ref){
@@ -1242,8 +1242,8 @@ int if_acmpeq(execution *e){
     return 0;
 }  
 int if_acmpne(execution *e){
-    operand_type value1 = pop_op(&(e->frame->top));
-    operand_type value2 =pop_op(&(e->frame->top));
+    operand_type value2 = pop_op(&(e->frame->top));
+    operand_type value1 =pop_op(&(e->frame->top));
     short off = (short) u2ReadFrame(e->frame);
     off-=3; //a leitura 'ReadFrame' de 2 bytes ja avancou pc 2 vezes; a leitura da instrucao avancou mais 1 vez
     if(value1.Ref != value2.Ref){
@@ -1409,7 +1409,7 @@ int getstatic(execution *e){
 void put_static(class_heap* start, char* class, char* field, operand_type op) {
     class_heap* aux = start;
     while(aux) {
-        if(!strcmp(class,search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index)))
+        if(!strcmp(class,search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index)))
         {
             for(int s=0;s<aux->num_static;++s) {
                 if(!strcmp(field,aux->static_fields[s].name)) {
@@ -1425,7 +1425,7 @@ void put_static(class_heap* start, char* class, char* field, operand_type op) {
 
 int putstatic(execution *e){
     u2 fieldi = u2ReadFrame(e->frame);
-    u2 classi = e->frame->constant_pool[fieldi].info.Fieldref_info.class_index;
+    u2 classi = e->frame->constant_pool[fieldi-1].info.Fieldref_info.class_index;
 
     u2 classnamei =  e->frame->constant_pool[classi-1].info.Class_info.name_index;
     u2 nameandtypei = e->frame->constant_pool[fieldi-1].info.Fieldref_info.name_and_type_index;
@@ -1615,7 +1615,7 @@ int num_fields(execution* e, ClassFile* cf) {
     }
     ClassFile* aux = cf;
     while(aux->super_class) {
-        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);
@@ -1641,7 +1641,7 @@ void field_init(execution* e,ClassFile* cf, field* f) {
     }
     ClassFile* aux = cf;
     while(aux->super_class) {
-        u2 supernamei = aux->constant_pool[aux->super_class].info.Class_info.name_index;
+        u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
         strcpy(supername,search_utf8(aux->constant_pool, supernamei));
         aux = check_class(e,supername);

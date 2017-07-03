@@ -44,7 +44,7 @@ void execute_method(execution* e) {
             exit(1);
         }
         else {
-            //printf("Iniciando execucao da instrucao de codigo %d\n", i);
+            printf("\tIniciando instrucao de codigo hexa %02x\n", i);
             flag = instr_array[i](e);   //termina a execucao quando encontra um nop
         }
     }
@@ -76,19 +76,19 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
         init_opheap(&opaux);
         for(int i=0;i<args;++i) { //pilha auxiliar para contagem de sizeindex
             int type = e->frame->below->top->type;
-            operand_type new = pop_op(&(e->frame->below->top));
-            push_op(&opaux,new,type);
+            operand_type new = pop_op(&(e->frame->below->top)); //retira o parametro da pilha do metodo chamador, o below
+            push_op(&opaux,new,type); // insere na pilha do metodo chamado
             if(type==EXCEPTIONS) ++sizeindex;   //type == 2, aumentar o tamanho necessario
             ++sizeindex;
         }
-        for(int i=0;i<args;++i) { //devolver operandos para pilha original
+        for(int i=0;i<args;++i) { //devolver operandos para pilha original, a pilha do método chamador
             int type = opaux->type;
             operand_type new = pop_op(&opaux);
             push_op(&(e->frame->below->top),new,type);
         }
         for(int i=sizeindex-1; i>-1; --i) {
             if(e->frame->below->top->type == EXCEPTIONS) --i; //type == 2, aumentar indice
-            e->frame->local_arr[i] = pop_op(&(e->frame->below->top));
+            e->frame->local_arr[i] = pop_op(&(e->frame->below->top)); //coloca parametros no array local da funcao chamada
         }
     }
 }

@@ -187,7 +187,7 @@ u2 u2ReadFrame(frame* f) {
 }
 
 u4 u4ReadFrame(frame* f) {
-    u4 aux;
+    u4 aux = 0x0;
     aux = *(++f->pc);
     aux<<=8;
     aux|=*(++f->pc);

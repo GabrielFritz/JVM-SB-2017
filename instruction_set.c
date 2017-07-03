@@ -11,7 +11,7 @@
 #include "util.h"
 
 int nop(execution* e) {
-    return 0;
+    return 1;
 }
 
 int aconst_null(execution* e) {
@@ -108,12 +108,23 @@ int dconst_1(execution *e){
 int bipush(execution *e){
     operand_type op;
     op.Int = u1ReadFrame(e->frame);
+
+    if (op.Int & 0x80) { //operando negativo
+        op.Int |= 0xFFFFFF00;
+    }
+    //printf("\t\tPreparar bipush do valor %d que em hexa eh %x\n", op.Int, op.Int);
+
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
 int sipush(execution *e){
     operand_type op;
     op.Int = u2ReadFrame(e->frame);
+
+if (op.Int & 0x8000) { //operando negativo
+        op.Int |= 0xFFFF0000;
+    }
+
 	push_op(&(e->frame->top),op,1);
 	return 0;
 }
@@ -121,7 +132,7 @@ int ldc(execution *e){
     operand_type op;
     u1 i = u1ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGERTYPE:
+        case INTEGER:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -143,7 +154,7 @@ int ldc_w(execution *e){
     operand_type op;
     u2 i = u2ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGERTYPE:
+        case INTEGER:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -727,8 +738,8 @@ int ddiv(execution *e){
 	return 0;
 }  
 int irem(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top)); //denominador
+    operand_type op2 = pop_op(&(e->frame->top)); //numerador
     
     if (op2.Int == 0) {
     	printf("ERRO. Divisao por zero.\n");
@@ -741,8 +752,8 @@ int irem(execution *e){
 	return 0;
 }  
 int lrem(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top)); //denominador
+    operand_type op2 = pop_op(&(e->frame->top)); //numerador
     
     if (op2.Long == 0) {
     	printf("ERRO. Divisao por zero.\n");
@@ -765,7 +776,7 @@ int drem_(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
     op1.Double = remainder(op2.Double,op1.Double);
-    push_op(&(e->frame->top),op2,2);
+    push_op(&(e->frame->top),op1,2);
 	return 0;
 }  
 int ineg(execution *e){
@@ -776,22 +787,19 @@ int ineg(execution *e){
 }  
 int lneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    //operand_type op2 = pop_op(&(e->frame->top));
     op1.Long = 0 - op1.Long;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int fneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    //operand_type op2 = pop_op(&(e->frame->top));
     op1.Float = 0 - op1.Float;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int dneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Double = 0 - op2.Double;
+    op1.Double = 0 - op1.Double;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
@@ -812,8 +820,8 @@ int lshl(execution *e){
 	return 0;
 }  
 int ishr(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top)); //shift amount
+    operand_type op2 = pop_op(&(e->frame->top)); //valor shiftado
     op1.Int &= 0x1F;
     int n=0;
     if(op2.Int<0) {
@@ -928,7 +936,7 @@ int i2f(execution *e){
 int i2d(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
-    op2.Double = (double) op1.Int;
+    op2.Float = (double) op1.Int;
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
@@ -1275,9 +1283,9 @@ int tableswitch(execution *e){
     int delta = (e->frame->pc - e->frame->code);
     int pad_size = (4-delta%4);
     for(int i=0;i<pad_size;++i) u1ReadFrame(e->frame);
-    int default_offset = (int) u4ReadFrame(e->frame);
-    int lowcase_off = (int) u4ReadFrame(e->frame);
-    int highcase_off = (int) u4ReadFrame(e->frame);
+    int default_offset = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
+    int lowcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
+    int highcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
     int size_switch = (highcase_off-lowcase_off+1);
     if(size_switch<0){
         printf("ERRO. Tableswitch LOWOFF greater than HIGHOFF.\n");
@@ -1528,7 +1536,7 @@ int invokevirtual(execution *e){
             break;
             case 'C':
                 op = pop_op(&(e->frame->top));
-                printf("%c",op.Int);
+                printf("%c",(char)op.Int);
             break;
             case 'B':
                 op = pop_op(&(e->frame->top));
@@ -1587,7 +1595,7 @@ int invokespecial(execution *e){
 	return 0;
 }
 int invokestatic(execution *e){
-    u2 methodi = u2ReadFrame(e->frame);
+    u2 methodi = u2ReadFrame(e->frame); //o frame possui apenas o indice do constant pool
     u2 classi = e->frame->constant_pool[methodi-1].info.Method_info.class_index;
     u2 nameandtypei = e->frame->constant_pool[methodi-1].info.Method_info.name_and_type_index;
     u2 namei = e->frame->constant_pool[nameandtypei-1].info.NameAndType_info.name_index;

@@ -77,9 +77,9 @@ ClassFile* search_classheap(class_heap* ch, char* name) {
     while(aux) {
         if(!strcmp(name,
             search_utf8(aux->cf.constant_pool,
-                        aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index)))
+                        aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index)))
         {
-            return &(aux->cf);
+            return &(aux->cf); //retorna a classe pesquisada
         }
         aux = aux->next;
     }
@@ -101,7 +101,7 @@ field* search_staticfield(class_heap* start, char* class, char* field) {
     class_heap* aux = start;
     while(aux) {
         if(!strcmp(class,search_utf8(aux->cf.constant_pool,
-            aux->cf.constant_pool[aux->cf.this_class].info.Class_info.name_index))) {
+            aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index))) {
             for(int i=0;i<aux->num_static;++i) {
                 if(!strcmp(field,aux->static_fields[i].name))
                     return &(aux->static_fields[i]);

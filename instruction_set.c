@@ -717,8 +717,8 @@ int fdiv(execution *e){
 	return 0;
 }  
 int ddiv(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
+    operand_type op1 = pop_op(&(e->frame->top)); //denominador
+    operand_type op2 = pop_op(&(e->frame->top)); //numerador
     operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
 
     if (isnan(op1.Double) || isnan(op2.Double))
@@ -920,8 +920,13 @@ int lxor(execution *e){
 }  
 int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
-    u1ReadFrame(e->frame); //retirar da pilha o valor incrementado, que eh sempre 1
-    e->frame->local_arr[i].Int++;
+    int inc = u1ReadFrame(e->frame); //retirar da pilha o valor incrementado, que pode ser 1 ou -1
+
+    if (inc | 0x80) { //eh negativo
+        inc -= 256; //extensão do zero
+    }
+
+    e->frame->local_arr[i].Int += inc;
 	return 0;
 } 
 int i2l(execution *e){
@@ -1287,7 +1292,7 @@ int tableswitch(execution *e){
 	u1* return_pc = e->frame->pc-1;
     int delta = (e->frame->pc - e->frame->code);
     int pad_size = (4-delta%4);
-    for(int i=0;i<pad_size;++i) u1ReadFrame(e->frame);
+    for(int i=1;i<pad_size;++i) u1ReadFrame(e->frame);
     int default_offset = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
     int lowcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
     int highcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
@@ -1312,7 +1317,7 @@ int lookupswitch(execution *e){
     operand_type a = pop_op(&(e->frame->top));
     int delta = (e->frame->pc - e->frame->code);
     int pad_size = (4-delta%4);
-    for(int i=0;i<pad_size;++i) u1ReadFrame(e->frame);
+    for(int i=1;i<pad_size;++i) u1ReadFrame(e->frame);
     int default_offset = (int) u4ReadFrame(e->frame);
     int pairs = u4ReadFrame(e->frame);
     int off[pairs][2];

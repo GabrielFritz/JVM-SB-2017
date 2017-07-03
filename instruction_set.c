@@ -371,7 +371,8 @@ int aaload(execution *e){
     return 0;
 } 
 int store(execution *e){
-    e->frame->local_arr[u1ReadFrame(e->frame)] = pop_op(&(e->frame->top));
+    int index = u1ReadFrame(e->frame);
+    e->frame->local_arr[index] = pop_op(&(e->frame->top));
 	return 0;
 } 
 int store_0(execution *e){
@@ -922,7 +923,7 @@ int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
     int inc = u1ReadFrame(e->frame); //retirar da pilha o valor incrementado, que pode ser 1 ou -1
 
-    if (inc | 0x80) { //eh negativo
+    if ((inc & 0x80) > 0) { //eh negativo
         inc -= 256; //extensão do zero
     }
 

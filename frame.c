@@ -135,7 +135,7 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
     char super_name[128];
 
     while(cf_aux!=NULL
-    && (method=search_method(cf_aux,method_name,descriptor))==NULL //pesquisa metodo na classe corrente
+    && (method=search_method(cf_aux,method_name,descriptor))==NULL //pesquisa o metodo na classe corrente
     && super_index != 0)
     {
         strcpy(super_name, search_utf8(cf_aux->constant_pool,
@@ -155,7 +155,7 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
     {
         if(!strcmp(search_utf8(cf_aux->constant_pool, att_aux->attribute_name_index),"Code")) //Atributo Code nao encontrado
         {
-            code = *att_aux; //avancar na lista de atributos
+            code = *att_aux; //Definir onde comeca o Code do metodo em questao
             break;
         }
     }

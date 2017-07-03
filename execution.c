@@ -5,6 +5,35 @@
 //#include "heap.h"
 #include "instruction_set.h"
 
+char* instrucoes_nomes[] = { //10 instrucoes por linha
+    "nop", "aconst_null", "iconst_m1", "iconst_0", "iconst_1", "iconst_2", "iconst_3", "iconst_4", "iconst_5", "lconst_0", //0 ao 9
+    "lconst_1", "fconst_0", "fconst_1", "fconst_2", "dconst_0", "dconst_1", "bipush", "sipush", "ldc", "ldc_w",
+    "ldc2_w", "iload", "lload", "fload","dload", "aload", "iload_0", "iload_1", "iload_2", "iload_3",
+    "lload_0", "lload_1", "lload_2", "lload_3", "fload_0", "fload_1", "fload_2", "fload_3", "dload_0", "dload_1",
+    "dload_2", "dload_3", "aload_0", "aload_1", "aload_2", "aload_3", "iaload", "laload", "faload", "daload",
+    "aaload", "baload", "caload", "saload", "istore", "lstore", "fstore", "dstore", "astore", "istore_0",
+    "istore_1", "istore_2", "istore_3", "lstore_0", "lstore_1", "lstore_2", "lstore_3", "fstore_0", "fstore_1", "fstore_2",
+    "fstore_3", "dstore_0", "dstore_1", "dstore_2", "dstore_3", "astore_0", "astore_1", "astore_2", "astore_3", "iastore",
+    "lastore", "fastore", "dastore", "aastore", "bastore", "castore", "sastore", "pop", "pop2", "dup",
+    "dup_x1", "dup_x2", "dup2", "dup2_x1", "dup2_x2", "swap", "iadd", "ladd", "fadd", "dadd",
+    "isub", "lsub", "fsub", "dsub", "imul", "lmul", "fmul", "dmul", "idiv", "ldiv", //100 ao 109
+    "fdiv", "ddiv", "irem", "lrem", "frem", "drem", "ineg", "lneg", "fneg", "dneg",
+    "ishl", "lshl", "ishr", "lshr", "iushr", "lushr", "iand", "land", "ior", "lor",
+    "ixor", "lxor", "iinc", "i2l", "i2f", "i2d", "l2i", "l2f", "l2d", "f2i",
+    "f2l", "f2d", "d2i", "d2l", "d2f", "i2b", "i2c", "i2s", "lcmp", "fcmpl",
+    "fcmpg", "dcmpl", "dcmpg", "ifeq", "ifne", "iflt", "ifge","ifgt", "ifle", "if_icmpeq", //150 ao 159
+    "if_icmpne", "if_icmplt", "if_icmpge", "if_icmpgt", "if_icmple", "if_acmpeq", "if_acmpne", "goto", "jsr", "ret",
+    "tableswitch", "lookupswitch", "ireturn", "lreturn", "freturn", "dreturn", "areturn", "return", "getstatic", "putstatic",
+    "getfield", "putfield", "invokevirtual", "invokespecial", "invokestatic", "invokeinterface", "invokedynamic", "new", "newarray", "anewarray",
+    "arraylength", "athrow", "checkcast", "instanceof", "monitorenter", "monitorexit", "wide", "multianewarray", "ifnull", "ifnonnull",
+    "goto_w", "jsr_w", "breakpoint", NULL, NULL, NULL, NULL, NULL, NULL, NULL, //200 ao 209
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, "impdep1", "impdep2" //250 ao 255
+};
+
 /*!
  * Realiza a contagem dos argumentos de um metodo
  * @param[in]   d   String contendo a definicao do metodo
@@ -38,15 +67,15 @@ void execute_method(execution* e) {
     int flag =0;
 
     while(!flag) {
-        u1 i = u1ReadFrame(e->frame);
+        u1 i = u1ReadFrame(e->frame); //retirar do frame o codigo da instrucao a ser executada
 
         if (i > 0xc9) { //instrucao maxima eh jsr_w, com valor 201
-            printf("Valor lido nao corresponde ao code de uma instrucao\n");
+            printf("Valor lido nao corresponde ao code de uma instrucao valida\n");
             exit(1);
         }
         else {
-            printf("\tIniciando instrucao de codigo hexa %02x\n", i);
-            flag = instr_array[i](e);   //termina a execucao quando encontra um nop
+            printf("Executar instrucao %s de codigo hexa %02x\n", instrucoes_nomes[i],i);
+            flag = instr_array[i](e);   //termina a execucao quando encontra um return ou nop
         }
     }
 }
@@ -69,17 +98,18 @@ void execute_method(execution* e) {
 void init_methodexecution(execution* e,char* class,char* method, char* descriptor, int args){
     ClassFile* cf = check_class(e,class);
     push_frame(&(e->frame)); //novo frame da nova classe
-    frame_init(e->start,*cf,e->frame,method,descriptor); //
+    frame_init(e->start,*cf,e->frame,method,descriptor); //inicializa o frame do metodo a ser executado (null)
     int sizeindex =0;
     
-    if(e->frame->below) {
+    if(e->frame->below) { //caso haja frame below, o metodo a ser executado tem um chamador
         operand_heap* opaux;
         init_opheap(&opaux);
+        //A seguir: manipular os argumentos passados por esse chamador
         for(int i=0;i<args;++i) { //pilha auxiliar para contagem de sizeindex
             int type = e->frame->below->top->type;
             operand_type new = pop_op(&(e->frame->below->top)); //retira o parametro da pilha do metodo chamador, o below
             push_op(&opaux,new,type); // insere na pilha do metodo chamado
-            if(type==EXCEPTIONS) ++sizeindex;   //type == 2, aumentar o tamanho necessario
+            if(type==EXCEPTIONS) ++sizeindex; //type == 2, aumentar o tamanho necessario
             ++sizeindex;
         }
         for(int i=0;i<args;++i) { //devolver operandos para pilha original, a pilha do método chamador

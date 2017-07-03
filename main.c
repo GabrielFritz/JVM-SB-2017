@@ -12,8 +12,8 @@
 int main(int argc,char* argv[]){
     if(argc == 2) { //./jvm <nome-da-classe>
         execution* e = (execution*)malloc(sizeof(execution));
-        framestack_init(&(e->frame));
-        classheap_init(&(e->start));
+        framestack_init(&(e->frame)); //inicializa a pilha de stacks (null)
+        classheap_init(&(e->start)); //inicializa a pilha de classes (null)
         init_methodexecution(e,argv[1],"main","([Ljava/lang/String;)V",0);
         execute_method(e);
     }

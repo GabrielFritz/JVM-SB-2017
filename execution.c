@@ -1,5 +1,5 @@
 #include "execution.h"
-//#include "classfile.h"
+#include "classfile.h"
 //#include "frame.h"
 //#include "types.h"
 //#include "heap.h"
@@ -33,6 +33,11 @@ char* instrucoes_nomes[] = { //10 instrucoes por linha
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, "impdep1", "impdep2" //250 ao 255
 };
+
+void free_execution(execution *e){
+  //free_frame(e->frame);
+  free_classheap(e->start);
+}
 
 /*!
  * Realiza a contagem dos argumentos de um metodo

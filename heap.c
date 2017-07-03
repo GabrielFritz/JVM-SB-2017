@@ -3,6 +3,16 @@
 #include "util.h"
 #include "heap.h"
 
+void free_fields(field* static_fields){
+}
+
+void free_classheap(class_heap* ch){
+  //tem que ser para cada no do heap
+  free_clFile(&(ch->cf));
+  free(ch->static_fields);
+  //free_objects(ch->objects);
+}
+
 /*!
  * Inicializa o heap da classe
  * @param[in] ch  Heap a ser inicializado

@@ -174,12 +174,12 @@ int ldc_w(execution *e){
 }
 
 double search_double(cp_info* cp, u2 i) {
-    longtodouble.Long = ((long long) cp[i].info.Double_info.high_bytes << 32) | (cp[i].info.Double_info.low_bytes);
+    longtodouble.Long = ((long long) cp[i-1].info.Double_info.high_bytes << 32) | (cp[i-1].info.Double_info.low_bytes);
     return longtodouble.Double;
 }
 
 long long search_long(cp_info* cp, u2 i) {
-    long long Long = ((long long) cp[i].info.Long_info.high_bytes << 32) | (cp[i].info.Long_info.low_bytes);
+    long long Long = ((long long) cp[i-1].info.Long_info.high_bytes << 32) | (cp[i-1].info.Long_info.low_bytes);
     return Long;
 }
 
@@ -188,10 +188,10 @@ int ldc2_w(execution *e){
     u2 i = u2ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
         case DOUBLE:
-            op.Int = search_double(e->frame->constant_pool,i);
+            op.Double = search_double(e->frame->constant_pool,i);
         break;
         case LONG:
-            op.Float = search_long(e->frame->constant_pool,i);
+            op.Long = search_long(e->frame->constant_pool,i);
         break;
         default:
             printf("Invalid index for LDC.\n");
@@ -768,7 +768,7 @@ int lrem(execution *e){
 int frem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
-    op1.Float = remainderf(op2.Float,op1.Float);
+    op1.Float = fmod(op2.Float,op1.Float);
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
@@ -1002,19 +1002,19 @@ int d2f(execution *e){
     op2.Float = (float)op1.Double;
     push_op(&(e->frame->top),op2,1);
 	return 0;
-}  
+}
 int i2c(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (char)op1.Int;
-    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int i2s(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (short)op1.Int;
-    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo short na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
+    push_op(&(e->frame->top),op2,1);
 	return 0;
 }  
 int lcmp(execution *e){

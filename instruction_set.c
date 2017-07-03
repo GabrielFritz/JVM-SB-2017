@@ -1626,6 +1626,10 @@ int invokestatic(execution *e){
 
 int num_fields(execution* e, ClassFile* cf) {
     int n =0;
+
+    if (cf->fields_count == 0) //Virtual, nao possui fields
+        return 0;
+
     for(field_info* aux=cf->fields; aux<cf->fields+cf->fields_count;++aux) {
         if(is_static(aux->access_flags)) ++n;
     }
@@ -1685,8 +1689,12 @@ int new_(execution *e){
     ClassFile* cf = check_class(e,classname);
     object* o = (object*) malloc(sizeof(object));
     o->num_fields = num_fields(e,cf);
-    o->fields = (field*) malloc(sizeof(field)*o->num_fields);
-    field_init(e,cf,o->fields);
+     
+    if (o->num_fields > 0) { //Caso nao seja Virtual, carregar os fields
+        o->fields = (field*) malloc(sizeof(field)*o->num_fields);
+        field_init(e,cf,o->fields);
+    }
+
     operand_type op;
     op.Ref = o;
     push_op(&(e->frame->top),op,1);

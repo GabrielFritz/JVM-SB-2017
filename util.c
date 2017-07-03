@@ -103,32 +103,23 @@ FILE* open_file(char *nomearquivo) {
     }
 }
 
-FILE* io_handler(int argc, char *argv[], char *nomearquivo, FILE **fout)
+//Executcao: ./jvm <nome-da-classe> <arquivo-txt-saida>
+//Retorna o *FILE para o arquivo .class
+FILE* io_handler(char *argv[], char *nomearquivo, FILE **fout)
 {
   FILE *fd = NULL;
-  char saidaarquivo[1024] = "output_class.txt";
-  if (argc == 1) {
-    do {
-      printf("Digite o nome do arquivo: ");
-      scanf("%s", nomearquivo);
-      fflush(stdin);
-      fd = open_file(nomearquivo);
-    } while (!fd);
-  } else if (argc == 3) {
-    strcpy(nomearquivo, argv[1]);
-    fd = open_file(nomearquivo);
-    if (!fd) {
-      printf("Arquivo de entrada não encontrado!\n");
-      exit(0);
-    }
-    strcpy(saidaarquivo, argv[2]);
-
-  } else {
-    printf("Uso do programa: ./leitorexibidor [nome-do-class nome-da-saída]\n");
+  char saidaarquivo[1024];
+  
+  strcpy(nomearquivo, argv[1]);
+  fd = open_file(nomearquivo);
+  if (!fd) {
+    printf("Arquivo de entrada não encontrado!\n");
     exit(0);
   }
+  strcpy(saidaarquivo, argv[2]);
+
   if (!(*fout = fopen(saidaarquivo, "w+"))) {
-    fprintf(stderr, "Erro %d na abertura do arquivo de saida\n", errno);
+    printf("Erro na abertura do arquivo de saida\n");
     exit(0);
   }
   return fd;

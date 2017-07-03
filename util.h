@@ -17,7 +17,7 @@ char* search_utf8(cp_info* cp, u2 i);
 void shutdown(FILE *fd, FILE *fout, ClassFile* cf);
 int findtype(char* type);
 FILE* open_file(char *nomearquivo);
-FILE * io_handler(int argc, char *argv[], char *nomearquivo, FILE **fout);
+FILE* io_handler(char *argv[], char *nomearquivo, FILE **fout);
 void free_cte_pool(ClassFile *cf);
 void free_methods(ClassFile *cf);
 void free_clFile(ClassFile* cf);

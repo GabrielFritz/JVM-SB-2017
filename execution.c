@@ -106,14 +106,12 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
  * */
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
-    if(!cf) { //classe ainda nao pertence ao heap de classes
+    if(!cf && strcmp(name, "java/lang/Object") != 0) { //classe ainda nao pertence ao heap de classes OU Classe Object
         cf = load_ClassFile(name);
         push_class(&(e->start),*cf);
 
         if(search_method(cf,MNAME,MDESCR)) {
             //init_methodexecution(e,name,MNAME,MDESCR,0);
-
-
 
             init_methodexecution(e,
                 search_utf8(cf->constant_pool,cf->constant_pool[(cf->this_class)-1].info.Class_info.name_index) //nome da classe incluindo pacote

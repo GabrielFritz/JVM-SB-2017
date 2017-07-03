@@ -1624,6 +1624,7 @@ int invokestatic(execution *e){
 	return 0;
 }
 
+//Numero de fields estaticos da classe, necessario para execucao do New
 int num_fields(execution* e, ClassFile* cf) {
     int n =0;
 
@@ -1634,10 +1635,10 @@ int num_fields(execution* e, ClassFile* cf) {
         if(is_static(aux->access_flags)) ++n;
     }
     ClassFile* aux = cf;
-    while(aux->super_class) {
+    while(aux && aux->super_class) { //obtencao de fields das superclasses
         u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
-        strcpy(supername,search_utf8(aux->constant_pool, supernamei));
+        supername = search_utf8(aux->constant_pool, supernamei); //nome da superclasse
         aux = check_class(e,supername);
         if(aux) {
             for(field_info* f = aux->fields;f<aux->fields+aux->fields_count;++f) {
@@ -1690,7 +1691,7 @@ int new_(execution *e){
     object* o = (object*) malloc(sizeof(object));
     o->num_fields = num_fields(e,cf);
      
-    if (o->num_fields > 0) { //Caso nao seja Virtual, carregar os fields
+    if (o->num_fields > 0) { //Caso existam fields, carrega-los
         o->fields = (field*) malloc(sizeof(field)*o->num_fields);
         field_init(e,cf,o->fields);
     }

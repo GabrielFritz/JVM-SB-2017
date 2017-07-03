@@ -163,7 +163,7 @@ int ldc_w(execution *e){
 }
 
 double search_double(cp_info* cp, u2 i) {
-    longtodouble.Long = ((long long) cp[i].info.Double_info.high_bytes << 32) | (cp[i].info.Double_info.low_bytes);
+    longtodouble.Long = ((long long) cp[i-1].info.Double_info.high_bytes << 32) | (cp[i-1].info.Double_info.low_bytes);
     return longtodouble.Double;
 }
 
@@ -177,7 +177,7 @@ int ldc2_w(execution *e){
     u2 i = u2ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
         case DOUBLE:
-            op.Int = search_double(e->frame->constant_pool,i);
+            op.Double = search_double(e->frame->constant_pool,i);
         break;
         case LONG:
             op.Float = search_long(e->frame->constant_pool,i);

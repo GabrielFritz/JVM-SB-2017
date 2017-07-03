@@ -2,7 +2,6 @@ CFLAGS=-Wall -Wextra
 ifdef RELEASE
 	CFLAGS += -O2
 else
-	#CFLAGS += -lm -ggdb3 -fsanitize=address
 	CFLAGS += -ggdb -std=c99 -lm
 endif
 

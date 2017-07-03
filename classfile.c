@@ -304,12 +304,10 @@ ClassFile* load_ClassFile(char* name) {
  * */
 method_info* search_method(ClassFile* cf ,char* name,char* descriptor) {
   method_info* aux;
-  int nameflag;
-  int descrflag;
 
   for(aux = cf->methods;aux<cf->methods+cf->method_count;++aux) {
-    nameflag = strcmp(name,search_utf8(cf->constant_pool,aux->name_index));
-    descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->descriptor_index));
+    int nameflag = strcmp(name,search_utf8(cf->constant_pool,aux->name_index));
+    int descrflag = strcmp(descriptor,search_utf8(cf->constant_pool,aux->descriptor_index));
     if(!nameflag && !descrflag)
     	return aux;
   }

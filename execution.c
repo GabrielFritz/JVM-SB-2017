@@ -99,9 +99,9 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
     ClassFile* cf = check_class(e,class);
     push_frame(&(e->frame)); //novo frame da nova classe
     frame_init(e->start,*cf,e->frame,method,descriptor); //inicializa o frame do metodo a ser executado (null)
-    int sizeindex =0;
     
-    if(e->frame->below) { //caso haja frame below, o metodo a ser executado tem um chamador
+    if(e->frame->below) {
+        int sizeindex =0;
         operand_heap* opaux;
         init_opheap(&opaux);
         //A seguir: manipular os argumentos passados por esse chamador

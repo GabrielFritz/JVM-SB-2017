@@ -757,8 +757,8 @@ int lrem(execution *e){
 int frem(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //denominador
     operand_type op2 = pop_op(&(e->frame->top)); //numerador
-    op1.Float = remainderf(op2.Float,op1.Float);
-    push_op(&(e->frame->top),op2,1);
+    op1.Float = fmod(op2.Float,op1.Float);
+    push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int drem_(execution *e){
@@ -783,8 +783,8 @@ int lneg(execution *e){
 }  
 int fneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    operand_type op2 = pop_op(&(e->frame->top));
-    op1.Float = 0 - op2.Float;
+    //operand_type op2 = pop_op(&(e->frame->top));
+    op1.Float = 0 - op1.Float;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  

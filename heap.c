@@ -72,12 +72,13 @@ void push_class(class_heap** ch,ClassFile cf) {
  * O heap ch e' percorrido ate que seja encontrada a classe com o nome desejado.
  * E' retornado nulo, caso contrario.
  * */
-ClassFile* search_classheap(class_heap* ch, char* name) {
+ClassFile* 
+search_classheap(class_heap* ch, char* name) {
     class_heap* aux = ch;
     while(aux) {
         if(!strcmp(name,
-            search_utf8(aux->cf.constant_pool,
-                        aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index)))
+            search_utf8(aux->cf.constant_pool,aux->cf.constant_pool[(aux->cf.this_class)-1].info.Class_info.name_index)
+                ))
         {
             return &(aux->cf); //retorna a classe pesquisada
         }

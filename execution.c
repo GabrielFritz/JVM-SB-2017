@@ -111,7 +111,13 @@ ClassFile* check_class(execution* e, char* name) {
         push_class(&(e->start),*cf);
 
         if(search_method(cf,MNAME,MDESCR)) {
-            init_methodexecution(e,name,MNAME,MDESCR,0);
+            //init_methodexecution(e,name,MNAME,MDESCR,0);
+
+
+
+            init_methodexecution(e,
+                search_utf8(cf->constant_pool,cf->constant_pool[(cf->this_class)-1].info.Class_info.name_index) //nome da classe incluindo pacote
+                ,MNAME,MDESCR,0);
             execute_method(e);
         }
     }

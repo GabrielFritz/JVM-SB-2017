@@ -29,8 +29,8 @@ int main(int argc,char* argv[]){
     	print_class(ClassFile* cf, char* strcat(nomearquivo,".class"), FILE* fout);*/
     }
     else {
-    	printf("Modo de executar JVM: ./jvm <nome-da-classe>\n");
-    	printf("Modo de executar Leitor/Exibidor: ./jvm <nome-da-classe> <arquivo-txt-saida>\n");
+    	printf("Modo de executar JVM: ./jvm <Nome-da-Classe>\n");
+    	printf("Modo de executar Leitor/Exibidor: ./jvm <Nome-da-Classe> <arquivo-saida.txt>\n");
     }
     return 0;
 }

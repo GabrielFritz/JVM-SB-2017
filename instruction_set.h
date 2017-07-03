@@ -172,7 +172,7 @@ int ifnull(execution *e);
 int ifnonnull(execution *e); 
 int goto_w(execution *e); 
 int jsr_w(execution *e);
-extern int (*instr_array[])(execution *p) = {
+int (*instr_array[])(execution *p) = {
     nop, 
     aconst_null,
     iconst_m1,

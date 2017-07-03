@@ -108,23 +108,12 @@ int dconst_1(execution *e){
 int bipush(execution *e){
     operand_type op;
     op.Int = u1ReadFrame(e->frame);
-
-    if (op.Int & 0x80) { //operando negativo
-        op.Int |= 0xFFFFFF00;
-    }
-    //printf("\t\tPreparar bipush do valor %d que em hexa eh %x\n", op.Int, op.Int);
-
 	push_op(&(e->frame->top),op,1);
 	return 0;
 } 
 int sipush(execution *e){
     operand_type op;
     op.Int = u2ReadFrame(e->frame);
-
-if (op.Int & 0x8000) { //operando negativo
-        op.Int |= 0xFFFF0000;
-    }
-
 	push_op(&(e->frame->top),op,1);
 	return 0;
 }
@@ -132,7 +121,7 @@ int ldc(execution *e){
     operand_type op;
     u1 i = u1ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGER:
+        case INTEGERTYPE:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -154,7 +143,7 @@ int ldc_w(execution *e){
     operand_type op;
     u2 i = u2ReadFrame(e->frame);
     switch (search_tag(e->frame->constant_pool,i)) {
-        case INTEGER:
+        case INTEGERTYPE:
             op.Int = search_int(e->frame->constant_pool,i);
         break;
         case FLOAT:
@@ -738,8 +727,8 @@ int ddiv(execution *e){
 	return 0;
 }  
 int irem(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top)); //denominador
-    operand_type op2 = pop_op(&(e->frame->top)); //numerador
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
     
     if (op2.Int == 0) {
     	printf("ERRO. Divisao por zero.\n");
@@ -752,8 +741,8 @@ int irem(execution *e){
 	return 0;
 }  
 int lrem(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top)); //denominador
-    operand_type op2 = pop_op(&(e->frame->top)); //numerador
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
     
     if (op2.Long == 0) {
     	printf("ERRO. Divisao por zero.\n");
@@ -781,25 +770,29 @@ int drem_(execution *e){
 }  
 int ineg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    op1.Int = 0 - op1.Int;
+    operand_type op2 = pop_op(&(e->frame->top));
+    op1.Int = 0 - op2.Int;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int lneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    op1.Long = 0 - op1.Long;
+    operand_type op2 = pop_op(&(e->frame->top));
+    op1.Long = 0 - op2.Long;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int fneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    op1.Float = 0 - op1.Float;
+    operand_type op2 = pop_op(&(e->frame->top));
+    op1.Float = 0 - op2.Float;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
 int dneg(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
-    op1.Double = 0 - op1.Double;
+    operand_type op2 = pop_op(&(e->frame->top));
+    op1.Double = 0 - op2.Double;
     push_op(&(e->frame->top),op1,1);
 	return 0;
 }  
@@ -820,8 +813,8 @@ int lshl(execution *e){
 	return 0;
 }  
 int ishr(execution *e){
-    operand_type op1 = pop_op(&(e->frame->top)); //shift amount
-    operand_type op2 = pop_op(&(e->frame->top)); //valor shiftado
+    operand_type op1 = pop_op(&(e->frame->top));
+    operand_type op2 = pop_op(&(e->frame->top));
     op1.Int &= 0x1F;
     int n=0;
     if(op2.Int<0) {
@@ -936,7 +929,7 @@ int i2f(execution *e){
 int i2d(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
-    op2.Float = (double) op1.Int;
+    op2.Double = (double) op1.Int;
     push_op(&(e->frame->top),op2,2);
 	return 0;
 }  
@@ -1007,7 +1000,8 @@ int i2c(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2;
     op2.Int = (char)op1.Int;
-    push_op(&(e->frame->top),op2,2); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
+    op2.Int &= 0xff;
+    push_op(&(e->frame->top),op2,1); //type 2? Rever tipo char na Table 2.11.1-B em http://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.11.1
 	return 0;
 }  
 int i2s(execution *e){
@@ -1536,7 +1530,7 @@ int invokevirtual(execution *e){
             break;
             case 'C':
                 op = pop_op(&(e->frame->top));
-                printf("%c",(char)op.Int);
+                printf("%c",op.Int);
             break;
             case 'B':
                 op = pop_op(&(e->frame->top));

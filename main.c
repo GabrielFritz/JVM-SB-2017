@@ -73,6 +73,7 @@ int main(int argc,char* argv[]){
     	
     		ClassFile* cf = readClass(fd);
     		print_class(cf, arquivoentrada, fout);
+    		printf ("Leitura finalizada.\n");
 
 	    }
     }

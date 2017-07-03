@@ -107,16 +107,9 @@ FILE* open_file(char *nomearquivo) {
 //Retorna o *FILE para o arquivo .class
 FILE* io_handler(char *entradaarquivo, char *saidaarquivo, FILE **fout)
 {
-<<<<<<< HEAD
   FILE *fd = NULL;
-  
+  strcat(entradaarquivo,".class");
   fd = open_file(entradaarquivo);
-=======
-  char saidaarquivo[1024];
-  
-  strcpy(nomearquivo, argv[1]);
-  FILE *fd = open_file(nomearquivo);
->>>>>>> ad4b9c19888e2393fd80d8b85cda001bba2aa91c
   if (!fd) {
     printf("Arquivo de entrada não encontrado!\n");
     exit(0);

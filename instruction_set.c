@@ -503,10 +503,10 @@ int dup2_x1(execution *e){
     int type2 = 0;
     operand_type op2;
     if(type1==1) { //Form 1 - todos tipo 1
-        int type2 = e->frame->top->type;
-        operand_type op2 = pop_op(&(e->frame->top));
+        type2 = e->frame->top->type;
+        op2 = pop_op(&(e->frame->top));
     }
-    int type3 = e->frame->top->type;
+    int type3 = e->frame->top->type; // NUNCA USADO
     operand_type op3 = pop_op(&(e->frame->top)); 
     if(type1==1) { //Form 1 - todos tipo 1
         push_op(&(e->frame->top),op2,type2);
@@ -527,16 +527,16 @@ int dup2_x2(execution *e){
     int type2 = 0;
     operand_type op2;
     if(type1==1) {
-        int type2 = e->frame->top->type;
-        operand_type op2 = pop_op(&(e->frame->top));
+        type2 = e->frame->top->type;
+        op2 = pop_op(&(e->frame->top));
     }
     int type3 = e->frame->top->type;
     operand_type op3 = pop_op(&(e->frame->top)); 
     int type4 = 0;
     operand_type op4;
     if(type3 == 1) {
-        int type4 = e->frame->top->type;
-        operand_type op4 = pop_op(&(e->frame->top));  
+        type4 = e->frame->top->type;
+        op4 = pop_op(&(e->frame->top));  
     }
     if(type1==1 && type3==1) {
         push_op(&(e->frame->top),op2,type2);
@@ -697,17 +697,18 @@ int fdiv(execution *e){
     operand_type result = op2; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
 
     if (isnan(op1.Float) || isnan(op2.Float))
-    	result.Float = (0.0/0.0); //operando Not-A-Number: NaN
+    	result.Float = NAN; //operando Not-A-Number: NaN
     
     else if (op2.Float == 0) {
     	if (op1.Float == 0)
-    		result.Float = 0.0/0.0; //divisao 0/0: NaN
+            result.Float = NAN; //divisao 0/0: NaN
     	else
     		result.Float = 0; //divisao 0/numero
     }
     else if (!isfinite(op2.Float)) {
     	if (!isfinite(op1.Float))
-    		result.Float = 0.0/0.0; //infinito/infinito: NaN
+            result.Float = NAN; //infinito/infinito: NaN
+
     	else
     		result.Float = op2.Float/op1.Float; //infinito/outra coisa - verificar sinais dos operandos
     }
@@ -723,17 +724,17 @@ int ddiv(execution *e){
     operand_type result = op1; //consulta em http://en.cppreference.com/w/c/numeric/math/isnan
 
     if (isnan(op1.Double) || isnan(op2.Double))
-    	result.Double = 0.0/0.0; //operando Not-A-Number: NaN
+        result.Double = NAN; //operando Not-A-Number: NaN
     
     else if (op2.Double == 0) {
     	if (op1.Double == 0)
-    		result.Double = 0.0/0.0; //divisao 0/0: NaN
+            result.Double = NAN; //divisao 0/0: NaN
     	else
     		result.Double = 0; //divisao 0/numero
     }
     else if (!isfinite(op2.Double)) {
     	if (!isfinite(op1.Double))
-    		result.Double = 0.0/0.0; //infinito/infinito: NaN
+            result.Double = NAN; //infinito/infinito: NaN
     	else
     		result.Double = op2.Double/op1.Double; //infinito/outra coisa - verificar sinais dos operandos
     }
@@ -829,8 +830,8 @@ int ishr(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //shift amount
     operand_type op2 = pop_op(&(e->frame->top)); //valor shiftado
     op1.Int &= 0x1F;
-    int n=0;
     if(op2.Int<0) {
+        int n=0;
         for(int i=0;i<op1.Int;++i){
             n >>= 1;
             n |= 0x80000000;
@@ -847,8 +848,8 @@ int lshr(execution *e){
     operand_type op1 = pop_op(&(e->frame->top));
     operand_type op2 = pop_op(&(e->frame->top));
     op1.Long &= 0x3F;
-    int n=0;
     if(op2.Long<0) {
+        int n=0;
         for(int i=0;i<op1.Long;++i){
             n >>= 1;
             n |= 0x8000000000000000;
@@ -918,12 +919,11 @@ int lxor(execution *e){
     op1.Long ^= op2.Long;
     push_op(&(e->frame->top),op1,2);
     return 0;
-}  
+}
 int iinc(execution *e){
     u1 i = u1ReadFrame(e->frame);
     int inc = u1ReadFrame(e->frame); //retirar da pilha o valor incrementado, que pode ser 1 ou -1
-
-    if ((inc & 0x80) > 0) { //eh negativo
+    if (inc & 0x80) { //eh negativo
         inc -= 256; //extensão do zero
     }
 
@@ -1773,6 +1773,7 @@ vector* alocate_multirray(int dim, int* aux) {
             a2 = alocate_multirray(dim-1,auxTam);
             a->array[i].Ref = a2;
         }
+        free(auxTam);
     }
     return a;
 }
@@ -1783,11 +1784,11 @@ int multianewarray(execution *e){
     								//"The unsigned indexbyte1 and indexbyte2 are used to construct an index into the run-time constant pool of the current class"
     u1 dim = u1ReadFrame(e->frame);
     operand_type c[dim], arrref;
-    int aux[dim];
-    if(dim <=0) {
+    if(dim <=0) { // CHECANDO SE UMA VARIAVEL UNSIGNED EH < 0 ?
         printf("ERRO: Dimensao invalida em multianewarray.\n");
         exit(1);
     } else {
+        int aux[dim];
         for(int j=0;j<dim;++j) {
             c[j] = pop_op(&(e->frame->top));
             aux[j] = c[j].Int;

@@ -105,18 +105,15 @@ FILE* open_file(char *nomearquivo) {
 
 //Executcao: ./jvm <nome-da-classe> <arquivo-txt-saida>
 //Retorna o *FILE para o arquivo .class
-FILE* io_handler(char *argv[], char *nomearquivo, FILE **fout)
+FILE* io_handler(char *entradaarquivo, char *saidaarquivo, FILE **fout)
 {
   FILE *fd = NULL;
-  char saidaarquivo[1024];
   
-  strcpy(nomearquivo, argv[1]);
-  fd = open_file(nomearquivo);
+  fd = open_file(entradaarquivo);
   if (!fd) {
     printf("Arquivo de entrada não encontrado!\n");
     exit(0);
   }
-  strcpy(saidaarquivo, argv[2]);
 
   if (!(*fout = fopen(saidaarquivo, "w+"))) {
     printf("Erro na abertura do arquivo de saida\n");

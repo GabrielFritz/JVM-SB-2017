@@ -145,9 +145,12 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
  * */
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
-    if(!cf 
-        //&& strcmp(name, "java/lang/Object") != 0
-            ) { //classe ainda nao pertence ao heap de classes OU Classe Object
+    if(!cf ) { //classe ainda nao pertence ao heap de classes
+        if (strcmp(name, "java/lang/Object") == 0) {
+            printf("Carregando a classe Object\n");
+            strcpy (name, "Object");
+        }
+            
         cf = load_ClassFile(name);
         push_class(&(e->start),*cf);
 

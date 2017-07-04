@@ -5,7 +5,7 @@
 //#include "heap.h"
 #include "instruction_set.h"
 
-char* instrucoes_nomes[] = { //10 instrucoes por linha
+/*char* instrucoes_nomes[] = { //10 instrucoes por linha
     "nop", "aconst_null", "iconst_m1", "iconst_0", "iconst_1", "iconst_2", "iconst_3", "iconst_4", "iconst_5", "lconst_0", //0 ao 9
     "lconst_1", "fconst_0", "fconst_1", "fconst_2", "dconst_0", "dconst_1", "bipush", "sipush", "ldc", "ldc_w",
     "ldc2_w", "iload", "lload", "fload","dload", "aload", "iload_0", "iload_1", "iload_2", "iload_3",
@@ -32,7 +32,7 @@ char* instrucoes_nomes[] = { //10 instrucoes por linha
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, "impdep1", "impdep2" //250 ao 255
-};
+};*/
 
 void free_execution(execution *e){
   if(e->frame)
@@ -83,7 +83,7 @@ void execute_method(execution* e) {
             exit(1);
         }
         else {
-            printf("Executar instrucao %s de codigo hexa %02x\n", instrucoes_nomes[i],i);
+            //printf("Executar instrucao %s de codigo hexa %02x\n", instrucoes_nomes[i],i);
             flag = instr_array[i](e);   //termina a execucao quando encontra um return ou nop
         }
     }

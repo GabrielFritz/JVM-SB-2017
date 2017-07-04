@@ -146,12 +146,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
     if(!cf ) { //classe ainda nao pertence ao heap de classes
-        if (strcmp(name, "java/lang/Object") == 0) {
-            printf("Carregando a classe Object\n");
-            strcpy (name, "Object");
-        }
-            
-        cf = load_ClassFile(name);
+        cf = load_ClassFile(name); //ERRO: AO CARREGAR UMA SEGUNDA CLASSE, O TOPO DA LISTA *(e->start) MUDA BIZARRAMENTE
         push_class(&(e->start),*cf);
 
         if(search_method(cf,MNAME,MDESCR)) {

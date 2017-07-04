@@ -70,7 +70,7 @@ void push_class(class_heap** ch,ClassFile cf) {
     }
     class_heap* move;
     aux1->objects = NULL;
-    if(!(*ch)) *ch = aux1;
+    if(!(*ch)) *ch = aux1; //caso a heap esteja vazia, a classe se torna o topo da heap
     else{
         move = *ch;
         while(move->next) move = move->next;

@@ -54,6 +54,7 @@ void framestack_init(frame** s);
 void push_frame(frame** s);
 void pop_frame(frame** s);
 void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name, char* descriptor);
+void free_frame(frame* f);
 
 u1 u1ReadFrame(frame* f);
 i1 signed1ReadFrame(frame* f);

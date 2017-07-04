@@ -40,6 +40,7 @@ typedef struct _class_heap {
 } class_heap;
 
 void classheap_init(class_heap** ch);
+void free_classheap(class_heap* ch);
 int is_static(u2 access_flag);
 void push_class(class_heap** ch,ClassFile cf);
 ClassFile* search_classheap(class_heap* ch, char* name);

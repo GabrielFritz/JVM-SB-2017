@@ -37,10 +37,13 @@ int findtype(char* type) {
 void free_cte_pool(ClassFile *cf) {
     cp_info *cp;
     for(cp = cf->constant_pool;cp<cf->constant_pool+cf->constant_pool_count-1;++cp) {
-       if (cp->tag == UTF8)
+       if (cp->tag == UTF8){
          free(cp->info.Utf8_info.bytes);
+         cp->info.Utf8_info.bytes = NULL;
+       }
     }
     free(cf->constant_pool);
+    cf->constant_pool = NULL;
 }
 
 void free_attribute(attribute_info* att, ClassFile* cf){
@@ -52,34 +55,41 @@ void free_attribute(attribute_info* att, ClassFile* cf){
   case CODE:
     if (att->type.Code.code_length != 0) {
       free(att->type.Code.code);
+      att->type.Code.code = NULL;
     }
     if (att->type.Code.exception_table_length != 0) {
       free(att->type.Code.exception_table);
+      att->type.Code.exception_table = NULL;
     }
     if (att->type.Code.attributes_count != 0) {
       attribute_info* att_aux;
       for (att_aux = att->type.Code.attributes; att_aux < att->type.Code.attributes + att->type.Code.attributes_count; ++att_aux)
         free_attribute(att_aux, cf);
       free(att->type.Code.attributes);
+      att->type.Code.attributes = NULL;
     }
     break;
   case EXCEPTIONS:
     if (att->type.Exceptions.number_of_exceptions != 0) {
       free(att->type.Exceptions.exception_index_table);
+      att->type.Exceptions.exception_index_table = NULL;
     }
     break;
   case INNERCLASSES:
     if (att->type.InnerClasses.number_of_classes != 0) {
       free(att->type.InnerClasses.classes);
+      att->type.InnerClasses.classes = NULL;
     }
     break;
   case OTHER:
     if (att->attribute_length != 0) {
       free(att->type.Other.bytes);
+      att->type.Other.bytes = NULL;
     }
     break;
   }
   free(type);
+  type = NULL;
 }
 
 void free_methods(ClassFile *cf) {
@@ -90,8 +100,10 @@ void free_methods(ClassFile *cf) {
     for (att_aux = method_aux->attributes; att_aux < method_aux->attributes + method_aux->attributes_count; ++att_aux)
       free_attribute(att_aux, cf);
     free(method_aux->attributes);
+    method_aux->attributes = NULL;
   }
   free(cf->methods);
+  cf->methods = NULL;
 }
 
 void free_attributes(ClassFile *cf) {
@@ -99,21 +111,25 @@ void free_attributes(ClassFile *cf) {
   for (att_aux = cf->attributes; att_aux < cf->attributes + cf->attributes_count; ++att_aux)
     free_attribute(att_aux, cf);
   free(cf->attributes);
+  cf->attributes = NULL;
 }
 
 void free_clFile(ClassFile* cf) {
   if (!cf)
     return;
-  if (cf->fields)
+  if (cf->fields){
     free(cf->fields);
-  if (cf->interfaces)
+    cf->fields = NULL;
+  }
+  if (cf->interfaces){
     free(cf->interfaces);
+    cf->interfaces = NULL;
+  }
   if (cf->methods)
     free_methods(cf);
   if (cf->attributes)
     free_attributes(cf);
   free_cte_pool(cf);
-  //free(cf);
 }
 
 FILE* open_file(char *nomearquivo) {

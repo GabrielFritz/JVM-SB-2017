@@ -209,6 +209,7 @@ void load_attribute(attribute_info* att, ClassFile* cf, FILE* fd) {
           break;
       }
       free(type);
+      type = NULL;
   }
 
   void load_fields(ClassFile* cf, FILE* fd) {
@@ -346,6 +347,7 @@ void print_versions(ClassFile* cf, FILE* fout) {
     char *nome_versao =  show_version(cf->major_version);
     fprintf(fout, "MAJOR VERSION: %d - %s\n", cf->major_version, nome_versao);
     free(nome_versao);
+    nome_versao = NULL;
 
     fprintf(fout, "CONSTANT POOL COUNT: %d\n", cf->constant_pool_count);
 
@@ -939,6 +941,7 @@ enum instrucoes_code { //10 instrucoes por linha
         break;
     }
     free(type);
+    type = NULL;
 }
 
 void print_fields(ClassFile* cf, FILE* fout) {

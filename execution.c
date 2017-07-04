@@ -40,6 +40,7 @@ void free_execution(execution *e){
   if(e->start)
     free_classheap(e->start);
   free(e);
+  e = NULL;
 }
 
 /*!
@@ -131,6 +132,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
         }
     }
         free(cf);
+        cf = NULL;
 }
 
 /*!

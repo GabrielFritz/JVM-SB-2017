@@ -8,18 +8,30 @@
 #include "frame.h"
 
 void free_frame(frame* f){
-  if(f->constant_pool)
+  if(f->constant_pool){
     free(f->constant_pool);
-  if(f->local_arr)
+    f->constant_pool=NULL;
+  }
+  if(f->local_arr){
     free(f->local_arr);
-  if(f->top)
+    f->local_arr=NULL;
+  }
+  if(f->top){
     free(f->top);
-  if(f->code)
+    f->top=NULL;
+  }
+  if(f->code){
     free(f->code);
-  if(f->below)
+    f->code=NULL;
+  }
+  if(f->below){
     free(f->below);
-  if(f->pc)
+    f->below=NULL;
+  }
+  if(f->pc){
     free(f->pc);
+    f->pc=NULL;
+  }
   free(f);
 }
 

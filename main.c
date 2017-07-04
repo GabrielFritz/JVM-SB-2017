@@ -3,15 +3,27 @@
 #include <stdlib.h>
 //#include "types.h"
 //#include "util.h"
-//#include "classfile.h"
+#include "classfile.h"
 //#include "frame.h"
 //#include "heap.h"
 //#include "instruction_set.h"
 #include "execution.h"
 
+void shutdown(FILE *fd, FILE *fout, ClassFile* cf, execution* e){
+  if(e)
+    free_execution(e);
+  if(cf)
+    free_clFile(cf);
+  if(fd)
+    fclose(fd);
+  if(fout)
+    fclose(fout);
+}
+
 int main(int argc,char* argv[]){
 
 	execution* e = NULL;
+  ClassFile* cf = NULL;
 	FILE* fd = NULL;
 	FILE* fout = NULL;
 
@@ -26,9 +38,8 @@ int main(int argc,char* argv[]){
 		char arquivoentrada[1024];
 		fd = io_handler(argv[1], argv[2], &fout); //ponteiro arquivo .class
     	
-    	ClassFile* cf = readClass(fd);
+    	cf = readClass(fd);
     	print_class(cf, arquivoentrada, fout);
-    	shutdown(fd, fout, cf);
 		/*ClassFile* cf = readClass(FILE* fd);
     	print_class(ClassFile* cf, char* strcat(nomearquivo,".class"), FILE* fout);*/
     }
@@ -77,5 +88,6 @@ int main(int argc,char* argv[]){
 
 	    }
     }
+    shutdown(fd, fout, cf, e);
     return 0;
 }

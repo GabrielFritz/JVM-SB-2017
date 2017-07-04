@@ -1,5 +1,5 @@
 #include "execution.h"
-//#include "classfile.h"
+#include "classfile.h"
 //#include "frame.h"
 //#include "types.h"
 //#include "heap.h"
@@ -33,6 +33,14 @@ char* instrucoes_nomes[] = { //10 instrucoes por linha
     NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, "impdep1", "impdep2" //250 ao 255
 };
+
+void free_execution(execution *e){
+  if(e->frame)
+    free_frame(e->frame);
+  if(e->start)
+    free_classheap(e->start);
+  free(e);
+}
 
 /*!
  * Realiza a contagem dos argumentos de um metodo
@@ -122,6 +130,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
             e->frame->local_arr[i] = pop_op(&(e->frame->below->top)); //coloca parametros no array local da funcao chamada
         }
     }
+        free(cf);
 }
 
 /*!

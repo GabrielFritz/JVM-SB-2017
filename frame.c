@@ -4,7 +4,24 @@
 #include "types.h"
 #include "classfile.h"
 #include "heap.h"
+#include "util.h"
 #include "frame.h"
+
+void free_frame(frame* f){
+  if(f->constant_pool)
+    free(f->constant_pool);
+  if(f->local_arr)
+    free(f->local_arr);
+  if(f->top)
+    free(f->top);
+  if(f->code)
+    free(f->code);
+  if(f->below)
+    free(f->below);
+  if(f->pc)
+    free(f->pc);
+  free(f);
+}
 
 /*!
  * Verifica se a pilha de operandos esta' vazia
@@ -107,6 +124,8 @@ void pop_frame(frame** s)
     if(!framestack_isempty(*s)) {
         frame* aux = *s;
         *s = (*s)->below;
+        if(aux->local_arr)
+          free(aux->local_arr);
         free(aux);
     }
     else {

@@ -14,7 +14,7 @@ u1 search_tag(cp_info* cp, u2 i);
 int search_int(cp_info* cp, u2 i);
 float search_float(cp_info* cp, u2 i);
 char* search_utf8(cp_info* cp, u2 i);
-void shutdown(FILE *fd, FILE *fout, ClassFile* cf);
+//void shutdown(FILE *fd, FILE *fout, ClassFile* cf);
 int findtype(char* type);
 FILE* open_file(char *nomearquivo);
 FILE* io_handler(char *entradaarquivo, char *saidaarquivo, FILE **fout);

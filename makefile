@@ -1,9 +1,4 @@
-CFLAGS=-Wall -Wextra
-ifdef RELEASE
-	CFLAGS += -O2
-else
-	CFLAGS += -ggdb -std=c99 -lm
-endif
+CFLAGS = -ggdb -std=c99 -lm
 
 all: jvm
 

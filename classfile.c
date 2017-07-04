@@ -276,6 +276,7 @@ ClassFile* readClass(FILE* fd) {
   load_fields(cf, fd);
   load_methods(cf, fd);
   load_attributes(cf, fd);
+  fclose(fd);
   return cf;
 }
 

@@ -43,34 +43,6 @@ void free_cte_pool(ClassFile *cf) {
     free(cf->constant_pool);
 }
 
-/*
-void free_methods(ClassFile *cf) {
-  method_info* method_aux;
-  char *type;
-
-  for (method_aux = cf->methods; method_aux < cf->methods + cf->method_count; ++method_aux) {
-    attribute_info* att_aux;
-    for (att_aux = method_aux->attributes; att_aux < method_aux->attributes + method_aux->attributes_count; ++att_aux) {
-      type = (char*)calloc(cf->constant_pool[att_aux->attribute_name_index - 1].info.Utf8_info.length,sizeof(char));
-      strcpy(type, (char*)cf->constant_pool[att_aux->attribute_name_index - 1].info.Utf8_info.bytes);
-      int i = findtype(type);
-      if (i == CODE){
-        if (att_aux->type.Code.code_length > 0) {
-          free(att_aux->type.Code.code);
-        }
-        if (att_aux->type.Code.exception_table_length > 0) {
-          free(att_aux->type.Code.exception_table);
-        }
-      }
-      free(type);
-      //free_attr(cf, method_aux);
-    }
-    free(method_aux->attributes);
-  }
-  free(cf->methods);
-}
-*/
-
 void free_attribute(attribute_info* att, ClassFile* cf){
   char* type;
   type = (char*)calloc(cf->constant_pool[att->attribute_name_index - 1].info.Utf8_info.length+1,sizeof(char));
@@ -85,6 +57,9 @@ void free_attribute(attribute_info* att, ClassFile* cf){
       free(att->type.Code.exception_table);
     }
     if (att->type.Code.attributes_count != 0) {
+      attribute_info* att_aux;
+      for (att_aux = att->type.Code.attributes; att_aux < att->type.Code.attributes + att->type.Code.attributes_count; ++att_aux)
+        free_attribute(att_aux, cf);
       free(att->type.Code.attributes);
     }
     break;
@@ -138,16 +113,8 @@ void free_clFile(ClassFile* cf) {
   if (cf->attributes)
     free_attributes(cf);
   free_cte_pool(cf);
-  free(cf);
+  //free(cf);
 }
-/*
-void shutdown(FILE *fd, FILE *fout, ClassFile* cf) {
-    free_clFile(cf);
-    fclose(fout);
-    fclose(fd);
-    printf("Finalizado!\n");
-}
-*/
 
 FILE* open_file(char *nomearquivo) {
     FILE* fp = fopen(nomearquivo, "rb");
@@ -161,17 +128,15 @@ FILE* open_file(char *nomearquivo) {
 
 //Executcao: ./jvm <nome-da-classe> <arquivo-txt-saida>
 //Retorna o *FILE para o arquivo .class
-FILE* io_handler(char *argv[], char *nomearquivo, FILE **fout)
+FILE* io_handler(char *entradaarquivo, char *saidaarquivo, FILE **fout)
 {
-  char saidaarquivo[1024];
-  
-  strcpy(nomearquivo, argv[1]);
-  FILE *fd = open_file(nomearquivo);
+  FILE *fd = NULL;
+  strcat(entradaarquivo,".class");
+  fd = open_file(entradaarquivo);
   if (!fd) {
     printf("Arquivo de entrada não encontrado!\n");
     exit(0);
   }
-  strcpy(saidaarquivo, argv[2]);
 
   if (!(*fout = fopen(saidaarquivo, "w+"))) {
     printf("Erro na abertura do arquivo de saida\n");

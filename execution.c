@@ -35,8 +35,11 @@ char* instrucoes_nomes[] = { //10 instrucoes por linha
 };
 
 void free_execution(execution *e){
-  //free_frame(e->frame);
-  free_classheap(e->start);
+  if(e->frame)
+    free_frame(e->frame);
+  if(e->start)
+    free_classheap(e->start);
+  free(e);
 }
 
 /*!
@@ -127,6 +130,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
             e->frame->local_arr[i] = pop_op(&(e->frame->below->top)); //coloca parametros no array local da funcao chamada
         }
     }
+        free(cf);
 }
 
 /*!

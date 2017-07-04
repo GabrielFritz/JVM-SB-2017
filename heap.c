@@ -74,7 +74,7 @@ void push_class(class_heap** ch,ClassFile cf) {
     else{
         move = *ch;
         while(move->next) move = move->next;
-        move->next = aux1;
+        move->next = aux1; //a nova classe aux1 eh inserida no final do class_heap
     }
 }
 

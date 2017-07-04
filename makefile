@@ -1,10 +1,4 @@
-#CFLAGS=-Wall -Wextra
 CFLAGS = -ggdb -std=c99 -lm
-ifdef RELEASE
-	CFLAGS += -O2
-else
-	#CFLAGS += -lm -ggdb3 -fsanitize=address
-endif
 
 all: jvm
 

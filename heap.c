@@ -9,13 +9,11 @@ void free_classheap(class_heap* ch){
     aux = ch;
     ch = ch->next;
     free_clFile(&(aux->cf));
-    //free(&aux->cf);
-    //if(aux->static_fields)
-      free((aux->static_fields));
+    free(aux->static_fields);
+    aux->static_fields = NULL;
     free(aux);
+    aux=NULL;
   }
-  //free(ch->static_fields);
-  //free_objects(ch->objects);
 }
 
 /*!

@@ -1311,6 +1311,7 @@ int tableswitch(execution *e){
     else
         e->frame->pc = e->frame->pc +(off[i.Int-lowcase_off]);
     free(off);
+    off = NULL;
     return 0;
 }  
 int lookupswitch(execution *e){
@@ -1774,6 +1775,7 @@ vector* alocate_multirray(int dim, int* aux) {
             a->array[i].Ref = a2;
         }
         free(auxTam);
+        auxTam=NULL;
     }
     return a;
 }

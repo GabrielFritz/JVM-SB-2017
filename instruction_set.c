@@ -201,7 +201,7 @@ int ldc2_w(execution *e){
     return 0;
 } 
 int iload(execution *e){
-    u1 i = u1ReadFrame(e->frame);
+    u1 i = u1ReadFrame(e->frame); //resgata o indice do vetor a ser empilhado
     operand_type op = e->frame->local_arr[i];
 	push_op(&(e->frame->top),op,1);
 	return 0;
@@ -370,7 +370,7 @@ int aaload(execution *e){
     }*/
     return 0;
 } 
-int store(execution *e){
+int store(execution *e){ //resgata o indice do vetor que recebera' o operando-topo da pilha
     int index = u1ReadFrame(e->frame);
     e->frame->local_arr[index] = pop_op(&(e->frame->top));
 	return 0;
@@ -1294,22 +1294,23 @@ int tableswitch(execution *e){
     int delta = (e->frame->pc - e->frame->code);
     int pad_size = (4-delta%4);
     for(int i=1;i<pad_size;++i) u1ReadFrame(e->frame);
-    int default_offset = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
-    int lowcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
-    int highcase_off = (int) u4ReadFrame(e->frame); //COMPORTAMENTO ESTRANHO - REVER INSTRUCAO
+    int default_offset = (int) u4ReadFrame(e->frame); //armazena o offset default
+    int lowcase_off = (int) u4ReadFrame(e->frame); //menor valor do offset
+    int highcase_off = (int) u4ReadFrame(e->frame); //maior valor do offset
     int size_switch = (highcase_off-lowcase_off+1);
     if(size_switch<0){
         printf("ERRO. Tableswitch LOWOFF greater than HIGHOFF.\n");
         exit(1);
     }
     int* off = (int*)calloc(size_switch,sizeof(int));
-    for(int i=0;i<size_switch;++i) off[i]=u4ReadFrame(e->frame);
+    for(int i=0;i<size_switch;++i)
+        off[i]=u4ReadFrame(e->frame); //armazena os offsets dos valores nao-default
     e->frame->pc = return_pc;
-    operand_type i = pop_op(&(e->frame->top));
+    operand_type i = pop_op(&(e->frame->top)); //da pop no valor comparado no switch
     if(i.Int < lowcase_off || i.Int>highcase_off)
-        e->frame->pc = e->frame->pc+default_offset;
+        e->frame->pc = e->frame->pc+default_offset; //o valor comparado esta fora do alcance entre valores nao-default
     else
-        e->frame->pc = e->frame->pc +(off[i.Int-lowcase_off]);
+        e->frame->pc = e->frame->pc +(off[i.Int-lowcase_off]); //somar o respectivo pc ao offset
     free(off);
     off = NULL;
     return 0;

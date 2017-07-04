@@ -162,18 +162,18 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
     ClassFile* cf_aux = &cf;
     method_info* method = NULL;
     attribute_info code;
-    u2 super_index = cf_aux->super_class;
+    u2 super_index = cf_aux->super_class; //pega o indice da superclasse
     char super_name[128];
 
-    while(cf_aux!=NULL
+    while(cf_aux!=NULL //a classe atual e' valida
     && (method=search_method(cf_aux,method_name,descriptor))==NULL //pesquisa o metodo na classe corrente
-    && super_index != 0)
-    {
+    && super_index != 0) //a classe atual possui superclasse
+    { //entra no loop se o metodo nao for encontrado na classe corrente. nesse caso, procurar o metodo na super_class
         strcpy(super_name, search_utf8(cf_aux->constant_pool,
                                         cf_aux->constant_pool[super_index].info.Class_info.name_index));
 
-        cf_aux = search_classheap(start,super_name); // Se nao foi encontrado, ele pesquisa na superclasse
-        if(cf_aux != NULL)
+        cf_aux = search_classheap(start,super_name);
+        if(cf_aux != NULL) // Super class nao foi encontrada no heap
             super_index = cf_aux->super_class;
     }
     if(!method) {
@@ -182,7 +182,7 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
     }
 
     attribute_info* att_aux;
-    for(att_aux = method->attributes; att_aux<method->attributes+method->attributes_count;++att_aux)
+    for(att_aux = method->attributes; att_aux<method->attributes+method->attributes_count;++att_aux) //verifica os atributos do metodo
     {
         if(!strcmp(search_utf8(cf_aux->constant_pool, att_aux->attribute_name_index),"Code")) //Atributo Code nao encontrado
         {
@@ -194,9 +194,9 @@ void frame_init(class_heap* start, ClassFile cf,frame* frame, char* method_name,
 
     frame->constant_pool = cf_aux->constant_pool;
     init_opheap(&(frame->top));
-    frame->code = code.type.Code.code;
-    frame->local_arr = (operand_type*)malloc(sizeof(operand_type)*code.type.Code.max_locals);
-    frame->pc = (frame->code)-1;
+    frame->code = code.type.Code.code; //inserir no frame onde comeca o Code do metodo
+    frame->local_arr = (operand_type*)malloc(sizeof(operand_type)*code.type.Code.max_locals); //inserir no frame o tamanho do local_arr
+    frame->pc = (frame->code)-1; //inserir no frame o PC, a referencia da primeira instrucao do Code do metodo
 }
 
 /*!

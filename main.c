@@ -32,7 +32,7 @@ int main(int argc,char* argv[]){
         framestack_init(&(e->frame)); //inicializa a pilha de stacks (null)
         classheap_init(&(e->start)); //inicializa a pilha de classes (null)
         init_methodexecution(e,argv[1],"main","([Ljava/lang/String;)V",0);
-        execute_method(e);
+        execute_method(e); //o metodo esta no topo da pilha de frames, pronto para sua execucao
     }
     else if (argc == 3) { //./jvm <nome-da-classe> <arquivo-txt-saida>
 		char arquivoentrada[1024];

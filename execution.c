@@ -75,10 +75,10 @@ int count_args(char* d) {
 void execute_method(execution* e) {
     int flag =0;
 
-    while(!flag) {
+    while(!flag) { //as instrucoes de finalizacao (return) setam flag = 1
         u1 i = u1ReadFrame(e->frame); //retirar do frame o codigo da instrucao a ser executada
 
-        if (i > 0xc9) { //instrucao maxima eh jsr_w, com valor 201
+        if (i > 0xc9) { //instrucao de maior opcode eh jsr_w, com valor 201
             printf("Valor lido nao corresponde ao code de uma instrucao valida\n");
             exit(1);
         }
@@ -109,7 +109,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
     push_frame(&(e->frame)); //novo frame da nova classe
     frame_init(e->start,*cf,e->frame,method,descriptor); //inicializa o frame do metodo a ser executado (null)
     
-    if(e->frame->below) {
+    if(e->frame->below) { //existe um metodo chamador do metodo atual
         int sizeindex = 0;
         operand_heap* opaux;
         init_opheap(&opaux);

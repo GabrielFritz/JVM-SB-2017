@@ -1616,14 +1616,14 @@ int invokestatic(execution *e){
     char* namem = search_utf8(e->frame->constant_pool,namei);
     char* descriptor = search_utf8(e->frame->constant_pool,descri);
     int n = count_args(descriptor);
-    if(!(!strcmp(namec,"java/lang/Object") && !strcmp(namem,"registerNatives") && !strcmp(descriptor,"(V)")))
+    if( strcmp(namec,"java/lang/Object")|| strcmp(namem,"registerNatives")|| strcmp(descriptor,"()V") )
     {
         //ClassFile* cf = check_class(e,namec); //variavel nao utilizada
         check_class(e,namec);
         init_methodexecution(e,namec,namem,descriptor,n);
         execute_method(e);
     }
-	return 0;
+	return 0; //RETORNAR 0 EM CASO DE registerNatives
 }
 
 //Numero de fields estaticos da classe, necessario para execucao do New
@@ -1666,7 +1666,8 @@ void field_init(execution* e,ClassFile* cf, field* f) {
     while(aux->super_class) {
         u2 supernamei = aux->constant_pool[(aux->super_class)-1].info.Class_info.name_index;
         char* supername = NULL;
-        strcpy(supername,search_utf8(aux->constant_pool, supernamei));
+        //strcpy(supername,search_utf8(aux->constant_pool, supernamei));
+        supername = search_utf8(aux->constant_pool, supernamei);
         aux = check_class(e,supername);
         if(aux) { //superclasse encontrada
             for(field_info* a = aux->fields;a<aux->fields+aux->fields_count;++a) {

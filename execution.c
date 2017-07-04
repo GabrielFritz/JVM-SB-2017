@@ -110,7 +110,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
     frame_init(e->start,*cf,e->frame,method,descriptor); //inicializa o frame do metodo a ser executado (null)
     
     if(e->frame->below) {
-        int sizeindex =0;
+        int sizeindex = 0;
         operand_heap* opaux;
         init_opheap(&opaux);
         //A seguir: manipular os argumentos passados por esse chamador
@@ -131,8 +131,6 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
             e->frame->local_arr[i] = pop_op(&(e->frame->below->top)); //coloca parametros no array local da funcao chamada
         }
     }
-        free(cf);
-        cf = NULL;
 }
 
 /*!
@@ -148,7 +146,7 @@ void init_methodexecution(execution* e,char* class,char* method, char* descripto
 ClassFile* check_class(execution* e, char* name) {
     ClassFile* cf = search_classheap(e->start,name);
     if(!cf ) { //classe ainda nao pertence ao heap de classes
-        cf = load_ClassFile(name); //ERRO: AO CARREGAR UMA SEGUNDA CLASSE, O TOPO DA LISTA *(e->start) MUDA BIZARRAMENTE
+        cf = load_ClassFile(name);
         push_class(&(e->start),*cf);
 
         if(search_method(cf,MNAME,MDESCR)) {

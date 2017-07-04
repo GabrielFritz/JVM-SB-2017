@@ -1,0 +1,7 @@
+<map id="ClassFile" name="ClassFile">
+<area shape="rect" id="node2" href="$structfield__info.html" title="field_info" alt="" coords="192,184,267,211"/>
+<area shape="rect" id="node3" href="$struct__attribute__info.html" title="_attribute_info" alt="" coords="97,95,201,121"/>
+<area shape="rect" id="node4" href="$structexception__table__info.html" title="exception_table_info" alt="" coords="5,5,147,32"/>
+<area shape="rect" id="node5" href="$structclasstype__info.html" title="classtype_info" alt="" coords="171,5,277,32"/>
+<area shape="rect" id="node6" href="$structcp__info.html" title="cp_info" alt="" coords="291,184,355,211"/>
+</map>

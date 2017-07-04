@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM Grupo 2: Código-Fonte de /home/matheus/Desktop/JVM-SB-2017/frame.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM Grupo 2
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('frame_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">/home/matheus/Desktop/JVM-SB-2017/frame.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="frame_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FRAME_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FRAME_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html">types.h</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="classfile_8h.html">classfile.h</a>&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="heap_8h.html">heap.h</a>&quot;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="union__operand__type.html">   12</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span><a class="code" href="union__operand__type.html">_operand_type</a> {</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="union__operand__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">   13</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="union__operand__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">Int</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="union__operand__type.html#a01d96ae80bd62edd3577d37717b192e4">   14</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="union__operand__type.html#a01d96ae80bd62edd3577d37717b192e4">Long</a>;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="union__operand__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">   15</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="union__operand__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">Float</a>;</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="union__operand__type.html#a67712f090f8c18a2de65a31a26762315">   16</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="union__operand__type.html#a67712f090f8c18a2de65a31a26762315">Double</a>;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="union__operand__type.html#aa35dc710a56760f0da0f98c5c11cb79e">   17</a></span>&#160;    <span class="keywordtype">void</span>* <a class="code" href="union__operand__type.html#aa35dc710a56760f0da0f98c5c11cb79e">Ref</a>;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;} <a class="code" href="frame_8h.html#a0c1c7ce4e9db5ce3203212387cc1925d">operand_type</a>;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct__vector.html">   20</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__vector.html">_vector</a> {</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="struct__vector.html#ac765329451135abec74c45e1897abf26">   21</a></span>&#160;    <span class="keywordtype">int</span> size,<a class="code" href="struct__vector.html#ac765329451135abec74c45e1897abf26">type</a>;</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct__vector.html#a44be124dd062343f3db747d29299a51d">   22</a></span>&#160;    <a class="code" href="union__operand__type.html">operand_type</a>* <a class="code" href="struct__vector.html#a44be124dd062343f3db747d29299a51d">array</a>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;} <a class="code" href="frame_8h.html#a07a01529159cc35e78c1f7731ac7bda6">vector</a>;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="struct__operand__heap.html">   29</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__operand__heap.html">_operand_heap</a> {</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="struct__operand__heap.html#a320f9f33ad5a26bbe7967018a3400223">   30</a></span>&#160;    <a class="code" href="union__operand__type.html">operand_type</a> <a class="code" href="struct__operand__heap.html#a320f9f33ad5a26bbe7967018a3400223">op</a>;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="struct__operand__heap.html#ac765329451135abec74c45e1897abf26">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct__operand__heap.html#ac765329451135abec74c45e1897abf26">type</a>;</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="struct__operand__heap.html#a928f674a7200ff713afaf9b7b42f68f3">   32</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct__operand__heap.html">_operand_heap</a>* <a class="code" href="struct__operand__heap.html#a928f674a7200ff713afaf9b7b42f68f3">below</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;} <a class="code" href="frame_8h.html#a62f65fc4656c50075239b97617bc7ced">operand_heap</a>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="struct__frame.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__frame.html">_frame</a> {</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="struct__frame.html#ace3229f6e4d460d20e72e493d180ecc5">   39</a></span>&#160;    <a class="code" href="structcp__info.html">cp_info</a>* <a class="code" href="struct__frame.html#ace3229f6e4d460d20e72e493d180ecc5">constant_pool</a>;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="struct__frame.html#ac742dc667e9fe314efc96e3d4c25d4ba">   40</a></span>&#160;    <a class="code" href="union__operand__type.html">operand_type</a>* <a class="code" href="struct__frame.html#ac742dc667e9fe314efc96e3d4c25d4ba">local_arr</a>;</div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">   41</a></span>&#160;    <a class="code" href="struct__operand__heap.html">operand_heap</a>* <a class="code" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">top</a>;</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="struct__frame.html#a83424ffc7afb5e85f548fa9a222cbef4">   42</a></span>&#160;    <a class="code" href="types_8h.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a>* <a class="code" href="struct__frame.html#a83424ffc7afb5e85f548fa9a222cbef4">code</a>;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="struct__frame.html#ad6ecf962a26f3beb020461c60cbe09c8">   43</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct__frame.html">_frame</a> *<a class="code" href="struct__frame.html#ad6ecf962a26f3beb020461c60cbe09c8">below</a>;</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="struct__frame.html#a9d9c8098683d65bbcce5d4ba290c75cb">   44</a></span>&#160;    <a class="code" href="types_8h.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a>* <a class="code" href="struct__frame.html#a9d9c8098683d65bbcce5d4ba290c75cb">pc</a>;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="frame_8h.html#a1fb5722bd32c59ab59cebe6e5832455e">frame</a>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">int</span> <a class="code" href="frame_8h.html#a43d40e1672fa595e511a87a8bf9e54a0">operandheap_isempty</a>(<a class="code" href="struct__operand__heap.html">operand_heap</a>* <a class="code" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">top</a>);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#a57fddc12dcb110bf02f2ffb4e8231b7b">push_op</a>(<a class="code" href="struct__operand__heap.html">operand_heap</a> **<a class="code" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">top</a>,<a class="code" href="union__operand__type.html">operand_type</a> op,<span class="keywordtype">int</span> op_type);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#affa129094635f304def02ae8c8e8b144">init_opheap</a>(<a class="code" href="struct__operand__heap.html">operand_heap</a>** <a class="code" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">top</a>);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="union__operand__type.html">operand_type</a> <a class="code" href="frame_8h.html#a77e266cfe02e0f2c200384ae7841c8af">pop_op</a>(<a class="code" href="struct__operand__heap.html">operand_heap</a>** <a class="code" href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">top</a>);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">int</span> <a class="code" href="frame_8h.html#a6b75376f3be08ed55e4e95d1384d932d">framestack_isempty</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#ae59cad303caba7208c35552ccb8f7919">framestack_init</a>(<a class="code" href="struct__frame.html">frame</a>** s);</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#afa48a760622df1fa95a006abd219fbfc">push_frame</a>(<a class="code" href="struct__frame.html">frame</a>** s);</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#a6a283cbfc936077ab590149f0d0e6b00">pop_frame</a>(<a class="code" href="struct__frame.html">frame</a>** s);</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#a733f64cd7b15346b97acbeabdabff9ee">frame_init</a>(<a class="code" href="struct__class__heap.html">class_heap</a>* start, <a class="code" href="struct_class_file.html">ClassFile</a> cf,<a class="code" href="struct__frame.html">frame</a>* <a class="code" href="struct__frame.html">frame</a>, <span class="keywordtype">char</span>* method_name, <span class="keywordtype">char</span>* descriptor);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="frame_8h.html#a38ba876f6cbc0032980b5d9b10a2334d">free_frame</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="types_8h.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a> <a class="code" href="frame_8h.html#a188a90edf66b9880fe0922f4f2ea0143">u1ReadFrame</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="types_8h.html#a6be0d08d5318753334c788d23128142e">i1</a> <a class="code" href="frame_8h.html#a4f34ec7690ad03f8868b4c91c90b3469">signed1ReadFrame</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<a class="code" href="types_8h.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a> <a class="code" href="frame_8h.html#af824406d6140a3a6352f572ffc8a6c9b">u2ReadFrame</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<a class="code" href="types_8h.html#ae5be1f726785414dd1b77d60df074c9d">u4</a> <a class="code" href="frame_8h.html#a30ff02a00e113387e42467e8f6da9338">u4ReadFrame</a>(<a class="code" href="struct__frame.html">frame</a>* f);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="frame_8h_html_a38ba876f6cbc0032980b5d9b10a2334d"><div class="ttname"><a href="frame_8h.html#a38ba876f6cbc0032980b5d9b10a2334d">free_frame</a></div><div class="ttdeci">void free_frame(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:10</div></div>
+<div class="ttc" id="frame_8h_html_a62f65fc4656c50075239b97617bc7ced"><div class="ttname"><a href="frame_8h.html#a62f65fc4656c50075239b97617bc7ced">operand_heap</a></div><div class="ttdeci">struct _operand_heap operand_heap</div></div>
+<div class="ttc" id="struct__frame_html_ac742dc667e9fe314efc96e3d4c25d4ba"><div class="ttname"><a href="struct__frame.html#ac742dc667e9fe314efc96e3d4c25d4ba">_frame::local_arr</a></div><div class="ttdeci">operand_type * local_arr</div><div class="ttdef"><b>Definition:</b> frame.h:40</div></div>
+<div class="ttc" id="types_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div></div>
+<div class="ttc" id="frame_8h_html_a0c1c7ce4e9db5ce3203212387cc1925d"><div class="ttname"><a href="frame_8h.html#a0c1c7ce4e9db5ce3203212387cc1925d">operand_type</a></div><div class="ttdeci">union _operand_type operand_type</div></div>
+<div class="ttc" id="union__operand__type_html_a01d96ae80bd62edd3577d37717b192e4"><div class="ttname"><a href="union__operand__type.html#a01d96ae80bd62edd3577d37717b192e4">_operand_type::Long</a></div><div class="ttdeci">long long Long</div><div class="ttdef"><b>Definition:</b> frame.h:14</div></div>
+<div class="ttc" id="struct__frame_html"><div class="ttname"><a href="struct__frame.html">_frame</a></div><div class="ttdef"><b>Definition:</b> frame.h:38</div></div>
+<div class="ttc" id="types_8h_html_a732cde1300aafb73b0ea6c2558a7a54f"><div class="ttname"><a href="types_8h.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a></div><div class="ttdeci">uint16_t u2</div><div class="ttdef"><b>Definition:</b> types.h:58</div></div>
+<div class="ttc" id="frame_8h_html_a57fddc12dcb110bf02f2ffb4e8231b7b"><div class="ttname"><a href="frame_8h.html#a57fddc12dcb110bf02f2ffb4e8231b7b">push_op</a></div><div class="ttdeci">void push_op(operand_heap **top, operand_type op, int op_type)</div><div class="ttdef"><b>Definition:</b> frame.c:57</div></div>
+<div class="ttc" id="frame_8h_html_a30ff02a00e113387e42467e8f6da9338"><div class="ttname"><a href="frame_8h.html#a30ff02a00e113387e42467e8f6da9338">u4ReadFrame</a></div><div class="ttdeci">u4 u4ReadFrame(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:220</div></div>
+<div class="ttc" id="classfile_8h_html"><div class="ttname"><a href="classfile_8h.html">classfile.h</a></div></div>
+<div class="ttc" id="struct__frame_html_aa9e12c00209b4ef8245ac7e953bf90cf"><div class="ttname"><a href="struct__frame.html#aa9e12c00209b4ef8245ac7e953bf90cf">_frame::top</a></div><div class="ttdeci">operand_heap * top</div><div class="ttdef"><b>Definition:</b> frame.h:41</div></div>
+<div class="ttc" id="frame_8h_html_a4f34ec7690ad03f8868b4c91c90b3469"><div class="ttname"><a href="frame_8h.html#a4f34ec7690ad03f8868b4c91c90b3469">signed1ReadFrame</a></div><div class="ttdeci">i1 signed1ReadFrame(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:211</div></div>
+<div class="ttc" id="struct__vector_html_ac765329451135abec74c45e1897abf26"><div class="ttname"><a href="struct__vector.html#ac765329451135abec74c45e1897abf26">_vector::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> frame.h:21</div></div>
+<div class="ttc" id="types_8h_html_a6be0d08d5318753334c788d23128142e"><div class="ttname"><a href="types_8h.html#a6be0d08d5318753334c788d23128142e">i1</a></div><div class="ttdeci">int8_t i1</div><div class="ttdef"><b>Definition:</b> types.h:60</div></div>
+<div class="ttc" id="struct__operand__heap_html"><div class="ttname"><a href="struct__operand__heap.html">_operand_heap</a></div><div class="ttdef"><b>Definition:</b> frame.h:29</div></div>
+<div class="ttc" id="frame_8h_html_a07a01529159cc35e78c1f7731ac7bda6"><div class="ttname"><a href="frame_8h.html#a07a01529159cc35e78c1f7731ac7bda6">vector</a></div><div class="ttdeci">struct _vector vector</div></div>
+<div class="ttc" id="structcp__info_html"><div class="ttname"><a href="structcp__info.html">cp_info</a></div><div class="ttdef"><b>Definition:</b> classfile.h:64</div></div>
+<div class="ttc" id="frame_8h_html_a6a283cbfc936077ab590149f0d0e6b00"><div class="ttname"><a href="frame_8h.html#a6a283cbfc936077ab590149f0d0e6b00">pop_frame</a></div><div class="ttdeci">void pop_frame(frame **s)</div><div class="ttdef"><b>Definition:</b> frame.c:134</div></div>
+<div class="ttc" id="struct__frame_html_ace3229f6e4d460d20e72e493d180ecc5"><div class="ttname"><a href="struct__frame.html#ace3229f6e4d460d20e72e493d180ecc5">_frame::constant_pool</a></div><div class="ttdeci">cp_info * constant_pool</div><div class="ttdef"><b>Definition:</b> frame.h:39</div></div>
+<div class="ttc" id="heap_8h_html"><div class="ttname"><a href="heap_8h.html">heap.h</a></div></div>
+<div class="ttc" id="frame_8h_html_a43d40e1672fa595e511a87a8bf9e54a0"><div class="ttname"><a href="frame_8h.html#a43d40e1672fa595e511a87a8bf9e54a0">operandheap_isempty</a></div><div class="ttdeci">int operandheap_isempty(operand_heap *top)</div><div class="ttdef"><b>Definition:</b> frame.c:45</div></div>
+<div class="ttc" id="struct__operand__heap_html_ac765329451135abec74c45e1897abf26"><div class="ttname"><a href="struct__operand__heap.html#ac765329451135abec74c45e1897abf26">_operand_heap::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> frame.h:31</div></div>
+<div class="ttc" id="frame_8h_html_affa129094635f304def02ae8c8e8b144"><div class="ttname"><a href="frame_8h.html#affa129094635f304def02ae8c8e8b144">init_opheap</a></div><div class="ttdeci">void init_opheap(operand_heap **top)</div><div class="ttdef"><b>Definition:</b> frame.c:70</div></div>
+<div class="ttc" id="struct_class_file_html"><div class="ttname"><a href="struct_class_file.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> classfile.h:98</div></div>
+<div class="ttc" id="types_8h_html_ae5be1f726785414dd1b77d60df074c9d"><div class="ttname"><a href="types_8h.html#ae5be1f726785414dd1b77d60df074c9d">u4</a></div><div class="ttdeci">uint32_t u4</div><div class="ttdef"><b>Definition:</b> types.h:59</div></div>
+<div class="ttc" id="struct__frame_html_a9d9c8098683d65bbcce5d4ba290c75cb"><div class="ttname"><a href="struct__frame.html#a9d9c8098683d65bbcce5d4ba290c75cb">_frame::pc</a></div><div class="ttdeci">u1 * pc</div><div class="ttdef"><b>Definition:</b> frame.h:44</div></div>
+<div class="ttc" id="util_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div></div>
+<div class="ttc" id="frame_8h_html_a6b75376f3be08ed55e4e95d1384d932d"><div class="ttname"><a href="frame_8h.html#a6b75376f3be08ed55e4e95d1384d932d">framestack_isempty</a></div><div class="ttdeci">int framestack_isempty(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:103</div></div>
+<div class="ttc" id="union__operand__type_html"><div class="ttname"><a href="union__operand__type.html">_operand_type</a></div><div class="ttdef"><b>Definition:</b> frame.h:12</div></div>
+<div class="ttc" id="frame_8h_html_a733f64cd7b15346b97acbeabdabff9ee"><div class="ttname"><a href="frame_8h.html#a733f64cd7b15346b97acbeabdabff9ee">frame_init</a></div><div class="ttdeci">void frame_init(class_heap *start, ClassFile cf, frame *frame, char *method_name, char *descriptor)</div><div class="ttdef"><b>Definition:</b> frame.c:160</div></div>
+<div class="ttc" id="struct__frame_html_a83424ffc7afb5e85f548fa9a222cbef4"><div class="ttname"><a href="struct__frame.html#a83424ffc7afb5e85f548fa9a222cbef4">_frame::code</a></div><div class="ttdeci">u1 * code</div><div class="ttdef"><b>Definition:</b> frame.h:42</div></div>
+<div class="ttc" id="frame_8h_html_a77e266cfe02e0f2c200384ae7841c8af"><div class="ttname"><a href="frame_8h.html#a77e266cfe02e0f2c200384ae7841c8af">pop_op</a></div><div class="ttdeci">operand_type pop_op(operand_heap **top)</div><div class="ttdef"><b>Definition:</b> frame.c:80</div></div>
+<div class="ttc" id="union__operand__type_html_ac5cf253e4e659cad0270852f8b7ce2a3"><div class="ttname"><a href="union__operand__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">_operand_type::Int</a></div><div class="ttdeci">int Int</div><div class="ttdef"><b>Definition:</b> frame.h:13</div></div>
+<div class="ttc" id="union__operand__type_html_a00c3b491c1db9c4ac2e31f31aea8c9eb"><div class="ttname"><a href="union__operand__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">_operand_type::Float</a></div><div class="ttdeci">float Float</div><div class="ttdef"><b>Definition:</b> frame.h:15</div></div>
+<div class="ttc" id="struct__class__heap_html"><div class="ttname"><a href="struct__class__heap.html">_class_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:34</div></div>
+<div class="ttc" id="struct__operand__heap_html_a928f674a7200ff713afaf9b7b42f68f3"><div class="ttname"><a href="struct__operand__heap.html#a928f674a7200ff713afaf9b7b42f68f3">_operand_heap::below</a></div><div class="ttdeci">struct _operand_heap * below</div><div class="ttdef"><b>Definition:</b> frame.h:32</div></div>
+<div class="ttc" id="struct__frame_html_ad6ecf962a26f3beb020461c60cbe09c8"><div class="ttname"><a href="struct__frame.html#ad6ecf962a26f3beb020461c60cbe09c8">_frame::below</a></div><div class="ttdeci">struct _frame * below</div><div class="ttdef"><b>Definition:</b> frame.h:43</div></div>
+<div class="ttc" id="frame_8h_html_af824406d6140a3a6352f572ffc8a6c9b"><div class="ttname"><a href="frame_8h.html#af824406d6140a3a6352f572ffc8a6c9b">u2ReadFrame</a></div><div class="ttdeci">u2 u2ReadFrame(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:213</div></div>
+<div class="ttc" id="frame_8h_html_ae59cad303caba7208c35552ccb8f7919"><div class="ttname"><a href="frame_8h.html#ae59cad303caba7208c35552ccb8f7919">framestack_init</a></div><div class="ttdeci">void framestack_init(frame **s)</div><div class="ttdef"><b>Definition:</b> frame.c:111</div></div>
+<div class="ttc" id="types_8h_html_ad9f4cdb6757615aae2fad89dab3c5470"><div class="ttname"><a href="types_8h.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a></div><div class="ttdeci">uint8_t u1</div><div class="ttdef"><b>Definition:</b> types.h:57</div></div>
+<div class="ttc" id="union__operand__type_html_aa35dc710a56760f0da0f98c5c11cb79e"><div class="ttname"><a href="union__operand__type.html#aa35dc710a56760f0da0f98c5c11cb79e">_operand_type::Ref</a></div><div class="ttdeci">void * Ref</div><div class="ttdef"><b>Definition:</b> frame.h:17</div></div>
+<div class="ttc" id="union__operand__type_html_a67712f090f8c18a2de65a31a26762315"><div class="ttname"><a href="union__operand__type.html#a67712f090f8c18a2de65a31a26762315">_operand_type::Double</a></div><div class="ttdeci">double Double</div><div class="ttdef"><b>Definition:</b> frame.h:16</div></div>
+<div class="ttc" id="frame_8h_html_afa48a760622df1fa95a006abd219fbfc"><div class="ttname"><a href="frame_8h.html#afa48a760622df1fa95a006abd219fbfc">push_frame</a></div><div class="ttdeci">void push_frame(frame **s)</div><div class="ttdef"><b>Definition:</b> frame.c:120</div></div>
+<div class="ttc" id="frame_8h_html_a188a90edf66b9880fe0922f4f2ea0143"><div class="ttname"><a href="frame_8h.html#a188a90edf66b9880fe0922f4f2ea0143">u1ReadFrame</a></div><div class="ttdeci">u1 u1ReadFrame(frame *f)</div><div class="ttdef"><b>Definition:</b> frame.c:209</div></div>
+<div class="ttc" id="frame_8h_html_a1fb5722bd32c59ab59cebe6e5832455e"><div class="ttname"><a href="frame_8h.html#a1fb5722bd32c59ab59cebe6e5832455e">frame</a></div><div class="ttdeci">struct _frame frame</div></div>
+<div class="ttc" id="struct__operand__heap_html_a320f9f33ad5a26bbe7967018a3400223"><div class="ttname"><a href="struct__operand__heap.html#a320f9f33ad5a26bbe7967018a3400223">_operand_heap::op</a></div><div class="ttdeci">operand_type op</div><div class="ttdef"><b>Definition:</b> frame.h:30</div></div>
+<div class="ttc" id="struct__vector_html_a44be124dd062343f3db747d29299a51d"><div class="ttname"><a href="struct__vector.html#a44be124dd062343f3db747d29299a51d">_vector::array</a></div><div class="ttdeci">operand_type * array</div><div class="ttdef"><b>Definition:</b> frame.h:22</div></div>
+<div class="ttc" id="struct__vector_html"><div class="ttname"><a href="struct__vector.html">_vector</a></div><div class="ttdef"><b>Definition:</b> frame.h:20</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="frame_8h.html">frame.h</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

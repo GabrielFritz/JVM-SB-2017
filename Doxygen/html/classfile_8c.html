@@ -1,0 +1,2146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM Grupo 2: Referência do Arquivo /home/matheus/Desktop/JVM-SB-2017/classfile.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM Grupo 2
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classfile_8c.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo /home/matheus/Desktop/JVM-SB-2017/classfile.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;inttypes.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="classfile_8h_source.html">classfile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="util_8h_source.html">util.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependência de inclusões para classfile.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c__incl.png" border="0" usemap="#_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2classfile_8c" alt=""/></div>
+<map name="_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2classfile_8c" id="_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2classfile_8c">
+<area shape="rect" id="node7" href="classfile_8h.html" title="classfile.h" alt="" coords="371,169,453,196"/>
+<area shape="rect" id="node8" href="types_8h.html" title="types.h" alt="" coords="253,244,318,271"/>
+<area shape="rect" id="node9" href="util_8h.html" title="util.h" alt="" coords="239,95,289,121"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a2ff625f2c6ad6b98611537bfab23872f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f">load_magic</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:a2ff625f2c6ad6b98611537bfab23872f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa03a009fae2cabe5c34de8321870e43d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d">load_versions</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:aa03a009fae2cabe5c34de8321870e43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45ba999c83b890a9f5bd7ce59f0d8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da">load_constantpool</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:ac45ba999c83b890a9f5bd7ce59f0d8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f0a80e1431bbb374f990da18693279"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ab0f0a80e1431bbb374f990da18693279">load_classdata</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:ab0f0a80e1431bbb374f990da18693279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f111f91f033398f76268fc69a420987"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a0f111f91f033398f76268fc69a420987">load_interfaces</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:a0f111f91f033398f76268fc69a420987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec486f18229beb930ffc073e55c8d7bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb">load_constantvalue_attr</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, FILE *fd)</td></tr>
+<tr class="separator:aec486f18229beb930ffc073e55c8d7bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb6361d3f9ad70ce266cc83f2fac0ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca">load_code_attr</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, <a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:a0fb6361d3f9ad70ce266cc83f2fac0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07defe4b6daeb1e3503f976e99c2f95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95">load_exceptions_attr</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, FILE *fd)</td></tr>
+<tr class="separator:ab07defe4b6daeb1e3503f976e99c2f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af30a172797f5e31da0fd8927348edb7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d">load_innerclasses_attr</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, FILE *fd)</td></tr>
+<tr class="separator:af30a172797f5e31da0fd8927348edb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70b71dfb5097e7ba3250dff025e2b026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026">load_other_attr</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, FILE *fd)</td></tr>
+<tr class="separator:a70b71dfb5097e7ba3250dff025e2b026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afff2afd9e9fdbfb8658212fd746f7c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e">load_attribute</a> (<a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, <a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:afff2afd9e9fdbfb8658212fd746f7c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a165fc1e808bec9c2b0095fbacba698ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee">load_fields</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:a165fc1e808bec9c2b0095fbacba698ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58762bedad4803126e7f0833d9cae69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#af58762bedad4803126e7f0833d9cae69">load_methods</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:af58762bedad4803126e7f0833d9cae69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1879929fc95680fc6a5a7512946435d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ab1879929fc95680fc6a5a7512946435d">load_attributes</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fd)</td></tr>
+<tr class="separator:ab1879929fc95680fc6a5a7512946435d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57078163a6fe755c003be01c9a830174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a57078163a6fe755c003be01c9a830174">readClass</a> (FILE *fd)</td></tr>
+<tr class="separator:a57078163a6fe755c003be01c9a830174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81a7fd9232d29b23c7cfa19d7ab7019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ab81a7fd9232d29b23c7cfa19d7ab7019">load_ClassFile</a> (char *name)</td></tr>
+<tr class="separator:ab81a7fd9232d29b23c7cfa19d7ab7019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a932eccfba0e63bb1834f3350542d9ba3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfile_8h.html#a8219c788a22ea9fdf12176c69f1a6089">method_info</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a932eccfba0e63bb1834f3350542d9ba3">search_method</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, char *name, char *descriptor)</td></tr>
+<tr class="separator:a932eccfba0e63bb1834f3350542d9ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb351601000653d9935227ce271fd021"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#afb351601000653d9935227ce271fd021">is_true</a> (int code, int id)</td></tr>
+<tr class="separator:afb351601000653d9935227ce271fd021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb05df92ba41f1b307e00b3f76167053"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053">print_permissions</a> (int code, FILE *fout)</td></tr>
+<tr class="separator:aeb05df92ba41f1b307e00b3f76167053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af76013f1ebf4576840d4ece7cef3032e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#af76013f1ebf4576840d4ece7cef3032e">print_magic</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:af76013f1ebf4576840d4ece7cef3032e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb397fb34b63eec3d94eea29927fbe01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#abb397fb34b63eec3d94eea29927fbe01">print_versions</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:abb397fb34b63eec3d94eea29927fbe01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023aef9d2196d121da638fcb4c1481a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a023aef9d2196d121da638fcb4c1481a5">print_constantpool</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:a023aef9d2196d121da638fcb4c1481a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad905c35ddda964c3cbbc6a8a374fc9cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ad905c35ddda964c3cbbc6a8a374fc9cb">print_classdata</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:ad905c35ddda964c3cbbc6a8a374fc9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb9554fb08318c96a60aa1233a68310"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#aceb9554fb08318c96a60aa1233a68310">print_interfaces</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:aceb9554fb08318c96a60aa1233a68310"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b8f9340a61c0878e8d92ee4406f0c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a0b8f9340a61c0878e8d92ee4406f0c50">print_attribute</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, <a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *att, FILE *fout)</td></tr>
+<tr class="separator:a0b8f9340a61c0878e8d92ee4406f0c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3f0be960275d085819eadd98074edd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ab3f0be960275d085819eadd98074edd7">print_fields</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:ab3f0be960275d085819eadd98074edd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540a1c2a042c568e9b12de2b054baa1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a540a1c2a042c568e9b12de2b054baa1e">print_methods</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:a540a1c2a042c568e9b12de2b054baa1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5136a09f774806a8578a0302c2e9d543"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a5136a09f774806a8578a0302c2e9d543">print_attributes</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, FILE *fout)</td></tr>
+<tr class="separator:a5136a09f774806a8578a0302c2e9d543"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878381cd2beddabab293b0e91a7b47c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#a878381cd2beddabab293b0e91a7b47c4">print_class</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *cf, char *nomearquivo, FILE *fout)</td></tr>
+<tr class="separator:a878381cd2beddabab293b0e91a7b47c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dc3b395374477ab8215606c12ccc48"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfile_8c.html#ae3dc3b395374477ab8215606c12ccc48">show_version</a> (int code)</td></tr>
+<tr class="separator:ae3dc3b395374477ab8215606c12ccc48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Funções</h2>
+<a class="anchor" id="afb351601000653d9935227ce271fd021"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_true </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_afb351601000653d9935227ce271fd021_icgraph.png" border="0" usemap="#classfile_8c_afb351601000653d9935227ce271fd021_icgraph" alt=""/></div>
+<map name="classfile_8c_afb351601000653d9935227ce271fd021_icgraph" id="classfile_8c_afb351601000653d9935227ce271fd021_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="115,107,239,133"/>
+<area shape="rect" id="node3" href="classfile_8h.html#abb397fb34b63eec3d94eea29927fbe01" title="print_versions" alt="" coords="291,5,393,32"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ad905c35ddda964c3cbbc6a8a374fc9cb" title="print_classdata" alt="" coords="287,56,397,83"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="291,181,393,208"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="457,119,542,145"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="447,220,551,247"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="601,144,687,171"/>
+<area shape="rect" id="node5" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="735,144,785,171"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="445,169,553,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afff2afd9e9fdbfb8658212fd746f7c8e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_attribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_cgraph.png" border="0" usemap="#classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_cgraph" alt=""/></div>
+<map name="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_cgraph" id="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="561,183,628,209"/>
+<area shape="rect" id="node3" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="400,208,467,235"/>
+<area shape="rect" id="node4" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="195,107,263,133"/>
+<area shape="rect" id="node5" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="353,157,513,184"/>
+<area shape="rect" id="node6" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="176,259,283,285"/>
+<area shape="rect" id="node8" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="362,360,505,387"/>
+<area shape="rect" id="node9" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="153,5,305,32"/>
+<area shape="rect" id="node10" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="175,309,283,336"/>
+<area shape="rect" id="node7" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="400,309,467,336"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_icgraph.png" border="0" usemap="#classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_icgraph" alt=""/></div>
+<map name="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_icgraph" id="classfile_8c_afff2afd9e9fdbfb8658212fd746f7c8e_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="153,68,260,95"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="467,43,551,69"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="458,93,561,120"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="456,144,563,171"/>
+<area shape="rect" id="node3" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="308,68,408,95"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="611,93,692,120"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="740,119,848,145"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1820,93,1871,120"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="896,195,991,221"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="1039,93,1184,120"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1235,43,1330,69"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1232,144,1333,171"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1237,195,1329,221"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1247,245,1319,272"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="1075,296,1147,323"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="1069,347,1154,373"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1256,397,1309,424"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="1076,397,1147,424"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1381,195,1483,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1542,195,1627,221"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1533,245,1637,272"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1531,144,1639,171"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1687,169,1772,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab1879929fc95680fc6a5a7512946435d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_attributes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab1879929fc95680fc6a5a7512946435d_cgraph.png" border="0" usemap="#classfile_8c_ab1879929fc95680fc6a5a7512946435d_cgraph" alt=""/></div>
+<map name="classfile_8c_ab1879929fc95680fc6a5a7512946435d_cgraph" id="classfile_8c_ab1879929fc95680fc6a5a7512946435d_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="716,163,783,190"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="160,239,260,266"/>
+<area shape="rect" id="node4" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="555,315,621,342"/>
+<area shape="rect" id="node5" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="350,214,418,240"/>
+<area shape="rect" id="node6" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="508,239,668,266"/>
+<area shape="rect" id="node7" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="331,366,437,392"/>
+<area shape="rect" id="node9" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="517,62,659,88"/>
+<area shape="rect" id="node10" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="308,112,460,139"/>
+<area shape="rect" id="node11" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="330,416,438,443"/>
+<area shape="rect" id="node8" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="555,416,621,443"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab1879929fc95680fc6a5a7512946435d_icgraph.png" border="0" usemap="#classfile_8c_ab1879929fc95680fc6a5a7512946435d_icgraph" alt=""/></div>
+<map name="classfile_8c_ab1879929fc95680fc6a5a7512946435d_icgraph" id="classfile_8c_ab1879929fc95680fc6a5a7512946435d_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="160,43,241,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="289,144,397,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1369,93,1420,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="445,195,540,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="588,93,733,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="785,43,879,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="781,144,883,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="786,195,878,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="796,245,868,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="625,296,697,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="618,347,703,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="805,397,859,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="625,397,696,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="931,195,1032,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1091,195,1177,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1082,245,1186,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1080,144,1188,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1236,169,1321,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab0f0a80e1431bbb374f990da18693279"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_classdata </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab0f0a80e1431bbb374f990da18693279_cgraph.png" border="0" usemap="#classfile_8c_ab0f0a80e1431bbb374f990da18693279_cgraph" alt=""/></div>
+<map name="classfile_8c_ab0f0a80e1431bbb374f990da18693279_cgraph" id="classfile_8c_ab0f0a80e1431bbb374f990da18693279_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="163,5,229,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab0f0a80e1431bbb374f990da18693279_icgraph.png" border="0" usemap="#classfile_8c_ab0f0a80e1431bbb374f990da18693279_icgraph" alt=""/></div>
+<map name="classfile_8c_ab0f0a80e1431bbb374f990da18693279_icgraph" id="classfile_8c_ab0f0a80e1431bbb374f990da18693279_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="163,43,244,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="292,144,400,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1372,93,1423,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="448,195,543,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="591,93,736,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="787,43,882,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="784,144,885,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="789,195,881,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="799,245,871,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="627,296,699,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="621,347,706,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="808,397,861,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="628,397,699,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="933,195,1035,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1094,195,1179,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1085,245,1189,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1083,144,1191,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1239,169,1324,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab81a7fd9232d29b23c7cfa19d7ab7019"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_class_file.html">ClassFile</a>* load_ClassFile </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_cgraph.png" border="0" usemap="#classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_cgraph" alt=""/></div>
+<map name="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_cgraph" id="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="161,197,243,224"/>
+<area shape="rect" id="node3" href="classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f" title="load_magic" alt="" coords="460,172,548,198"/>
+<area shape="rect" id="node6" href="classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d" title="load_versions" alt="" coords="453,20,555,46"/>
+<area shape="rect" id="node7" href="classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da" title="load_constantpool" alt="" coords="607,222,733,249"/>
+<area shape="rect" id="node9" href="classfile_8c.html#ab0f0a80e1431bbb374f990da18693279" title="load_classdata" alt="" coords="449,70,559,97"/>
+<area shape="rect" id="node10" href="classfile_8c.html#a0f111f91f033398f76268fc69a420987" title="load_interfaces" alt="" coords="291,121,401,148"/>
+<area shape="rect" id="node11" href="classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="304,273,388,300"/>
+<area shape="rect" id="node19" href="classfile_8c.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="295,425,397,452"/>
+<area shape="rect" id="node20" href="classfile_8c.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="293,476,399,502"/>
+<area shape="rect" id="node4" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="828,324,895,350"/>
+<area shape="rect" id="node5" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="989,450,1056,477"/>
+<area shape="rect" id="node8" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="828,400,895,426"/>
+<area shape="rect" id="node12" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="454,450,554,477"/>
+<area shape="rect" id="node13" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="636,374,704,401"/>
+<area shape="rect" id="node14" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="781,577,941,604"/>
+<area shape="rect" id="node15" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="617,425,723,452"/>
+<area shape="rect" id="node16" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="790,628,933,654"/>
+<area shape="rect" id="node17" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="785,678,937,705"/>
+<area shape="rect" id="node18" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="616,476,724,502"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_icgraph.png" border="0" usemap="#classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_icgraph" alt=""/></div>
+<map name="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_icgraph" id="classfile_8c_ab81a7fd9232d29b23c7cfa19d7ab7019_icgraph">
+<area shape="rect" id="node2" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="161,208,256,235"/>
+<area shape="rect" id="node3" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="304,208,449,235"/>
+<area shape="rect" id="node4" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="501,107,595,133"/>
+<area shape="rect" id="node11" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="497,157,599,184"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="502,259,594,285"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="512,5,584,32"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="341,56,413,83"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="334,360,419,387"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="521,360,575,387"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="341,411,412,437"/>
+<area shape="rect" id="node8" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1085,171,1136,197"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="647,107,748,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="807,56,893,83"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="798,107,902,133"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="796,157,904,184"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="952,132,1037,159"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0fb6361d3f9ad70ce266cc83f2fac0ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_code_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_cgraph.png" border="0" usemap="#classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_cgraph" alt=""/></div>
+<map name="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_cgraph" id="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="516,112,583,139"/>
+<area shape="rect" id="node3" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="355,36,421,63"/>
+<area shape="rect" id="node4" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="516,365,583,392"/>
+<area shape="rect" id="node5" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="160,163,260,189"/>
+<area shape="rect" id="node6" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="354,289,422,316"/>
+<area shape="rect" id="node7" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="308,137,468,164"/>
+<area shape="rect" id="node8" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="317,188,459,215"/>
+<area shape="rect" id="node9" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="312,239,464,265"/>
+<area shape="rect" id="node10" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="334,340,442,367"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_icgraph.png" border="0" usemap="#classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_icgraph" alt=""/></div>
+<map name="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_icgraph" id="classfile_8c_a0fb6361d3f9ad70ce266cc83f2fac0ca_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="160,56,260,83"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="308,5,415,32"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="319,157,403,184"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="310,56,413,83"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="308,107,415,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="463,107,544,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="592,132,700,159"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1672,107,1723,133"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="748,208,843,235"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="891,107,1036,133"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1087,56,1182,83"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1084,157,1185,184"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1089,208,1181,235"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1099,259,1171,285"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="927,309,999,336"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="921,360,1006,387"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1108,411,1161,437"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="928,411,999,437"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1233,208,1335,235"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1394,208,1479,235"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1385,259,1489,285"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1383,157,1491,184"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1539,183,1624,209"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac45ba999c83b890a9f5bd7ce59f0d8da"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_constantpool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_cgraph.png" border="0" usemap="#classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_cgraph" alt=""/></div>
+<map name="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_cgraph" id="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="295,20,361,47"/>
+<area shape="rect" id="node3" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="180,20,247,47"/>
+<area shape="rect" id="node4" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="180,71,247,97"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_icgraph.png" border="0" usemap="#classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_icgraph" alt=""/></div>
+<map name="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_icgraph" id="classfile_8c_ac45ba999c83b890a9f5bd7ce59f0d8da_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="180,43,261,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="309,144,417,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1389,93,1440,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="465,195,560,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="608,93,753,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="805,43,899,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="801,144,903,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="806,195,898,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="816,245,888,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="645,296,717,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="638,347,723,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="825,397,879,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="645,397,716,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="951,195,1052,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1111,195,1197,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1102,245,1206,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1100,144,1208,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1256,169,1341,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aec486f18229beb930ffc073e55c8d7bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_constantvalue_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_cgraph.png" border="0" usemap="#classfile_8c_aec486f18229beb930ffc073e55c8d7bb_cgraph" alt=""/></div>
+<map name="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_cgraph" id="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="213,5,280,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_icgraph.png" border="0" usemap="#classfile_8c_aec486f18229beb930ffc073e55c8d7bb_icgraph" alt=""/></div>
+<map name="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_icgraph" id="classfile_8c_aec486f18229beb930ffc073e55c8d7bb_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="213,56,313,83"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="361,5,468,32"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="373,157,457,184"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="363,56,466,83"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="361,107,468,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="516,107,597,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="645,132,753,159"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1725,107,1776,133"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="801,208,896,235"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="944,107,1089,133"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1141,56,1235,83"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1137,157,1239,184"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1142,208,1234,235"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1152,259,1224,285"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="981,309,1053,336"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="974,360,1059,387"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1161,411,1215,437"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="981,411,1052,437"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1287,208,1388,235"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1447,208,1533,235"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1438,259,1542,285"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1436,157,1544,184"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1592,183,1677,209"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab07defe4b6daeb1e3503f976e99c2f95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_exceptions_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_cgraph.png" border="0" usemap="#classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_cgraph" alt=""/></div>
+<map name="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_cgraph" id="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="196,5,263,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_icgraph.png" border="0" usemap="#classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_icgraph" alt=""/></div>
+<map name="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_icgraph" id="classfile_8c_ab07defe4b6daeb1e3503f976e99c2f95_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="196,56,296,83"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="344,5,451,32"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="355,157,439,184"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="346,56,449,83"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="344,107,451,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="499,107,580,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="628,132,736,159"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1708,107,1759,133"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="784,208,879,235"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="927,107,1072,133"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1123,56,1218,83"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1120,157,1221,184"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1125,208,1217,235"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1135,259,1207,285"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="963,309,1035,336"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="957,360,1042,387"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1144,411,1197,437"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="964,411,1035,437"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1269,208,1371,235"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1430,208,1515,235"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1421,259,1525,285"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1419,157,1527,184"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1575,183,1660,209"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a165fc1e808bec9c2b0095fbacba698ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_fields </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_cgraph.png" border="0" usemap="#classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_cgraph" alt=""/></div>
+<map name="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_cgraph" id="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="693,162,760,189"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="137,238,237,265"/>
+<area shape="rect" id="node4" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="532,314,599,341"/>
+<area shape="rect" id="node5" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="327,213,395,239"/>
+<area shape="rect" id="node6" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="485,238,645,265"/>
+<area shape="rect" id="node7" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="308,365,415,391"/>
+<area shape="rect" id="node9" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="494,61,637,87"/>
+<area shape="rect" id="node10" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="285,111,437,138"/>
+<area shape="rect" id="node11" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="307,415,415,442"/>
+<area shape="rect" id="node8" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="532,415,599,442"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_icgraph.png" border="0" usemap="#classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_icgraph" alt=""/></div>
+<map name="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_icgraph" id="classfile_8c_a165fc1e808bec9c2b0095fbacba698ee_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="137,43,219,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="267,144,375,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1347,93,1397,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="423,195,517,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="565,93,711,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="762,43,857,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="759,144,860,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="763,195,855,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="773,245,845,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="602,296,674,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="595,347,681,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="783,397,836,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="603,397,673,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="908,195,1009,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1069,195,1154,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1059,245,1163,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1057,144,1165,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1213,169,1299,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af30a172797f5e31da0fd8927348edb7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_innerclasses_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_af30a172797f5e31da0fd8927348edb7d_cgraph.png" border="0" usemap="#classfile_8c_af30a172797f5e31da0fd8927348edb7d_cgraph" alt=""/></div>
+<map name="classfile_8c_af30a172797f5e31da0fd8927348edb7d_cgraph" id="classfile_8c_af30a172797f5e31da0fd8927348edb7d_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="205,5,272,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_af30a172797f5e31da0fd8927348edb7d_icgraph.png" border="0" usemap="#classfile_8c_af30a172797f5e31da0fd8927348edb7d_icgraph" alt=""/></div>
+<map name="classfile_8c_af30a172797f5e31da0fd8927348edb7d_icgraph" id="classfile_8c_af30a172797f5e31da0fd8927348edb7d_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="205,56,305,83"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="353,5,460,32"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="365,157,449,184"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="355,56,458,83"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="353,107,460,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="508,107,589,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="637,132,745,159"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1717,107,1768,133"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="793,208,888,235"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="936,107,1081,133"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1133,56,1227,83"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1129,157,1231,184"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1134,208,1226,235"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1144,259,1216,285"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="973,309,1045,336"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="966,360,1051,387"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1153,411,1207,437"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="973,411,1044,437"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1279,208,1380,235"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1439,208,1525,235"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1430,259,1534,285"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1428,157,1536,184"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1584,183,1669,209"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f111f91f033398f76268fc69a420987"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_interfaces </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a0f111f91f033398f76268fc69a420987_cgraph.png" border="0" usemap="#classfile_8c_a0f111f91f033398f76268fc69a420987_cgraph" alt=""/></div>
+<map name="classfile_8c_a0f111f91f033398f76268fc69a420987_cgraph" id="classfile_8c_a0f111f91f033398f76268fc69a420987_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="164,5,231,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a0f111f91f033398f76268fc69a420987_icgraph.png" border="0" usemap="#classfile_8c_a0f111f91f033398f76268fc69a420987_icgraph" alt=""/></div>
+<map name="classfile_8c_a0f111f91f033398f76268fc69a420987_icgraph" id="classfile_8c_a0f111f91f033398f76268fc69a420987_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="164,43,245,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="293,144,401,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1373,93,1424,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="449,195,544,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="592,93,737,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="789,43,883,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="785,144,887,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="790,195,882,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="800,245,872,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="629,296,701,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="622,347,707,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="809,397,863,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="629,397,700,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="935,195,1036,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1095,195,1181,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1086,245,1190,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1084,144,1192,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1240,169,1325,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a2ff625f2c6ad6b98611537bfab23872f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_magic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_cgraph.png" border="0" usemap="#classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_cgraph" alt=""/></div>
+<map name="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_cgraph" id="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="141,5,208,32"/>
+<area shape="rect" id="node3" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="256,5,323,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_icgraph.png" border="0" usemap="#classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_icgraph" alt=""/></div>
+<map name="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_icgraph" id="classfile_8c_a2ff625f2c6ad6b98611537bfab23872f_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="141,43,223,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="271,144,379,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1351,93,1401,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="427,195,521,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="569,93,715,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="766,43,861,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="763,144,864,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="767,195,859,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="777,245,849,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="606,296,678,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="599,347,685,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="787,397,840,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="607,397,677,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="912,195,1013,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1073,195,1158,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1063,245,1167,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1061,144,1169,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1217,169,1303,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af58762bedad4803126e7f0833d9cae69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_methods </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_af58762bedad4803126e7f0833d9cae69_cgraph.png" border="0" usemap="#classfile_8c_af58762bedad4803126e7f0833d9cae69_cgraph" alt=""/></div>
+<map name="classfile_8c_af58762bedad4803126e7f0833d9cae69_cgraph" id="classfile_8c_af58762bedad4803126e7f0833d9cae69_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="712,163,779,190"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="156,239,256,266"/>
+<area shape="rect" id="node4" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="551,315,617,342"/>
+<area shape="rect" id="node5" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="346,214,414,240"/>
+<area shape="rect" id="node6" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="504,239,664,266"/>
+<area shape="rect" id="node7" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="327,366,433,392"/>
+<area shape="rect" id="node9" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="513,62,655,88"/>
+<area shape="rect" id="node10" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="304,112,456,139"/>
+<area shape="rect" id="node11" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="326,416,434,443"/>
+<area shape="rect" id="node8" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="551,416,617,443"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_af58762bedad4803126e7f0833d9cae69_icgraph.png" border="0" usemap="#classfile_8c_af58762bedad4803126e7f0833d9cae69_icgraph" alt=""/></div>
+<map name="classfile_8c_af58762bedad4803126e7f0833d9cae69_icgraph" id="classfile_8c_af58762bedad4803126e7f0833d9cae69_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="156,43,237,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="285,144,393,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1365,93,1416,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="441,195,536,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="584,93,729,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="781,43,875,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="777,144,879,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="782,195,874,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="792,245,864,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="621,296,693,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="614,347,699,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="801,397,855,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="621,397,692,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="927,195,1028,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1087,195,1173,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1078,245,1182,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1076,144,1184,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1232,169,1317,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a70b71dfb5097e7ba3250dff025e2b026"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_other_attr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_cgraph.png" border="0" usemap="#classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_cgraph" alt=""/></div>
+<map name="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_cgraph" id="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="161,5,228,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_icgraph.png" border="0" usemap="#classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_icgraph" alt=""/></div>
+<map name="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_icgraph" id="classfile_8c_a70b71dfb5097e7ba3250dff025e2b026_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="161,56,261,83"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="309,5,416,32"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="321,157,405,184"/>
+<area shape="rect" id="node23" href="classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="311,56,414,83"/>
+<area shape="rect" id="node24" href="classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="309,107,416,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="464,107,545,133"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="593,132,701,159"/>
+<area shape="rect" id="node13" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1673,107,1724,133"/>
+<area shape="rect" id="node7" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="749,208,844,235"/>
+<area shape="rect" id="node8" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="892,107,1037,133"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1089,56,1183,83"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1085,157,1187,184"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1090,208,1182,235"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1100,259,1172,285"/>
+<area shape="rect" id="node19" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="929,309,1001,336"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="922,360,1007,387"/>
+<area shape="rect" id="node21" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1109,411,1163,437"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="929,411,1000,437"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1235,208,1336,235"/>
+<area shape="rect" id="node11" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1395,208,1481,235"/>
+<area shape="rect" id="node14" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1386,259,1490,285"/>
+<area shape="rect" id="node15" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1384,157,1492,184"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1540,183,1625,209"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa03a009fae2cabe5c34de8321870e43d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_versions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_cgraph.png" border="0" usemap="#classfile_8c_aa03a009fae2cabe5c34de8321870e43d_cgraph" alt=""/></div>
+<map name="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_cgraph" id="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_cgraph">
+<area shape="rect" id="node2" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="156,5,223,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_icgraph.png" border="0" usemap="#classfile_8c_aa03a009fae2cabe5c34de8321870e43d_icgraph" alt=""/></div>
+<map name="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_icgraph" id="classfile_8c_aa03a009fae2cabe5c34de8321870e43d_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="156,43,237,69"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="285,144,393,171"/>
+<area shape="rect" id="node10" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1365,93,1416,120"/>
+<area shape="rect" id="node4" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="441,195,536,221"/>
+<area shape="rect" id="node5" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="584,93,729,120"/>
+<area shape="rect" id="node6" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="781,43,875,69"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="777,144,879,171"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="782,195,874,221"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="792,245,864,272"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="621,296,693,323"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="614,347,699,373"/>
+<area shape="rect" id="node18" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="801,397,855,424"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="621,397,692,424"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="927,195,1028,221"/>
+<area shape="rect" id="node8" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1087,195,1173,221"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1078,245,1182,272"/>
+<area shape="rect" id="node12" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1076,144,1184,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1232,169,1317,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b8f9340a61c0878e8d92ee4406f0c50"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_attribute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classfile_8h.html#a094c073475ddfa25dd189153626b9591">attribute_info</a> *&#160;</td>
+          <td class="paramname"><em>att</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a0b8f9340a61c0878e8d92ee4406f0c50_icgraph.png" border="0" usemap="#classfile_8c_a0b8f9340a61c0878e8d92ee4406f0c50_icgraph" alt=""/></div>
+<map name="classfile_8c_a0b8f9340a61c0878e8d92ee4406f0c50_icgraph" id="classfile_8c_a0b8f9340a61c0878e8d92ee4406f0c50_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="155,51,256,77"/>
+<area shape="rect" id="node3" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="315,25,401,52"/>
+<area shape="rect" id="node6" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="306,76,410,103"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="304,127,412,153"/>
+<area shape="rect" id="node4" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="460,76,545,103"/>
+<area shape="rect" id="node5" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="593,76,644,103"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5136a09f774806a8578a0302c2e9d543"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_attributes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a5136a09f774806a8578a0302c2e9d543_cgraph.png" border="0" usemap="#classfile_8c_a5136a09f774806a8578a0302c2e9d543_cgraph" alt=""/></div>
+<map name="classfile_8c_a5136a09f774806a8578a0302c2e9d543_cgraph" id="classfile_8c_a5136a09f774806a8578a0302c2e9d543_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="161,1196,263,1223"/>
+<area shape="rect" id="node3" href="instruction__set_8c.html#a82fec59529b2e90aea336ffcbea548ab" title="nop" alt="" coords="333,5,376,32"/>
+<area shape="rect" id="node4" href="instruction__set_8c.html#a9920c9c5aa21eec246751c1a389ec43a" title="aconst_null" alt="" coords="311,56,399,83"/>
+<area shape="rect" id="node5" href="instruction__set_8c.html#a313e042799c832024fc8f1860d0a96f6" title="iconst_m1" alt="" coords="313,107,396,133"/>
+<area shape="rect" id="node6" href="instruction__set_8c.html#ab82bc2464092c3515fab2d0af9c8b393" title="iconst_0" alt="" coords="319,157,390,184"/>
+<area shape="rect" id="node7" href="instruction__set_8c.html#a1cc1c20362f48555d1894b61e41aacdf" title="iconst_1" alt="" coords="319,208,390,235"/>
+<area shape="rect" id="node8" href="instruction__set_8c.html#a86211b8a3e62b11f8726d09893df2278" title="iconst_2" alt="" coords="319,259,390,285"/>
+<area shape="rect" id="node9" href="instruction__set_8c.html#ae657b45b113d58dd1bb793530225a31c" title="iconst_3" alt="" coords="319,309,390,336"/>
+<area shape="rect" id="node10" href="instruction__set_8c.html#a7a39211a83399bd9015c1188f2fe1051" title="iconst_4" alt="" coords="319,360,390,387"/>
+<area shape="rect" id="node11" href="instruction__set_8c.html#ad4676499a321be9419b75a9d02758561" title="iconst_5" alt="" coords="319,411,390,437"/>
+<area shape="rect" id="node12" href="instruction__set_8c.html#afebdc234156cf0d6448d8c5ba27a0cb5" title="lconst_0" alt="" coords="319,461,390,488"/>
+<area shape="rect" id="node13" href="instruction__set_8c.html#a0ebe649dba19785a42eb2428b670d802" title="lconst_1" alt="" coords="319,512,390,539"/>
+<area shape="rect" id="node14" href="instruction__set_8c.html#ab4009ac4dab3e052a3a66906f1103373" title="fconst_0" alt="" coords="319,563,391,589"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#ab1dc358a1d8b03b5cac3a19a03e96d6a" title="fconst_1" alt="" coords="319,613,391,640"/>
+<area shape="rect" id="node16" href="instruction__set_8c.html#a8f49f3c527fe0fbc07879abae84e2a10" title="fconst_2" alt="" coords="319,664,391,691"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a5cf60ccf44ee742d919331dd7384995d" title="dconst_0" alt="" coords="317,715,392,741"/>
+<area shape="rect" id="node18" href="instruction__set_8c.html#ae92622b5a046d4a9c0af03753007b19e" title="dconst_1" alt="" coords="317,765,392,792"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#ada2b8ae945b6dbcb44190ed641ac465b" title="bipush" alt="" coords="325,816,385,843"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#a4cd2f4252b5afa1e4ab63c39a0c6578a" title="sipush" alt="" coords="325,867,385,893"/>
+<area shape="rect" id="node21" href="instruction__set_8c.html#a85ad3244c8c7374e9c75944cb5276831" title="ldc" alt="" coords="335,917,374,944"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a2ae6bb20dbaf9e9e99e2710219f96081" title="ldc_w" alt="" coords="327,968,383,995"/>
+<area shape="rect" id="node23" href="instruction__set_8c.html#a3a39675cffd1e7741ea80d77fefbcaef" title="ldc2_w" alt="" coords="323,1019,386,1045"/>
+<area shape="rect" id="node24" href="instruction__set_8c.html#a893803ba881d52757fa5866ed774882f" title="iload" alt="" coords="330,1069,379,1096"/>
+<area shape="rect" id="node25" href="instruction__set_8c.html#a27deb609a3dc9da446dcf76f78417bfa" title="lload" alt="" coords="330,1120,379,1147"/>
+<area shape="rect" id="node26" href="instruction__set_8c.html#acfcf5300017d17ff0a294f28e016a1f3" title="fload" alt="" coords="329,1171,380,1197"/>
+<area shape="rect" id="node27" href="instruction__set_8c.html#a5509a698b751c93848d7cf4389dfca04" title="dload" alt="" coords="328,1221,381,1248"/>
+<area shape="rect" id="node28" href="instruction__set_8c.html#ad29117dd5ebcc4270e68c003e929da43" title="aload" alt="" coords="328,1272,381,1299"/>
+<area shape="rect" id="node29" href="instruction__set_8c.html#a640c0405312c94196e151c7e9c5d8b26" title="iload_0" alt="" coords="323,1323,386,1349"/>
+<area shape="rect" id="node30" href="instruction__set_8c.html#afa6a9cee096fa380cfc1d55ce234efd1" title="iload_1" alt="" coords="323,1373,386,1400"/>
+<area shape="rect" id="node31" href="instruction__set_8c.html#ab5d0e6fec5c7d1a22740785249d02c06" title="iload_2" alt="" coords="323,1424,386,1451"/>
+<area shape="rect" id="node32" href="instruction__set_8c.html#a49ee0c4ecba01751def50c7c3eb764ee" title="iload_3" alt="" coords="323,1475,386,1501"/>
+<area shape="rect" id="node33" href="instruction__set_8c.html#a365aefca0492274fd18057dd30c71a04" title="lload_0" alt="" coords="323,1525,386,1552"/>
+<area shape="rect" id="node34" href="instruction__set_8c.html#adad75f136034a65f14e29eac66678311" title="lload_1" alt="" coords="323,1576,386,1603"/>
+<area shape="rect" id="node35" href="instruction__set_8c.html#a62996554cb857d76a54b1bfdc97b9f11" title="lload_2" alt="" coords="323,1627,386,1653"/>
+<area shape="rect" id="node36" href="instruction__set_8c.html#aa1fd9cfafa44f3682a07299ed63ba7ba" title="lload_3" alt="" coords="323,1677,386,1704"/>
+<area shape="rect" id="node37" href="instruction__set_8c.html#abb6589a2188da128ddf5f559538b9864" title="fload_0" alt="" coords="323,1728,387,1755"/>
+<area shape="rect" id="node38" href="instruction__set_8c.html#ad0f60cc82a89ade5b2308f61ad777ca7" title="fload_1" alt="" coords="323,1779,387,1805"/>
+<area shape="rect" id="node39" href="instruction__set_8c.html#a0aa6e523d6a382c85fe9fc2bcc23f426" title="fload_2" alt="" coords="323,1829,387,1856"/>
+<area shape="rect" id="node40" href="instruction__set_8c.html#a32ad87d813f00a3b50ee92cacb000a81" title="fload_3" alt="" coords="323,1880,387,1907"/>
+<area shape="rect" id="node41" href="instruction__set_8c.html#a6e178234bf609e1e76ba513281aed369" title="dload_0" alt="" coords="321,1931,388,1957"/>
+<area shape="rect" id="node42" href="instruction__set_8c.html#a20dca3b27d90771e1ed889a6b59526f9" title="dload_1" alt="" coords="321,1981,388,2008"/>
+<area shape="rect" id="node43" href="instruction__set_8c.html#a64b200cc106ee13d21bf3d7b453447da" title="dload_2" alt="" coords="321,2032,388,2059"/>
+<area shape="rect" id="node44" href="instruction__set_8c.html#ad5b952abbfd114b06477767aa7386b37" title="dload_3" alt="" coords="321,2083,388,2109"/>
+<area shape="rect" id="node45" href="instruction__set_8c.html#aaee19f451897a3c584c089577d6a1989" title="aload_0" alt="" coords="321,2133,388,2160"/>
+<area shape="rect" id="node46" href="instruction__set_8c.html#a4db5a51eb1b3dd5f7bf636aa21a7e845" title="aload_1" alt="" coords="321,2184,388,2211"/>
+<area shape="rect" id="node47" href="instruction__set_8c.html#a1d05852389cbf0409a8811de9f9ce2cf" title="aload_2" alt="" coords="321,2235,388,2261"/>
+<area shape="rect" id="node48" href="instruction__set_8c.html#ac10041816a0653c599ee824a8272d72f" title="aload_3" alt="" coords="321,2285,388,2312"/>
+<area shape="rect" id="node49" href="instruction__set_8c.html#a6df72a5d1e98ff2649c5fc1e3841bef2" title="iaload" alt="" coords="327,2336,383,2363"/>
+<area shape="rect" id="node50" href="instruction__set_8c.html#a3378033cfa177395d617365b5c0bcb10" title="laload" alt="" coords="327,2387,383,2413"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a5136a09f774806a8578a0302c2e9d543_icgraph.png" border="0" usemap="#classfile_8c_a5136a09f774806a8578a0302c2e9d543_icgraph" alt=""/></div>
+<map name="classfile_8c_a5136a09f774806a8578a0302c2e9d543_icgraph" id="classfile_8c_a5136a09f774806a8578a0302c2e9d543_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="161,5,247,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="295,5,345,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a878381cd2beddabab293b0e91a7b47c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>nomearquivo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_cgraph.png" border="0" usemap="#classfile_8c_a878381cd2beddabab293b0e91a7b47c4_cgraph" alt=""/></div>
+<map name="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_cgraph" id="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#af76013f1ebf4576840d4ece7cef3032e" title="print_magic" alt="" coords="158,297,247,324"/>
+<area shape="rect" id="node3" href="classfile_8c.html#abb397fb34b63eec3d94eea29927fbe01" title="print_versions" alt="" coords="151,348,254,375"/>
+<area shape="rect" id="node7" href="classfile_8c.html#a023aef9d2196d121da638fcb4c1481a5" title="print_constantpool" alt="" coords="139,551,267,577"/>
+<area shape="rect" id="node8" href="classfile_8c.html#aceb9554fb08318c96a60aa1233a68310" title="print_interfaces" alt="" coords="147,601,258,628"/>
+<area shape="rect" id="node9" href="classfile_8c.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="160,399,245,425"/>
+<area shape="rect" id="node49" href="classfile_8c.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="151,449,255,476"/>
+<area shape="rect" id="node50" href="classfile_8c.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="149,500,257,527"/>
+<area shape="rect" id="node4" href="classfile_8c.html#ae3dc3b395374477ab8215606c12ccc48" title="show_version" alt="" coords="315,297,417,324"/>
+<area shape="rect" id="node5" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="465,5,589,32"/>
+<area shape="rect" id="node6" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="637,5,699,32"/>
+<area shape="rect" id="node10" href="classfile_8c.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="315,892,417,919"/>
+<area shape="rect" id="node11" href="instruction__set_8c.html#a82fec59529b2e90aea336ffcbea548ab" title="nop" alt="" coords="506,208,549,235"/>
+<area shape="rect" id="node12" href="instruction__set_8c.html#a9920c9c5aa21eec246751c1a389ec43a" title="aconst_null" alt="" coords="483,259,571,285"/>
+<area shape="rect" id="node13" href="instruction__set_8c.html#a313e042799c832024fc8f1860d0a96f6" title="iconst_m1" alt="" coords="486,309,569,336"/>
+<area shape="rect" id="node14" href="instruction__set_8c.html#ab82bc2464092c3515fab2d0af9c8b393" title="iconst_0" alt="" coords="492,360,563,387"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#a1cc1c20362f48555d1894b61e41aacdf" title="iconst_1" alt="" coords="492,411,563,437"/>
+<area shape="rect" id="node16" href="instruction__set_8c.html#a86211b8a3e62b11f8726d09893df2278" title="iconst_2" alt="" coords="492,461,563,488"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#ae657b45b113d58dd1bb793530225a31c" title="iconst_3" alt="" coords="492,512,563,539"/>
+<area shape="rect" id="node18" href="instruction__set_8c.html#a7a39211a83399bd9015c1188f2fe1051" title="iconst_4" alt="" coords="492,563,563,589"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#ad4676499a321be9419b75a9d02758561" title="iconst_5" alt="" coords="492,613,563,640"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#afebdc234156cf0d6448d8c5ba27a0cb5" title="lconst_0" alt="" coords="492,664,563,691"/>
+<area shape="rect" id="node21" href="instruction__set_8c.html#a0ebe649dba19785a42eb2428b670d802" title="lconst_1" alt="" coords="492,715,563,741"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#ab4009ac4dab3e052a3a66906f1103373" title="fconst_0" alt="" coords="491,765,563,792"/>
+<area shape="rect" id="node23" href="instruction__set_8c.html#ab1dc358a1d8b03b5cac3a19a03e96d6a" title="fconst_1" alt="" coords="491,816,563,843"/>
+<area shape="rect" id="node24" href="instruction__set_8c.html#a8f49f3c527fe0fbc07879abae84e2a10" title="fconst_2" alt="" coords="491,867,563,893"/>
+<area shape="rect" id="node25" href="instruction__set_8c.html#a5cf60ccf44ee742d919331dd7384995d" title="dconst_0" alt="" coords="490,917,565,944"/>
+<area shape="rect" id="node26" href="instruction__set_8c.html#ae92622b5a046d4a9c0af03753007b19e" title="dconst_1" alt="" coords="490,968,565,995"/>
+<area shape="rect" id="node27" href="instruction__set_8c.html#ada2b8ae945b6dbcb44190ed641ac465b" title="bipush" alt="" coords="497,1019,557,1045"/>
+<area shape="rect" id="node28" href="instruction__set_8c.html#a4cd2f4252b5afa1e4ab63c39a0c6578a" title="sipush" alt="" coords="497,1069,557,1096"/>
+<area shape="rect" id="node29" href="instruction__set_8c.html#a85ad3244c8c7374e9c75944cb5276831" title="ldc" alt="" coords="508,1120,547,1147"/>
+<area shape="rect" id="node30" href="instruction__set_8c.html#a2ae6bb20dbaf9e9e99e2710219f96081" title="ldc_w" alt="" coords="499,1171,555,1197"/>
+<area shape="rect" id="node31" href="instruction__set_8c.html#a3a39675cffd1e7741ea80d77fefbcaef" title="ldc2_w" alt="" coords="496,1221,559,1248"/>
+<area shape="rect" id="node32" href="instruction__set_8c.html#a893803ba881d52757fa5866ed774882f" title="iload" alt="" coords="503,1272,552,1299"/>
+<area shape="rect" id="node33" href="instruction__set_8c.html#a27deb609a3dc9da446dcf76f78417bfa" title="lload" alt="" coords="503,1323,552,1349"/>
+<area shape="rect" id="node34" href="instruction__set_8c.html#acfcf5300017d17ff0a294f28e016a1f3" title="fload" alt="" coords="502,1373,553,1400"/>
+<area shape="rect" id="node35" href="instruction__set_8c.html#a5509a698b751c93848d7cf4389dfca04" title="dload" alt="" coords="501,1424,554,1451"/>
+<area shape="rect" id="node36" href="instruction__set_8c.html#ad29117dd5ebcc4270e68c003e929da43" title="aload" alt="" coords="501,1475,554,1501"/>
+<area shape="rect" id="node37" href="instruction__set_8c.html#a640c0405312c94196e151c7e9c5d8b26" title="iload_0" alt="" coords="496,1525,559,1552"/>
+<area shape="rect" id="node38" href="instruction__set_8c.html#afa6a9cee096fa380cfc1d55ce234efd1" title="iload_1" alt="" coords="496,1576,559,1603"/>
+<area shape="rect" id="node39" href="instruction__set_8c.html#ab5d0e6fec5c7d1a22740785249d02c06" title="iload_2" alt="" coords="496,1627,559,1653"/>
+<area shape="rect" id="node40" href="instruction__set_8c.html#a49ee0c4ecba01751def50c7c3eb764ee" title="iload_3" alt="" coords="496,1677,559,1704"/>
+<area shape="rect" id="node41" href="instruction__set_8c.html#a365aefca0492274fd18057dd30c71a04" title="lload_0" alt="" coords="496,1728,559,1755"/>
+<area shape="rect" id="node42" href="instruction__set_8c.html#adad75f136034a65f14e29eac66678311" title="lload_1" alt="" coords="496,1779,559,1805"/>
+<area shape="rect" id="node43" href="instruction__set_8c.html#a62996554cb857d76a54b1bfdc97b9f11" title="lload_2" alt="" coords="496,1829,559,1856"/>
+<area shape="rect" id="node44" href="instruction__set_8c.html#aa1fd9cfafa44f3682a07299ed63ba7ba" title="lload_3" alt="" coords="496,1880,559,1907"/>
+<area shape="rect" id="node45" href="instruction__set_8c.html#abb6589a2188da128ddf5f559538b9864" title="fload_0" alt="" coords="495,1931,559,1957"/>
+<area shape="rect" id="node46" href="instruction__set_8c.html#ad0f60cc82a89ade5b2308f61ad777ca7" title="fload_1" alt="" coords="495,56,559,83"/>
+<area shape="rect" id="node47" href="instruction__set_8c.html#a0aa6e523d6a382c85fe9fc2bcc23f426" title="fload_2" alt="" coords="495,107,559,133"/>
+<area shape="rect" id="node48" href="instruction__set_8c.html#a32ad87d813f00a3b50ee92cacb000a81" title="fload_3" alt="" coords="495,157,559,184"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_icgraph.png" border="0" usemap="#classfile_8c_a878381cd2beddabab293b0e91a7b47c4_icgraph" alt=""/></div>
+<map name="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_icgraph" id="classfile_8c_a878381cd2beddabab293b0e91a7b47c4_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="139,5,189,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad905c35ddda964c3cbbc6a8a374fc9cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_classdata </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ad905c35ddda964c3cbbc6a8a374fc9cb_cgraph.png" border="0" usemap="#classfile_8c_ad905c35ddda964c3cbbc6a8a374fc9cb_cgraph" alt=""/></div>
+<map name="classfile_8c_ad905c35ddda964c3cbbc6a8a374fc9cb_cgraph" id="classfile_8c_ad905c35ddda964c3cbbc6a8a374fc9cb_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="164,5,288,32"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="336,5,397,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a023aef9d2196d121da638fcb4c1481a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_constantpool </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a023aef9d2196d121da638fcb4c1481a5_icgraph.png" border="0" usemap="#classfile_8c_a023aef9d2196d121da638fcb4c1481a5_icgraph" alt=""/></div>
+<map name="classfile_8c_a023aef9d2196d121da638fcb4c1481a5_icgraph" id="classfile_8c_a023aef9d2196d121da638fcb4c1481a5_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="181,5,267,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="315,5,365,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ab3f0be960275d085819eadd98074edd7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_fields </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab3f0be960275d085819eadd98074edd7_cgraph.png" border="0" usemap="#classfile_8c_ab3f0be960275d085819eadd98074edd7_cgraph" alt=""/></div>
+<map name="classfile_8c_ab3f0be960275d085819eadd98074edd7_cgraph" id="classfile_8c_ab3f0be960275d085819eadd98074edd7_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="288,5,412,32"/>
+<area shape="rect" id="node4" href="classfile_8c.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="139,1145,240,1172"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="460,5,521,32"/>
+<area shape="rect" id="node5" href="instruction__set_8c.html#a82fec59529b2e90aea336ffcbea548ab" title="nop" alt="" coords="329,56,371,83"/>
+<area shape="rect" id="node6" href="instruction__set_8c.html#a9920c9c5aa21eec246751c1a389ec43a" title="aconst_null" alt="" coords="306,107,394,133"/>
+<area shape="rect" id="node7" href="instruction__set_8c.html#a313e042799c832024fc8f1860d0a96f6" title="iconst_m1" alt="" coords="309,157,391,184"/>
+<area shape="rect" id="node8" href="instruction__set_8c.html#ab82bc2464092c3515fab2d0af9c8b393" title="iconst_0" alt="" coords="315,208,385,235"/>
+<area shape="rect" id="node9" href="instruction__set_8c.html#a1cc1c20362f48555d1894b61e41aacdf" title="iconst_1" alt="" coords="315,259,385,285"/>
+<area shape="rect" id="node10" href="instruction__set_8c.html#a86211b8a3e62b11f8726d09893df2278" title="iconst_2" alt="" coords="315,309,385,336"/>
+<area shape="rect" id="node11" href="instruction__set_8c.html#ae657b45b113d58dd1bb793530225a31c" title="iconst_3" alt="" coords="315,360,385,387"/>
+<area shape="rect" id="node12" href="instruction__set_8c.html#a7a39211a83399bd9015c1188f2fe1051" title="iconst_4" alt="" coords="315,411,385,437"/>
+<area shape="rect" id="node13" href="instruction__set_8c.html#ad4676499a321be9419b75a9d02758561" title="iconst_5" alt="" coords="315,461,385,488"/>
+<area shape="rect" id="node14" href="instruction__set_8c.html#afebdc234156cf0d6448d8c5ba27a0cb5" title="lconst_0" alt="" coords="315,512,385,539"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#a0ebe649dba19785a42eb2428b670d802" title="lconst_1" alt="" coords="315,563,385,589"/>
+<area shape="rect" id="node16" href="instruction__set_8c.html#ab4009ac4dab3e052a3a66906f1103373" title="fconst_0" alt="" coords="314,613,386,640"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#ab1dc358a1d8b03b5cac3a19a03e96d6a" title="fconst_1" alt="" coords="314,664,386,691"/>
+<area shape="rect" id="node18" href="instruction__set_8c.html#a8f49f3c527fe0fbc07879abae84e2a10" title="fconst_2" alt="" coords="314,715,386,741"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a5cf60ccf44ee742d919331dd7384995d" title="dconst_0" alt="" coords="313,765,387,792"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#ae92622b5a046d4a9c0af03753007b19e" title="dconst_1" alt="" coords="313,816,387,843"/>
+<area shape="rect" id="node21" href="instruction__set_8c.html#ada2b8ae945b6dbcb44190ed641ac465b" title="bipush" alt="" coords="320,867,380,893"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a4cd2f4252b5afa1e4ab63c39a0c6578a" title="sipush" alt="" coords="320,917,380,944"/>
+<area shape="rect" id="node23" href="instruction__set_8c.html#a85ad3244c8c7374e9c75944cb5276831" title="ldc" alt="" coords="331,968,369,995"/>
+<area shape="rect" id="node24" href="instruction__set_8c.html#a2ae6bb20dbaf9e9e99e2710219f96081" title="ldc_w" alt="" coords="322,1019,378,1045"/>
+<area shape="rect" id="node25" href="instruction__set_8c.html#a3a39675cffd1e7741ea80d77fefbcaef" title="ldc2_w" alt="" coords="319,1069,381,1096"/>
+<area shape="rect" id="node26" href="instruction__set_8c.html#a893803ba881d52757fa5866ed774882f" title="iload" alt="" coords="325,1120,375,1147"/>
+<area shape="rect" id="node27" href="instruction__set_8c.html#a27deb609a3dc9da446dcf76f78417bfa" title="lload" alt="" coords="325,1171,375,1197"/>
+<area shape="rect" id="node28" href="instruction__set_8c.html#acfcf5300017d17ff0a294f28e016a1f3" title="fload" alt="" coords="325,1221,375,1248"/>
+<area shape="rect" id="node29" href="instruction__set_8c.html#a5509a698b751c93848d7cf4389dfca04" title="dload" alt="" coords="323,1272,377,1299"/>
+<area shape="rect" id="node30" href="instruction__set_8c.html#ad29117dd5ebcc4270e68c003e929da43" title="aload" alt="" coords="323,1323,377,1349"/>
+<area shape="rect" id="node31" href="instruction__set_8c.html#a640c0405312c94196e151c7e9c5d8b26" title="iload_0" alt="" coords="319,1373,381,1400"/>
+<area shape="rect" id="node32" href="instruction__set_8c.html#afa6a9cee096fa380cfc1d55ce234efd1" title="iload_1" alt="" coords="319,1424,381,1451"/>
+<area shape="rect" id="node33" href="instruction__set_8c.html#ab5d0e6fec5c7d1a22740785249d02c06" title="iload_2" alt="" coords="319,1475,381,1501"/>
+<area shape="rect" id="node34" href="instruction__set_8c.html#a49ee0c4ecba01751def50c7c3eb764ee" title="iload_3" alt="" coords="319,1525,381,1552"/>
+<area shape="rect" id="node35" href="instruction__set_8c.html#a365aefca0492274fd18057dd30c71a04" title="lload_0" alt="" coords="319,1576,381,1603"/>
+<area shape="rect" id="node36" href="instruction__set_8c.html#adad75f136034a65f14e29eac66678311" title="lload_1" alt="" coords="319,1627,381,1653"/>
+<area shape="rect" id="node37" href="instruction__set_8c.html#a62996554cb857d76a54b1bfdc97b9f11" title="lload_2" alt="" coords="319,1677,381,1704"/>
+<area shape="rect" id="node38" href="instruction__set_8c.html#aa1fd9cfafa44f3682a07299ed63ba7ba" title="lload_3" alt="" coords="319,1728,381,1755"/>
+<area shape="rect" id="node39" href="instruction__set_8c.html#abb6589a2188da128ddf5f559538b9864" title="fload_0" alt="" coords="318,1779,382,1805"/>
+<area shape="rect" id="node40" href="instruction__set_8c.html#ad0f60cc82a89ade5b2308f61ad777ca7" title="fload_1" alt="" coords="318,1829,382,1856"/>
+<area shape="rect" id="node41" href="instruction__set_8c.html#a0aa6e523d6a382c85fe9fc2bcc23f426" title="fload_2" alt="" coords="318,1880,382,1907"/>
+<area shape="rect" id="node42" href="instruction__set_8c.html#a32ad87d813f00a3b50ee92cacb000a81" title="fload_3" alt="" coords="318,1931,382,1957"/>
+<area shape="rect" id="node43" href="instruction__set_8c.html#a6e178234bf609e1e76ba513281aed369" title="dload_0" alt="" coords="317,1981,383,2008"/>
+<area shape="rect" id="node44" href="instruction__set_8c.html#a20dca3b27d90771e1ed889a6b59526f9" title="dload_1" alt="" coords="317,2032,383,2059"/>
+<area shape="rect" id="node45" href="instruction__set_8c.html#a64b200cc106ee13d21bf3d7b453447da" title="dload_2" alt="" coords="317,2083,383,2109"/>
+<area shape="rect" id="node46" href="instruction__set_8c.html#ad5b952abbfd114b06477767aa7386b37" title="dload_3" alt="" coords="317,2133,383,2160"/>
+<area shape="rect" id="node47" href="instruction__set_8c.html#aaee19f451897a3c584c089577d6a1989" title="aload_0" alt="" coords="317,2184,383,2211"/>
+<area shape="rect" id="node48" href="instruction__set_8c.html#a4db5a51eb1b3dd5f7bf636aa21a7e845" title="aload_1" alt="" coords="317,2235,383,2261"/>
+<area shape="rect" id="node49" href="instruction__set_8c.html#a1d05852389cbf0409a8811de9f9ce2cf" title="aload_2" alt="" coords="317,2285,383,2312"/>
+<area shape="rect" id="node50" href="instruction__set_8c.html#ac10041816a0653c599ee824a8272d72f" title="aload_3" alt="" coords="317,2336,383,2363"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ab3f0be960275d085819eadd98074edd7_icgraph.png" border="0" usemap="#classfile_8c_ab3f0be960275d085819eadd98074edd7_icgraph" alt=""/></div>
+<map name="classfile_8c_ab3f0be960275d085819eadd98074edd7_icgraph" id="classfile_8c_ab3f0be960275d085819eadd98074edd7_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="139,5,224,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="272,5,323,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aceb9554fb08318c96a60aa1233a68310"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_interfaces </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aceb9554fb08318c96a60aa1233a68310_icgraph.png" border="0" usemap="#classfile_8c_aceb9554fb08318c96a60aa1233a68310_icgraph" alt=""/></div>
+<map name="classfile_8c_aceb9554fb08318c96a60aa1233a68310_icgraph" id="classfile_8c_aceb9554fb08318c96a60aa1233a68310_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="164,5,249,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="297,5,348,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af76013f1ebf4576840d4ece7cef3032e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_magic </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_af76013f1ebf4576840d4ece7cef3032e_icgraph.png" border="0" usemap="#classfile_8c_af76013f1ebf4576840d4ece7cef3032e_icgraph" alt=""/></div>
+<map name="classfile_8c_af76013f1ebf4576840d4ece7cef3032e_icgraph" id="classfile_8c_af76013f1ebf4576840d4ece7cef3032e_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="143,5,228,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="276,5,327,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a540a1c2a042c568e9b12de2b054baa1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_methods </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_cgraph.png" border="0" usemap="#classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_cgraph" alt=""/></div>
+<map name="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_cgraph" id="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="307,5,431,32"/>
+<area shape="rect" id="node4" href="classfile_8c.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="157,1145,259,1172"/>
+<area shape="rect" id="node3" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="479,5,540,32"/>
+<area shape="rect" id="node5" href="instruction__set_8c.html#a82fec59529b2e90aea336ffcbea548ab" title="nop" alt="" coords="347,56,390,83"/>
+<area shape="rect" id="node6" href="instruction__set_8c.html#a9920c9c5aa21eec246751c1a389ec43a" title="aconst_null" alt="" coords="325,107,413,133"/>
+<area shape="rect" id="node7" href="instruction__set_8c.html#a313e042799c832024fc8f1860d0a96f6" title="iconst_m1" alt="" coords="327,157,410,184"/>
+<area shape="rect" id="node8" href="instruction__set_8c.html#ab82bc2464092c3515fab2d0af9c8b393" title="iconst_0" alt="" coords="333,208,404,235"/>
+<area shape="rect" id="node9" href="instruction__set_8c.html#a1cc1c20362f48555d1894b61e41aacdf" title="iconst_1" alt="" coords="333,259,404,285"/>
+<area shape="rect" id="node10" href="instruction__set_8c.html#a86211b8a3e62b11f8726d09893df2278" title="iconst_2" alt="" coords="333,309,404,336"/>
+<area shape="rect" id="node11" href="instruction__set_8c.html#ae657b45b113d58dd1bb793530225a31c" title="iconst_3" alt="" coords="333,360,404,387"/>
+<area shape="rect" id="node12" href="instruction__set_8c.html#a7a39211a83399bd9015c1188f2fe1051" title="iconst_4" alt="" coords="333,411,404,437"/>
+<area shape="rect" id="node13" href="instruction__set_8c.html#ad4676499a321be9419b75a9d02758561" title="iconst_5" alt="" coords="333,461,404,488"/>
+<area shape="rect" id="node14" href="instruction__set_8c.html#afebdc234156cf0d6448d8c5ba27a0cb5" title="lconst_0" alt="" coords="333,512,404,539"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#a0ebe649dba19785a42eb2428b670d802" title="lconst_1" alt="" coords="333,563,404,589"/>
+<area shape="rect" id="node16" href="instruction__set_8c.html#ab4009ac4dab3e052a3a66906f1103373" title="fconst_0" alt="" coords="333,613,405,640"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#ab1dc358a1d8b03b5cac3a19a03e96d6a" title="fconst_1" alt="" coords="333,664,405,691"/>
+<area shape="rect" id="node18" href="instruction__set_8c.html#a8f49f3c527fe0fbc07879abae84e2a10" title="fconst_2" alt="" coords="333,715,405,741"/>
+<area shape="rect" id="node19" href="instruction__set_8c.html#a5cf60ccf44ee742d919331dd7384995d" title="dconst_0" alt="" coords="331,765,406,792"/>
+<area shape="rect" id="node20" href="instruction__set_8c.html#ae92622b5a046d4a9c0af03753007b19e" title="dconst_1" alt="" coords="331,816,406,843"/>
+<area shape="rect" id="node21" href="instruction__set_8c.html#ada2b8ae945b6dbcb44190ed641ac465b" title="bipush" alt="" coords="339,867,399,893"/>
+<area shape="rect" id="node22" href="instruction__set_8c.html#a4cd2f4252b5afa1e4ab63c39a0c6578a" title="sipush" alt="" coords="339,917,399,944"/>
+<area shape="rect" id="node23" href="instruction__set_8c.html#a85ad3244c8c7374e9c75944cb5276831" title="ldc" alt="" coords="349,968,388,995"/>
+<area shape="rect" id="node24" href="instruction__set_8c.html#a2ae6bb20dbaf9e9e99e2710219f96081" title="ldc_w" alt="" coords="341,1019,397,1045"/>
+<area shape="rect" id="node25" href="instruction__set_8c.html#a3a39675cffd1e7741ea80d77fefbcaef" title="ldc2_w" alt="" coords="337,1069,400,1096"/>
+<area shape="rect" id="node26" href="instruction__set_8c.html#a893803ba881d52757fa5866ed774882f" title="iload" alt="" coords="344,1120,393,1147"/>
+<area shape="rect" id="node27" href="instruction__set_8c.html#a27deb609a3dc9da446dcf76f78417bfa" title="lload" alt="" coords="344,1171,393,1197"/>
+<area shape="rect" id="node28" href="instruction__set_8c.html#acfcf5300017d17ff0a294f28e016a1f3" title="fload" alt="" coords="343,1221,394,1248"/>
+<area shape="rect" id="node29" href="instruction__set_8c.html#a5509a698b751c93848d7cf4389dfca04" title="dload" alt="" coords="342,1272,395,1299"/>
+<area shape="rect" id="node30" href="instruction__set_8c.html#ad29117dd5ebcc4270e68c003e929da43" title="aload" alt="" coords="342,1323,395,1349"/>
+<area shape="rect" id="node31" href="instruction__set_8c.html#a640c0405312c94196e151c7e9c5d8b26" title="iload_0" alt="" coords="337,1373,400,1400"/>
+<area shape="rect" id="node32" href="instruction__set_8c.html#afa6a9cee096fa380cfc1d55ce234efd1" title="iload_1" alt="" coords="337,1424,400,1451"/>
+<area shape="rect" id="node33" href="instruction__set_8c.html#ab5d0e6fec5c7d1a22740785249d02c06" title="iload_2" alt="" coords="337,1475,400,1501"/>
+<area shape="rect" id="node34" href="instruction__set_8c.html#a49ee0c4ecba01751def50c7c3eb764ee" title="iload_3" alt="" coords="337,1525,400,1552"/>
+<area shape="rect" id="node35" href="instruction__set_8c.html#a365aefca0492274fd18057dd30c71a04" title="lload_0" alt="" coords="337,1576,400,1603"/>
+<area shape="rect" id="node36" href="instruction__set_8c.html#adad75f136034a65f14e29eac66678311" title="lload_1" alt="" coords="337,1627,400,1653"/>
+<area shape="rect" id="node37" href="instruction__set_8c.html#a62996554cb857d76a54b1bfdc97b9f11" title="lload_2" alt="" coords="337,1677,400,1704"/>
+<area shape="rect" id="node38" href="instruction__set_8c.html#aa1fd9cfafa44f3682a07299ed63ba7ba" title="lload_3" alt="" coords="337,1728,400,1755"/>
+<area shape="rect" id="node39" href="instruction__set_8c.html#abb6589a2188da128ddf5f559538b9864" title="fload_0" alt="" coords="337,1779,401,1805"/>
+<area shape="rect" id="node40" href="instruction__set_8c.html#ad0f60cc82a89ade5b2308f61ad777ca7" title="fload_1" alt="" coords="337,1829,401,1856"/>
+<area shape="rect" id="node41" href="instruction__set_8c.html#a0aa6e523d6a382c85fe9fc2bcc23f426" title="fload_2" alt="" coords="337,1880,401,1907"/>
+<area shape="rect" id="node42" href="instruction__set_8c.html#a32ad87d813f00a3b50ee92cacb000a81" title="fload_3" alt="" coords="337,1931,401,1957"/>
+<area shape="rect" id="node43" href="instruction__set_8c.html#a6e178234bf609e1e76ba513281aed369" title="dload_0" alt="" coords="335,1981,402,2008"/>
+<area shape="rect" id="node44" href="instruction__set_8c.html#a20dca3b27d90771e1ed889a6b59526f9" title="dload_1" alt="" coords="335,2032,402,2059"/>
+<area shape="rect" id="node45" href="instruction__set_8c.html#a64b200cc106ee13d21bf3d7b453447da" title="dload_2" alt="" coords="335,2083,402,2109"/>
+<area shape="rect" id="node46" href="instruction__set_8c.html#ad5b952abbfd114b06477767aa7386b37" title="dload_3" alt="" coords="335,2133,402,2160"/>
+<area shape="rect" id="node47" href="instruction__set_8c.html#aaee19f451897a3c584c089577d6a1989" title="aload_0" alt="" coords="335,2184,402,2211"/>
+<area shape="rect" id="node48" href="instruction__set_8c.html#a4db5a51eb1b3dd5f7bf636aa21a7e845" title="aload_1" alt="" coords="335,2235,402,2261"/>
+<area shape="rect" id="node49" href="instruction__set_8c.html#a1d05852389cbf0409a8811de9f9ce2cf" title="aload_2" alt="" coords="335,2285,402,2312"/>
+<area shape="rect" id="node50" href="instruction__set_8c.html#ac10041816a0653c599ee824a8272d72f" title="aload_3" alt="" coords="335,2336,402,2363"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_icgraph.png" border="0" usemap="#classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_icgraph" alt=""/></div>
+<map name="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_icgraph" id="classfile_8c_a540a1c2a042c568e9b12de2b054baa1e_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="157,5,243,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="291,5,341,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aeb05df92ba41f1b307e00b3f76167053"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_permissions </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_cgraph.png" border="0" usemap="#classfile_8c_aeb05df92ba41f1b307e00b3f76167053_cgraph" alt=""/></div>
+<map name="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_cgraph" id="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="177,5,239,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_icgraph.png" border="0" usemap="#classfile_8c_aeb05df92ba41f1b307e00b3f76167053_icgraph" alt=""/></div>
+<map name="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_icgraph" id="classfile_8c_aeb05df92ba41f1b307e00b3f76167053_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#abb397fb34b63eec3d94eea29927fbe01" title="print_versions" alt="" coords="181,5,284,32"/>
+<area shape="rect" id="node5" href="classfile_8h.html#ad905c35ddda964c3cbbc6a8a374fc9cb" title="print_classdata" alt="" coords="177,56,288,83"/>
+<area shape="rect" id="node6" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="182,181,283,208"/>
+<area shape="rect" id="node7" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="347,119,433,145"/>
+<area shape="rect" id="node8" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="338,220,442,247"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="492,144,577,171"/>
+<area shape="rect" id="node4" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="625,144,676,171"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="336,169,444,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="abb397fb34b63eec3d94eea29927fbe01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_versions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_cgraph.png" border="0" usemap="#classfile_8c_abb397fb34b63eec3d94eea29927fbe01_cgraph" alt=""/></div>
+<map name="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_cgraph" id="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#ae3dc3b395374477ab8215606c12ccc48" title="show_version" alt="" coords="167,5,269,32"/>
+<area shape="rect" id="node3" href="classfile_8c.html#aeb05df92ba41f1b307e00b3f76167053" title="print_permissions" alt="" coords="156,56,280,83"/>
+<area shape="rect" id="node4" href="classfile_8c.html#afb351601000653d9935227ce271fd021" title="is_true" alt="" coords="328,56,389,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_icgraph.png" border="0" usemap="#classfile_8c_abb397fb34b63eec3d94eea29927fbe01_icgraph" alt=""/></div>
+<map name="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_icgraph" id="classfile_8c_abb397fb34b63eec3d94eea29927fbe01_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="156,5,241,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="289,5,340,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a57078163a6fe755c003be01c9a830174"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_class_file.html">ClassFile</a>* readClass </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a57078163a6fe755c003be01c9a830174_cgraph.png" border="0" usemap="#classfile_8c_a57078163a6fe755c003be01c9a830174_cgraph" alt=""/></div>
+<map name="classfile_8c_a57078163a6fe755c003be01c9a830174_cgraph" id="classfile_8c_a57078163a6fe755c003be01c9a830174_cgraph">
+<area shape="rect" id="node2" href="classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f" title="load_magic" alt="" coords="304,172,392,198"/>
+<area shape="rect" id="node5" href="classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d" title="load_versions" alt="" coords="297,20,399,46"/>
+<area shape="rect" id="node6" href="classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da" title="load_constantpool" alt="" coords="451,222,577,249"/>
+<area shape="rect" id="node8" href="classfile_8c.html#ab0f0a80e1431bbb374f990da18693279" title="load_classdata" alt="" coords="293,70,403,97"/>
+<area shape="rect" id="node9" href="classfile_8c.html#a0f111f91f033398f76268fc69a420987" title="load_interfaces" alt="" coords="135,121,245,148"/>
+<area shape="rect" id="node10" href="classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="148,273,232,300"/>
+<area shape="rect" id="node18" href="classfile_8c.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="139,425,241,452"/>
+<area shape="rect" id="node19" href="classfile_8c.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="137,476,243,502"/>
+<area shape="rect" id="node3" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="672,324,739,350"/>
+<area shape="rect" id="node4" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="833,450,900,477"/>
+<area shape="rect" id="node7" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="672,400,739,426"/>
+<area shape="rect" id="node11" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="298,450,398,477"/>
+<area shape="rect" id="node12" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="480,374,548,401"/>
+<area shape="rect" id="node13" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="625,577,785,604"/>
+<area shape="rect" id="node14" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="461,425,567,452"/>
+<area shape="rect" id="node15" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="634,628,777,654"/>
+<area shape="rect" id="node16" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="629,678,781,705"/>
+<area shape="rect" id="node17" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="460,476,568,502"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a57078163a6fe755c003be01c9a830174_icgraph.png" border="0" usemap="#classfile_8c_a57078163a6fe755c003be01c9a830174_icgraph" alt=""/></div>
+<map name="classfile_8c_a57078163a6fe755c003be01c9a830174_icgraph" id="classfile_8c_a57078163a6fe755c003be01c9a830174_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="135,144,243,171"/>
+<area shape="rect" id="node9" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1215,93,1265,120"/>
+<area shape="rect" id="node3" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="291,195,385,221"/>
+<area shape="rect" id="node4" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="433,93,579,120"/>
+<area shape="rect" id="node5" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="630,43,725,69"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="627,144,728,171"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="631,195,723,221"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="641,245,713,272"/>
+<area shape="rect" id="node15" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="470,296,542,323"/>
+<area shape="rect" id="node16" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="463,347,549,373"/>
+<area shape="rect" id="node17" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="651,397,704,424"/>
+<area shape="rect" id="node18" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="471,397,541,424"/>
+<area shape="rect" id="node6" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="776,195,877,221"/>
+<area shape="rect" id="node7" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="937,195,1022,221"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="927,245,1031,272"/>
+<area shape="rect" id="node11" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="925,144,1033,171"/>
+<area shape="rect" id="node8" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1081,169,1167,196"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a932eccfba0e63bb1834f3350542d9ba3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfile_8h.html#a8219c788a22ea9fdf12176c69f1a6089">method_info</a>* search_method </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>cf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>descriptor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Procura por um metodo em uma classe. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cf</td><td>Descritor da classe </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Nome da classe </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">descriptor</td><td>Descritor do metodo </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">method_info</td><td>Descritor do metodo encontrado. Nulo caso contrario</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Percorre a lista de metodos da classe, descrita pelo cf. Caso encontre o metodo procurado com o respectivo descritor, ele retorna o descritor do metodo. </p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_cgraph.png" border="0" usemap="#classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_cgraph" alt=""/></div>
+<map name="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_cgraph" id="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_cgraph">
+<area shape="rect" id="node2" href="util_8c.html#a514f793b56421233028c12be6dc41c32" title="search_utf8" alt="" coords="164,5,255,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_icgraph.png" border="0" usemap="#classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_icgraph" alt=""/></div>
+<map name="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_icgraph" id="classfile_8c_a932eccfba0e63bb1834f3350542d9ba3_icgraph">
+<area shape="rect" id="node2" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="164,157,259,184"/>
+<area shape="rect" id="node18" href="frame_8h.html#a733f64cd7b15346b97acbeabdabff9ee" title="frame_init" alt="" coords="172,56,251,83"/>
+<area shape="rect" id="node3" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="307,5,452,32"/>
+<area shape="rect" id="node4" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="503,107,598,133"/>
+<area shape="rect" id="node11" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="500,157,601,184"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="505,56,597,83"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="515,259,587,285"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="343,208,415,235"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="337,360,422,387"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="524,360,577,387"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="344,411,415,437"/>
+<area shape="rect" id="node8" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1088,44,1139,71"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="649,145,751,172"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="810,183,895,209"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="801,81,905,108"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="799,132,907,159"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="955,107,1040,133"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3dc3b395374477ab8215606c12ccc48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* show_version </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="classfile_8c_ae3dc3b395374477ab8215606c12ccc48_icgraph.png" border="0" usemap="#classfile_8c_ae3dc3b395374477ab8215606c12ccc48_icgraph" alt=""/></div>
+<map name="classfile_8c_ae3dc3b395374477ab8215606c12ccc48_icgraph" id="classfile_8c_ae3dc3b395374477ab8215606c12ccc48_icgraph">
+<area shape="rect" id="node2" href="classfile_8h.html#abb397fb34b63eec3d94eea29927fbe01" title="print_versions" alt="" coords="156,5,259,32"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="307,5,392,32"/>
+<area shape="rect" id="node4" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="440,5,491,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classfile_8c.html">classfile.c</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

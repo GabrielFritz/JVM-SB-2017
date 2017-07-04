@@ -1,0 +1,25 @@
+<map id="load_code_attr" name="load_code_attr">
+<area shape="rect" id="node2" href="$classfile_8h.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="160,56,260,83"/>
+<area shape="rect" id="node3" href="$classfile_8h.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="308,5,415,32"/>
+<area shape="rect" id="node4" href="$classfile_8h.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="319,157,403,184"/>
+<area shape="rect" id="node23" href="$classfile_8h.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="310,56,413,83"/>
+<area shape="rect" id="node24" href="$classfile_8h.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="308,107,415,133"/>
+<area shape="rect" id="node5" href="$classfile_8h.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="463,107,544,133"/>
+<area shape="rect" id="node6" href="$classfile_8h.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="592,132,700,159"/>
+<area shape="rect" id="node13" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1672,107,1723,133"/>
+<area shape="rect" id="node7" href="$execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="748,208,843,235"/>
+<area shape="rect" id="node8" href="$execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="891,107,1036,133"/>
+<area shape="rect" id="node9" href="$instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="1087,56,1182,83"/>
+<area shape="rect" id="node16" href="$instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="1084,157,1185,184"/>
+<area shape="rect" id="node17" href="$instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="1089,208,1181,235"/>
+<area shape="rect" id="node18" href="$instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="1099,259,1171,285"/>
+<area shape="rect" id="node19" href="$instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="927,309,999,336"/>
+<area shape="rect" id="node20" href="$instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="921,360,1006,387"/>
+<area shape="rect" id="node21" href="$instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="1108,411,1161,437"/>
+<area shape="rect" id="node22" href="$instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="928,411,999,437"/>
+<area shape="rect" id="node10" href="$classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="1233,208,1335,235"/>
+<area shape="rect" id="node11" href="$classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="1394,208,1479,235"/>
+<area shape="rect" id="node14" href="$classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="1385,259,1489,285"/>
+<area shape="rect" id="node15" href="$classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="1383,157,1491,184"/>
+<area shape="rect" id="node12" href="$classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="1539,183,1624,209"/>
+</map>

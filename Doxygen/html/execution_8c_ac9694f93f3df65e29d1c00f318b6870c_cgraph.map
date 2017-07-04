@@ -1,0 +1,36 @@
+<map id="init_methodexecution" name="init_methodexecution">
+<area shape="rect" id="node2" href="$execution_8c.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="199,324,293,350"/>
+<area shape="rect" id="node30" href="$frame_8c.html#afa48a760622df1fa95a006abd219fbfc" title="push_frame" alt="" coords="201,501,291,528"/>
+<area shape="rect" id="node31" href="$frame_8c.html#a733f64cd7b15346b97acbeabdabff9ee" title="frame_init" alt="" coords="207,400,285,426"/>
+<area shape="rect" id="node32" href="$frame_8c.html#affa129094635f304def02ae8c8e8b144" title="init_opheap" alt="" coords="372,501,460,528"/>
+<area shape="rect" id="node33" href="$frame_8c.html#a77e266cfe02e0f2c200384ae7841c8af" title="pop_op" alt="" coords="214,552,278,578"/>
+<area shape="rect" id="node35" href="$frame_8c.html#a57fddc12dcb110bf02f2ffb4e8231b7b" title="push_op" alt="" coords="211,602,281,629"/>
+<area shape="rect" id="node3" href="$heap_8c.html#a2c9ab99fdcf05de119f3637a09f3b32a" title="search_classheap" alt="" coords="353,349,479,376"/>
+<area shape="rect" id="node4" href="$util_8c.html#a514f793b56421233028c12be6dc41c32" title="search_utf8" alt="" coords="545,349,636,376"/>
+<area shape="rect" id="node5" href="$classfile_8c.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="362,197,470,224"/>
+<area shape="rect" id="node25" href="$heap_8c.html#a72a64f8133468741b878761a510145c1" title="push_class" alt="" coords="372,248,460,274"/>
+<area shape="rect" id="node27" href="$classfile_8c.html#a932eccfba0e63bb1834f3350542d9ba3" title="search_method" alt="" coords="361,400,471,426"/>
+<area shape="rect" id="node28" href="$execution_8c.html#a3e947377dd5c7269a14dbbfe9c30a56a" title="execute_method" alt="" coords="357,146,475,173"/>
+<area shape="rect" id="node6" href="$classfile_8c.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="550,197,631,224"/>
+<area shape="rect" id="node7" href="$classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f" title="load_magic" alt="" coords="860,172,948,198"/>
+<area shape="rect" id="node10" href="$classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d" title="load_versions" alt="" coords="853,20,955,46"/>
+<area shape="rect" id="node11" href="$classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da" title="load_constantpool" alt="" coords="1007,222,1133,249"/>
+<area shape="rect" id="node13" href="$classfile_8c.html#ab0f0a80e1431bbb374f990da18693279" title="load_classdata" alt="" coords="849,70,959,97"/>
+<area shape="rect" id="node14" href="$classfile_8c.html#a0f111f91f033398f76268fc69a420987" title="load_interfaces" alt="" coords="691,121,801,148"/>
+<area shape="rect" id="node15" href="$classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="704,273,788,300"/>
+<area shape="rect" id="node23" href="$classfile_8c.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="695,425,797,452"/>
+<area shape="rect" id="node24" href="$classfile_8c.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="693,476,799,502"/>
+<area shape="rect" id="node8" href="$types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="1228,324,1295,350"/>
+<area shape="rect" id="node9" href="$types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="1389,450,1456,477"/>
+<area shape="rect" id="node12" href="$types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="1228,400,1295,426"/>
+<area shape="rect" id="node16" href="$classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="854,450,954,477"/>
+<area shape="rect" id="node17" href="$util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="1036,374,1104,401"/>
+<area shape="rect" id="node18" href="$classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="1181,577,1341,604"/>
+<area shape="rect" id="node19" href="$classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="1017,425,1123,452"/>
+<area shape="rect" id="node20" href="$classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="1190,628,1333,654"/>
+<area shape="rect" id="node21" href="$classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="1185,678,1337,705"/>
+<area shape="rect" id="node22" href="$classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="1016,476,1124,502"/>
+<area shape="rect" id="node26" href="$heap_8c.html#a4b965ff1d15456d731f73be16bda2642" title="is_static" alt="" coords="555,248,626,274"/>
+<area shape="rect" id="node29" href="$frame_8c.html#a188a90edf66b9880fe0922f4f2ea0143" title="u1ReadFrame" alt="" coords="539,146,643,173"/>
+<area shape="rect" id="node34" href="$frame_8c.html#a43d40e1672fa595e511a87a8bf9e54a0" title="operandheap_isempty" alt="" coords="341,552,491,578"/>
+</map>

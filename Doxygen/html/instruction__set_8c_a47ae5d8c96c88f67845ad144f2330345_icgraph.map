@@ -1,0 +1,9 @@
+<map id="alocate_multirray" name="alocate_multirray">
+<area shape="rect" id="node2" href="$instruction__set_8h.html#a9850938c568b9abc4cccdb341d5ea704" title="multianewarray" alt="" coords="175,56,285,83"/>
+<area shape="rect" id="node3" href="$classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="333,56,435,83"/>
+<area shape="rect" id="node4" href="$classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="494,5,579,32"/>
+<area shape="rect" id="node7" href="$classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="485,56,589,83"/>
+<area shape="rect" id="node8" href="$classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="483,107,591,133"/>
+<area shape="rect" id="node5" href="$classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="639,56,724,83"/>
+<area shape="rect" id="node6" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="772,56,823,83"/>
+</map>

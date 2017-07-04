@@ -1,0 +1,5 @@
+<map id="fneg" name="fneg">
+<area shape="rect" id="node2" href="$frame_8c.html#a77e266cfe02e0f2c200384ae7841c8af" title="pop_op" alt="" coords="103,5,167,32"/>
+<area shape="rect" id="node4" href="$frame_8c.html#a57fddc12dcb110bf02f2ffb4e8231b7b" title="push_op" alt="" coords="100,56,171,83"/>
+<area shape="rect" id="node3" href="$frame_8c.html#a43d40e1672fa595e511a87a8bf9e54a0" title="operandheap_isempty" alt="" coords="219,5,368,32"/>
+</map>

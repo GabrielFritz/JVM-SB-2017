@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM Grupo 2: Código-Fonte de /home/matheus/Desktop/JVM-SB-2017/heap.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM Grupo 2
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('heap_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">/home/matheus/Desktop/JVM-SB-2017/heap.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="heap_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HEAP_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HEAP_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="classfile_8h.html">classfile.h</a>&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="util_8h.html">util.h</a>&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html">types.h</a>&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="unionfield__type.html">    7</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span>{</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="unionfield__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">    8</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="unionfield__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">Int</a>;</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="unionfield__type.html#aeb929194660cb3db9052cfd18f18f906">    9</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="unionfield__type.html#aeb929194660cb3db9052cfd18f18f906">Short</a>;</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="unionfield__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">   10</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="unionfield__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">Float</a>;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="unionfield__type.html#a01d96ae80bd62edd3577d37717b192e4">   11</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="unionfield__type.html#a01d96ae80bd62edd3577d37717b192e4">Long</a>;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="unionfield__type.html#a67712f090f8c18a2de65a31a26762315">   12</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="unionfield__type.html#a67712f090f8c18a2de65a31a26762315">Double</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="unionfield__type.html#a4b411cdaaf0d90763eeecd4ea2e60761">   13</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="unionfield__type.html#a4b411cdaaf0d90763eeecd4ea2e60761">Char</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="unionfield__type.html#aa35dc710a56760f0da0f98c5c11cb79e">   14</a></span>&#160;    <span class="keywordtype">void</span>* <a class="code" href="unionfield__type.html#aa35dc710a56760f0da0f98c5c11cb79e">Ref</a>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;} <a class="code" href="unionfield__type.html">field_type</a>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structfield.html">   17</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structfield.html#a5ac083a645d964373f022d03df4849c8">   18</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structfield.html#a5ac083a645d964373f022d03df4849c8">name</a>;</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structfield.html#a5fc5924eefe1fcfaa3b8b584fa1653fd">   19</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structfield.html#a5fc5924eefe1fcfaa3b8b584fa1653fd">descriptor</a>;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structfield.html#af6f5ea30ec08dbc724d7c35798eab476">   20</a></span>&#160;    <a class="code" href="unionfield__type.html">field_type</a> <a class="code" href="structfield.html#af6f5ea30ec08dbc724d7c35798eab476">value</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="structfield.html">field</a>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structobject.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structobject.html#ac0ae3334b9e17a8fd23ad6fd3a032034">   24</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structobject.html#ac0ae3334b9e17a8fd23ad6fd3a032034">num_fields</a>;</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structobject.html#a7467d6d6f82b191decd1246b249b6033">   25</a></span>&#160;    <a class="code" href="structfield.html">field</a>* <a class="code" href="structobject.html#a7467d6d6f82b191decd1246b249b6033">fields</a>;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <a class="code" href="structobject.html">object</a>;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="struct__obj__heap.html">   28</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__obj__heap.html">_obj_heap</a> {</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="struct__obj__heap.html#abf6c05da4a5e5a366df1b382f71b82c5">   29</a></span>&#160;    <span class="keywordtype">object</span> <a class="code" href="struct__obj__heap.html#abf6c05da4a5e5a366df1b382f71b82c5">obj</a>;</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="struct__obj__heap.html#a7ce7ae229cd503fb7e0025f64a7849d5">   30</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct__obj__heap.html">_obj_heap</a>* <a class="code" href="struct__obj__heap.html#a7ce7ae229cd503fb7e0025f64a7849d5">next</a>;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <a class="code" href="heap_8h.html#afe7d3dde9478e6da59f9e63e0891b152">obj_heap</a>;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*Contem a lista de classes que ja foram carregadas.*/</span></div><div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="struct__class__heap.html">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct__class__heap.html">_class_heap</a> {</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="struct__class__heap.html#ac1fa4d05b7df5d99e486f33f2477bae0">   35</a></span>&#160;    <a class="code" href="struct_class_file.html">ClassFile</a> <a class="code" href="struct__class__heap.html#ac1fa4d05b7df5d99e486f33f2477bae0">cf</a>;</div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="struct__class__heap.html#acbba26895d48e3cb83283ec8212db15f">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="struct__class__heap.html#acbba26895d48e3cb83283ec8212db15f">num_static</a>;</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="struct__class__heap.html#ad0c1e7461037c90a56bbd973f7ac0464">   37</a></span>&#160;    <a class="code" href="structfield.html">field</a>* <a class="code" href="struct__class__heap.html#ad0c1e7461037c90a56bbd973f7ac0464">static_fields</a>;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="struct__class__heap.html#a882313d8a10a6da358873048b98945a2">   38</a></span>&#160;    <a class="code" href="struct__obj__heap.html">obj_heap</a>* <a class="code" href="struct__class__heap.html#a882313d8a10a6da358873048b98945a2">objects</a>;</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="struct__class__heap.html#af6a2a6ba31f6e7ae4e07047334c7bccf">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct__class__heap.html">_class_heap</a>* <a class="code" href="struct__class__heap.html#af6a2a6ba31f6e7ae4e07047334c7bccf">next</a>;</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} <a class="code" href="heap_8h.html#a553d5eadffd76dac9f7aa2eb28e2ad5e">class_heap</a>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#acdcc4a6d0550f43adb4692b93a7ce33d">classheap_init</a>(<a class="code" href="struct__class__heap.html">class_heap</a>** ch);</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#ae15c5c46c9a5619145427265cb392076">free_classheap</a>(<a class="code" href="struct__class__heap.html">class_heap</a>* ch);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="heap_8h.html#a4b965ff1d15456d731f73be16bda2642">is_static</a>(<a class="code" href="types_8h.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a> access_flag);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> <a class="code" href="heap_8h.html#a72a64f8133468741b878761a510145c1">push_class</a>(<a class="code" href="struct__class__heap.html">class_heap</a>** ch,<a class="code" href="struct_class_file.html">ClassFile</a> <a class="code" href="struct__class__heap.html#ac1fa4d05b7df5d99e486f33f2477bae0">cf</a>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="struct_class_file.html">ClassFile</a>* <a class="code" href="heap_8h.html#a2c9ab99fdcf05de119f3637a09f3b32a">search_classheap</a>(<a class="code" href="struct__class__heap.html">class_heap</a>* ch, <span class="keywordtype">char</span>* name);</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="structfield.html">field</a>* <a class="code" href="heap_8h.html#adc75de7bc71b2a6f59b58be898fd47b1">search_field</a>(<span class="keywordtype">char</span>* name, <span class="keywordtype">char</span>* descr, <span class="keywordtype">object</span>* o);</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="structfield.html">field</a>* <a class="code" href="heap_8h.html#a65fd703ec9a8038204e7103b3584f4de">search_staticfield</a>(<a class="code" href="struct__class__heap.html">class_heap</a>* start, <span class="keywordtype">char</span>* <span class="keyword">class</span>, <span class="keywordtype">char</span>* <a class="code" href="structfield.html">field</a>);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="struct__class__heap_html_ac1fa4d05b7df5d99e486f33f2477bae0"><div class="ttname"><a href="struct__class__heap.html#ac1fa4d05b7df5d99e486f33f2477bae0">_class_heap::cf</a></div><div class="ttdeci">ClassFile cf</div><div class="ttdef"><b>Definition:</b> heap.h:35</div></div>
+<div class="ttc" id="types_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div></div>
+<div class="ttc" id="heap_8h_html_a65fd703ec9a8038204e7103b3584f4de"><div class="ttname"><a href="heap_8h.html#a65fd703ec9a8038204e7103b3584f4de">search_staticfield</a></div><div class="ttdeci">field * search_staticfield(class_heap *start, char *class, char *field)</div><div class="ttdef"><b>Definition:</b> heap.c:114</div></div>
+<div class="ttc" id="struct__class__heap_html_a882313d8a10a6da358873048b98945a2"><div class="ttname"><a href="struct__class__heap.html#a882313d8a10a6da358873048b98945a2">_class_heap::objects</a></div><div class="ttdeci">obj_heap * objects</div><div class="ttdef"><b>Definition:</b> heap.h:38</div></div>
+<div class="ttc" id="unionfield__type_html_a01d96ae80bd62edd3577d37717b192e4"><div class="ttname"><a href="unionfield__type.html#a01d96ae80bd62edd3577d37717b192e4">field_type::Long</a></div><div class="ttdeci">long long Long</div><div class="ttdef"><b>Definition:</b> heap.h:11</div></div>
+<div class="ttc" id="types_8h_html_a732cde1300aafb73b0ea6c2558a7a54f"><div class="ttname"><a href="types_8h.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a></div><div class="ttdeci">uint16_t u2</div><div class="ttdef"><b>Definition:</b> types.h:58</div></div>
+<div class="ttc" id="classfile_8h_html"><div class="ttname"><a href="classfile_8h.html">classfile.h</a></div></div>
+<div class="ttc" id="heap_8h_html_ae15c5c46c9a5619145427265cb392076"><div class="ttname"><a href="heap_8h.html#ae15c5c46c9a5619145427265cb392076">free_classheap</a></div><div class="ttdeci">void free_classheap(class_heap *ch)</div><div class="ttdef"><b>Definition:</b> heap.c:6</div></div>
+<div class="ttc" id="heap_8h_html_a4b965ff1d15456d731f73be16bda2642"><div class="ttname"><a href="heap_8h.html#a4b965ff1d15456d731f73be16bda2642">is_static</a></div><div class="ttdeci">int is_static(u2 access_flag)</div><div class="ttdef"><b>Definition:</b> heap.c:34</div></div>
+<div class="ttc" id="heap_8h_html_acdcc4a6d0550f43adb4692b93a7ce33d"><div class="ttname"><a href="heap_8h.html#acdcc4a6d0550f43adb4692b93a7ce33d">classheap_init</a></div><div class="ttdeci">void classheap_init(class_heap **ch)</div><div class="ttdef"><b>Definition:</b> heap.c:25</div></div>
+<div class="ttc" id="structobject_html"><div class="ttname"><a href="structobject.html">object</a></div><div class="ttdef"><b>Definition:</b> heap.h:23</div></div>
+<div class="ttc" id="heap_8h_html_a72a64f8133468741b878761a510145c1"><div class="ttname"><a href="heap_8h.html#a72a64f8133468741b878761a510145c1">push_class</a></div><div class="ttdeci">void push_class(class_heap **ch, ClassFile cf)</div><div class="ttdef"><b>Definition:</b> heap.c:47</div></div>
+<div class="ttc" id="struct__obj__heap_html"><div class="ttname"><a href="struct__obj__heap.html">_obj_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:28</div></div>
+<div class="ttc" id="unionfield__type_html_a4b411cdaaf0d90763eeecd4ea2e60761"><div class="ttname"><a href="unionfield__type.html#a4b411cdaaf0d90763eeecd4ea2e60761">field_type::Char</a></div><div class="ttdeci">char Char</div><div class="ttdef"><b>Definition:</b> heap.h:13</div></div>
+<div class="ttc" id="unionfield__type_html"><div class="ttname"><a href="unionfield__type.html">field_type</a></div><div class="ttdef"><b>Definition:</b> heap.h:7</div></div>
+<div class="ttc" id="struct_class_file_html"><div class="ttname"><a href="struct_class_file.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> classfile.h:98</div></div>
+<div class="ttc" id="heap_8h_html_adc75de7bc71b2a6f59b58be898fd47b1"><div class="ttname"><a href="heap_8h.html#adc75de7bc71b2a6f59b58be898fd47b1">search_field</a></div><div class="ttdeci">field * search_field(char *name, char *descr, object *o)</div><div class="ttdef"><b>Definition:</b> heap.c:103</div></div>
+<div class="ttc" id="structfield_html"><div class="ttname"><a href="structfield.html">field</a></div><div class="ttdef"><b>Definition:</b> heap.h:17</div></div>
+<div class="ttc" id="structfield_html_a5ac083a645d964373f022d03df4849c8"><div class="ttname"><a href="structfield.html#a5ac083a645d964373f022d03df4849c8">field::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> heap.h:18</div></div>
+<div class="ttc" id="util_8h_html"><div class="ttname"><a href="util_8h.html">util.h</a></div></div>
+<div class="ttc" id="heap_8h_html_a553d5eadffd76dac9f7aa2eb28e2ad5e"><div class="ttname"><a href="heap_8h.html#a553d5eadffd76dac9f7aa2eb28e2ad5e">class_heap</a></div><div class="ttdeci">struct _class_heap class_heap</div></div>
+<div class="ttc" id="structfield_html_af6f5ea30ec08dbc724d7c35798eab476"><div class="ttname"><a href="structfield.html#af6f5ea30ec08dbc724d7c35798eab476">field::value</a></div><div class="ttdeci">field_type value</div><div class="ttdef"><b>Definition:</b> heap.h:20</div></div>
+<div class="ttc" id="struct__class__heap_html"><div class="ttname"><a href="struct__class__heap.html">_class_heap</a></div><div class="ttdef"><b>Definition:</b> heap.h:34</div></div>
+<div class="ttc" id="unionfield__type_html_a67712f090f8c18a2de65a31a26762315"><div class="ttname"><a href="unionfield__type.html#a67712f090f8c18a2de65a31a26762315">field_type::Double</a></div><div class="ttdeci">double Double</div><div class="ttdef"><b>Definition:</b> heap.h:12</div></div>
+<div class="ttc" id="struct__class__heap_html_acbba26895d48e3cb83283ec8212db15f"><div class="ttname"><a href="struct__class__heap.html#acbba26895d48e3cb83283ec8212db15f">_class_heap::num_static</a></div><div class="ttdeci">int num_static</div><div class="ttdef"><b>Definition:</b> heap.h:36</div></div>
+<div class="ttc" id="unionfield__type_html_aeb929194660cb3db9052cfd18f18f906"><div class="ttname"><a href="unionfield__type.html#aeb929194660cb3db9052cfd18f18f906">field_type::Short</a></div><div class="ttdeci">short Short</div><div class="ttdef"><b>Definition:</b> heap.h:9</div></div>
+<div class="ttc" id="struct__obj__heap_html_abf6c05da4a5e5a366df1b382f71b82c5"><div class="ttname"><a href="struct__obj__heap.html#abf6c05da4a5e5a366df1b382f71b82c5">_obj_heap::obj</a></div><div class="ttdeci">object obj</div><div class="ttdef"><b>Definition:</b> heap.h:29</div></div>
+<div class="ttc" id="struct__class__heap_html_af6a2a6ba31f6e7ae4e07047334c7bccf"><div class="ttname"><a href="struct__class__heap.html#af6a2a6ba31f6e7ae4e07047334c7bccf">_class_heap::next</a></div><div class="ttdeci">struct _class_heap * next</div><div class="ttdef"><b>Definition:</b> heap.h:39</div></div>
+<div class="ttc" id="heap_8h_html_afe7d3dde9478e6da59f9e63e0891b152"><div class="ttname"><a href="heap_8h.html#afe7d3dde9478e6da59f9e63e0891b152">obj_heap</a></div><div class="ttdeci">struct _obj_heap obj_heap</div></div>
+<div class="ttc" id="structobject_html_a7467d6d6f82b191decd1246b249b6033"><div class="ttname"><a href="structobject.html#a7467d6d6f82b191decd1246b249b6033">object::fields</a></div><div class="ttdeci">field * fields</div><div class="ttdef"><b>Definition:</b> heap.h:25</div></div>
+<div class="ttc" id="structfield_html_a5fc5924eefe1fcfaa3b8b584fa1653fd"><div class="ttname"><a href="structfield.html#a5fc5924eefe1fcfaa3b8b584fa1653fd">field::descriptor</a></div><div class="ttdeci">char * descriptor</div><div class="ttdef"><b>Definition:</b> heap.h:19</div></div>
+<div class="ttc" id="unionfield__type_html_a00c3b491c1db9c4ac2e31f31aea8c9eb"><div class="ttname"><a href="unionfield__type.html#a00c3b491c1db9c4ac2e31f31aea8c9eb">field_type::Float</a></div><div class="ttdeci">float Float</div><div class="ttdef"><b>Definition:</b> heap.h:10</div></div>
+<div class="ttc" id="heap_8h_html_a2c9ab99fdcf05de119f3637a09f3b32a"><div class="ttname"><a href="heap_8h.html#a2c9ab99fdcf05de119f3637a09f3b32a">search_classheap</a></div><div class="ttdeci">ClassFile * search_classheap(class_heap *ch, char *name)</div><div class="ttdef"><b>Definition:</b> heap.c:89</div></div>
+<div class="ttc" id="unionfield__type_html_ac5cf253e4e659cad0270852f8b7ce2a3"><div class="ttname"><a href="unionfield__type.html#ac5cf253e4e659cad0270852f8b7ce2a3">field_type::Int</a></div><div class="ttdeci">int Int</div><div class="ttdef"><b>Definition:</b> heap.h:8</div></div>
+<div class="ttc" id="struct__obj__heap_html_a7ce7ae229cd503fb7e0025f64a7849d5"><div class="ttname"><a href="struct__obj__heap.html#a7ce7ae229cd503fb7e0025f64a7849d5">_obj_heap::next</a></div><div class="ttdeci">struct _obj_heap * next</div><div class="ttdef"><b>Definition:</b> heap.h:30</div></div>
+<div class="ttc" id="struct__class__heap_html_ad0c1e7461037c90a56bbd973f7ac0464"><div class="ttname"><a href="struct__class__heap.html#ad0c1e7461037c90a56bbd973f7ac0464">_class_heap::static_fields</a></div><div class="ttdeci">field * static_fields</div><div class="ttdef"><b>Definition:</b> heap.h:37</div></div>
+<div class="ttc" id="unionfield__type_html_aa35dc710a56760f0da0f98c5c11cb79e"><div class="ttname"><a href="unionfield__type.html#aa35dc710a56760f0da0f98c5c11cb79e">field_type::Ref</a></div><div class="ttdeci">void * Ref</div><div class="ttdef"><b>Definition:</b> heap.h:14</div></div>
+<div class="ttc" id="structobject_html_ac0ae3334b9e17a8fd23ad6fd3a032034"><div class="ttname"><a href="structobject.html#ac0ae3334b9e17a8fd23ad6fd3a032034">object::num_fields</a></div><div class="ttdeci">int num_fields</div><div class="ttdef"><b>Definition:</b> heap.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="heap_8h.html">heap.h</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

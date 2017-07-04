@@ -1,0 +1,12 @@
+<map id="_class_heap" name="_class_heap">
+<area shape="rect" id="node2" href="$structfield.html" title="field" alt="" coords="21,95,68,121"/>
+<area shape="rect" id="node5" href="$structobject.html" title="object" alt="" coords="59,184,116,211"/>
+<area shape="rect" id="node3" href="$unionfield__type.html" title="field_type" alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node4" href="$struct__obj__heap.html" title="_obj_heap" alt="" coords="84,288,165,315"/>
+<area shape="rect" id="node6" href="$struct_class_file.html" title="ClassFile" alt="" coords="245,288,322,315"/>
+<area shape="rect" id="node7" href="$structfield__info.html" title="field_info" alt="" coords="249,184,323,211"/>
+<area shape="rect" id="node8" href="$struct__attribute__info.html" title="_attribute_info" alt="" coords="154,95,258,121"/>
+<area shape="rect" id="node9" href="$structexception__table__info.html" title="exception_table_info" alt="" coords="122,5,263,32"/>
+<area shape="rect" id="node10" href="$structclasstype__info.html" title="classtype_info" alt="" coords="287,5,394,32"/>
+<area shape="rect" id="node11" href="$structcp__info.html" title="cp_info" alt="" coords="347,184,411,211"/>
+</map>

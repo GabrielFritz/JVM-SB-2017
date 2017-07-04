@@ -1,0 +1,7 @@
+<map id="areturn" name="areturn">
+<area shape="rect" id="node2" href="$frame_8c.html#a77e266cfe02e0f2c200384ae7841c8af" title="pop_op" alt="" coords="125,5,189,32"/>
+<area shape="rect" id="node4" href="$frame_8c.html#a6a283cbfc936077ab590149f0d0e6b00" title="pop_frame" alt="" coords="116,56,199,83"/>
+<area shape="rect" id="node6" href="$frame_8c.html#a57fddc12dcb110bf02f2ffb4e8231b7b" title="push_op" alt="" coords="122,107,193,133"/>
+<area shape="rect" id="node3" href="$frame_8c.html#a43d40e1672fa595e511a87a8bf9e54a0" title="operandheap_isempty" alt="" coords="247,5,396,32"/>
+<area shape="rect" id="node5" href="$frame_8c.html#a6b75376f3be08ed55e4e95d1384d932d" title="framestack_isempty" alt="" coords="251,56,391,83"/>
+</map>

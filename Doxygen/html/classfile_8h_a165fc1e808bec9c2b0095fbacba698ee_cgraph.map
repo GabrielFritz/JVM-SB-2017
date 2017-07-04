@@ -1,0 +1,12 @@
+<map id="load_fields" name="load_fields">
+<area shape="rect" id="node2" href="$types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="693,162,760,189"/>
+<area shape="rect" id="node3" href="$classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="137,238,237,265"/>
+<area shape="rect" id="node4" href="$types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="532,314,599,341"/>
+<area shape="rect" id="node5" href="$util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="327,213,395,239"/>
+<area shape="rect" id="node6" href="$classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="485,238,645,265"/>
+<area shape="rect" id="node7" href="$classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="308,365,415,391"/>
+<area shape="rect" id="node9" href="$classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="494,61,637,87"/>
+<area shape="rect" id="node10" href="$classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="285,111,437,138"/>
+<area shape="rect" id="node11" href="$classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="307,415,415,442"/>
+<area shape="rect" id="node8" href="$types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="532,415,599,442"/>
+</map>

@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM Grupo 2: Referência do Arquivo /home/matheus/Desktop/JVM-SB-2017/execution.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM Grupo 2
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('execution_8c.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo /home/matheus/Desktop/JVM-SB-2017/execution.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="execution_8h_source.html">execution.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="classfile_8h_source.html">classfile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instruction__set_8h_source.html">instruction_set.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependência de inclusões para execution.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c__incl.png" border="0" usemap="#_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2execution_8c" alt=""/></div>
+<map name="_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2execution_8c" id="_2home_2matheus_2_desktop_2_j_v_m-_s_b-2017_2execution_8c">
+<area shape="rect" id="node2" href="execution_8h.html" title="execution.h" alt="" coords="183,169,273,196"/>
+<area shape="rect" id="node8" href="classfile_8h.html" title="classfile.h" alt="" coords="106,468,187,495"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html" title="instruction_set.h" alt="" coords="327,95,446,121"/>
+<area shape="rect" id="node3" href="frame_8h.html" title="frame.h" alt="" coords="195,244,261,271"/>
+<area shape="rect" id="node11" href="heap_8h.html" title="heap.h" alt="" coords="128,319,189,345"/>
+<area shape="rect" id="node4" href="types_8h.html" title="types.h" alt="" coords="21,543,86,569"/>
+<area shape="rect" id="node12" href="util_8h.html" title="util.h" alt="" coords="264,393,315,420"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a14b8e87d7a43acd5115b4fbc422c9344"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execution_8c.html#a14b8e87d7a43acd5115b4fbc422c9344">free_execution</a> (<a class="el" href="structexecution.html">execution</a> *e)</td></tr>
+<tr class="separator:a14b8e87d7a43acd5115b4fbc422c9344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e02a5372330a0d95110f64650063f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execution_8c.html#ac4e02a5372330a0d95110f64650063f0">count_args</a> (char *d)</td></tr>
+<tr class="separator:ac4e02a5372330a0d95110f64650063f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e947377dd5c7269a14dbbfe9c30a56a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execution_8c.html#a3e947377dd5c7269a14dbbfe9c30a56a">execute_method</a> (<a class="el" href="structexecution.html">execution</a> *e)</td></tr>
+<tr class="separator:a3e947377dd5c7269a14dbbfe9c30a56a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9694f93f3df65e29d1c00f318b6870c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execution_8c.html#ac9694f93f3df65e29d1c00f318b6870c">init_methodexecution</a> (<a class="el" href="structexecution.html">execution</a> *e, char *class, char *method, char *descriptor, int args)</td></tr>
+<tr class="separator:ac9694f93f3df65e29d1c00f318b6870c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58757e410083ab20d851c30aa0bfc085"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="execution_8c.html#a58757e410083ab20d851c30aa0bfc085">check_class</a> (<a class="el" href="structexecution.html">execution</a> *e, char *name)</td></tr>
+<tr class="separator:a58757e410083ab20d851c30aa0bfc085"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Funções</h2>
+<a class="anchor" id="a58757e410083ab20d851c30aa0bfc085"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_class_file.html">ClassFile</a>* check_class </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structexecution.html">execution</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Chama a execucao de uma classe que ainda nao foi carregada </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">cf</td><td>Classe carregada </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>Interpretador que executara a classe </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Nome da classe a ser executada</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Primeiramente, e' verificada se a classe pertence ao heap de classes ja' carregadas. Caso nao pertenca, ela e' carregada, colocada no heap e e' iniciada a execucao de seu construtor. </p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a58757e410083ab20d851c30aa0bfc085_cgraph.png" border="0" usemap="#execution_8c_a58757e410083ab20d851c30aa0bfc085_cgraph" alt=""/></div>
+<map name="execution_8c_a58757e410083ab20d851c30aa0bfc085_cgraph" id="execution_8c_a58757e410083ab20d851c30aa0bfc085_cgraph">
+<area shape="rect" id="node2" href="heap_8c.html#a2c9ab99fdcf05de119f3637a09f3b32a" title="search_classheap" alt="" coords="505,979,631,1006"/>
+<area shape="rect" id="node3" href="util_8c.html#a514f793b56421233028c12be6dc41c32" title="search_utf8" alt="" coords="701,827,791,854"/>
+<area shape="rect" id="node4" href="classfile_8c.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="167,422,275,448"/>
+<area shape="rect" id="node24" href="heap_8c.html#a72a64f8133468741b878761a510145c1" title="push_class" alt="" coords="177,726,265,752"/>
+<area shape="rect" id="node26" href="classfile_8c.html#a932eccfba0e63bb1834f3350542d9ba3" title="search_method" alt="" coords="513,776,623,803"/>
+<area shape="rect" id="node27" href="execution_8c.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="148,827,293,854"/>
+<area shape="rect" id="node34" href="execution_8c.html#a3e947377dd5c7269a14dbbfe9c30a56a" title="execute_method" alt="" coords="161,1080,280,1107"/>
+<area shape="rect" id="node5" href="classfile_8c.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="353,270,434,296"/>
+<area shape="rect" id="node6" href="classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f" title="load_magic" alt="" coords="702,574,790,600"/>
+<area shape="rect" id="node9" href="classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d" title="load_versions" alt="" coords="1078,16,1181,43"/>
+<area shape="rect" id="node10" href="classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da" title="load_constantpool" alt="" coords="862,320,989,347"/>
+<area shape="rect" id="node12" href="classfile_8c.html#ab0f0a80e1431bbb374f990da18693279" title="load_classdata" alt="" coords="691,67,801,94"/>
+<area shape="rect" id="node13" href="classfile_8c.html#a0f111f91f033398f76268fc69a420987" title="load_interfaces" alt="" coords="691,118,801,144"/>
+<area shape="rect" id="node14" href="classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="526,270,610,296"/>
+<area shape="rect" id="node22" href="classfile_8c.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="517,472,619,499"/>
+<area shape="rect" id="node23" href="classfile_8c.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="515,219,621,246"/>
+<area shape="rect" id="node7" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="1096,472,1163,499"/>
+<area shape="rect" id="node8" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="1257,320,1324,347"/>
+<area shape="rect" id="node11" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="1096,371,1163,398"/>
+<area shape="rect" id="node15" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="696,472,796,499"/>
+<area shape="rect" id="node16" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="891,422,959,448"/>
+<area shape="rect" id="node17" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="1049,548,1209,575"/>
+<area shape="rect" id="node18" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="872,472,979,499"/>
+<area shape="rect" id="node19" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="1058,619,1201,646"/>
+<area shape="rect" id="node20" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="849,726,1001,752"/>
+<area shape="rect" id="node21" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="871,371,979,398"/>
+<area shape="rect" id="node25" href="heap_8c.html#a4b965ff1d15456d731f73be16bda2642" title="is_static" alt="" coords="358,675,429,702"/>
+<area shape="rect" id="node28" href="frame_8c.html#afa48a760622df1fa95a006abd219fbfc" title="push_frame" alt="" coords="348,928,439,955"/>
+<area shape="rect" id="node29" href="frame_8c.html#a733f64cd7b15346b97acbeabdabff9ee" title="frame_init" alt="" coords="354,827,433,854"/>
+<area shape="rect" id="node30" href="frame_8c.html#affa129094635f304def02ae8c8e8b144" title="init_opheap" alt="" coords="524,928,612,955"/>
+<area shape="rect" id="node31" href="frame_8c.html#a77e266cfe02e0f2c200384ae7841c8af" title="pop_op" alt="" coords="361,776,425,803"/>
+<area shape="rect" id="node33" href="frame_8c.html#a57fddc12dcb110bf02f2ffb4e8231b7b" title="push_op" alt="" coords="358,878,429,904"/>
+<area shape="rect" id="node32" href="frame_8c.html#a43d40e1672fa595e511a87a8bf9e54a0" title="operandheap_isempty" alt="" coords="493,827,643,854"/>
+<area shape="rect" id="node35" href="frame_8c.html#a188a90edf66b9880fe0922f4f2ea0143" title="u1ReadFrame" alt="" coords="341,1080,445,1107"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a58757e410083ab20d851c30aa0bfc085_icgraph.png" border="0" usemap="#execution_8c_a58757e410083ab20d851c30aa0bfc085_icgraph" alt=""/></div>
+<map name="execution_8c_a58757e410083ab20d851c30aa0bfc085_icgraph" id="execution_8c_a58757e410083ab20d851c30aa0bfc085_icgraph">
+<area shape="rect" id="node2" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="148,245,293,272"/>
+<area shape="rect" id="node4" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="499,340,571,367"/>
+<area shape="rect" id="node11" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="499,441,571,468"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="487,207,582,233"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="484,283,585,309"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="489,124,581,151"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="492,549,577,576"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="657,524,711,551"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="499,499,570,525"/>
+<area shape="rect" id="node3" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="341,347,436,373"/>
+<area shape="rect" id="node8" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1072,75,1123,101"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="633,245,735,272"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="794,220,879,247"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="785,271,889,297"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="783,169,891,196"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="939,195,1024,221"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac4e02a5372330a0d95110f64650063f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count_args </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Realiza a contagem dos argumentos de um metodo </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>String contendo a definicao do metodo </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">n</td><td>Quantidade de argumentos do metodo</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Faz o parse da string d ate encontrar os metodos e incrementa n. </p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_ac4e02a5372330a0d95110f64650063f0_icgraph.png" border="0" usemap="#execution_8c_ac4e02a5372330a0d95110f64650063f0_icgraph" alt=""/></div>
+<map name="execution_8c_ac4e02a5372330a0d95110f64650063f0_icgraph" id="execution_8c_ac4e02a5372330a0d95110f64650063f0_icgraph">
+<area shape="rect" id="node2" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="143,5,238,32"/>
+<area shape="rect" id="node9" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="140,56,241,83"/>
+<area shape="rect" id="node10" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="145,107,237,133"/>
+<area shape="rect" id="node3" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="289,56,391,83"/>
+<area shape="rect" id="node4" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="450,5,535,32"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="441,56,545,83"/>
+<area shape="rect" id="node8" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="439,107,547,133"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="595,56,680,83"/>
+<area shape="rect" id="node6" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="728,56,779,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e947377dd5c7269a14dbbfe9c30a56a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void execute_method </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structexecution.html">execution</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Executa as operacoes do metodo de uma classe. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>Interpretador</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Enquanto nao e' encontrado um nop, a funcao le uma operacao e chama a funcao para executa-la de acordo com o ponteiro de funcoes. </p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_cgraph.png" border="0" usemap="#execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_cgraph" alt=""/></div>
+<map name="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_cgraph" id="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_cgraph">
+<area shape="rect" id="node2" href="frame_8c.html#a188a90edf66b9880fe0922f4f2ea0143" title="u1ReadFrame" alt="" coords="172,5,276,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_icgraph.png" border="0" usemap="#execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_icgraph" alt=""/></div>
+<map name="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_icgraph" id="execution_8c_a3e947377dd5c7269a14dbbfe9c30a56a_icgraph">
+<area shape="rect" id="node2" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="172,296,267,323"/>
+<area shape="rect" id="node4" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="511,423,606,449"/>
+<area shape="rect" id="node8" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1096,195,1147,221"/>
+<area shape="rect" id="node11" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="508,119,609,145"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="513,245,605,272"/>
+<area shape="rect" id="node3" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="315,195,460,221"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="523,543,595,569"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="351,499,423,525"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="345,397,430,424"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="532,347,585,373"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="352,296,423,323"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="657,372,759,399"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="818,397,903,424"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="809,296,913,323"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="807,347,915,373"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="963,321,1048,348"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a14b8e87d7a43acd5115b4fbc422c9344"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_execution </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structexecution.html">execution</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_cgraph.png" border="0" usemap="#execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_cgraph" alt=""/></div>
+<map name="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_cgraph" id="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_cgraph">
+<area shape="rect" id="node2" href="frame_8c.html#a38ba876f6cbc0032980b5d9b10a2334d" title="free_frame" alt="" coords="173,5,257,32"/>
+<area shape="rect" id="node3" href="heap_8c.html#ae15c5c46c9a5619145427265cb392076" title="free_classheap" alt="" coords="160,56,271,83"/>
+<area shape="rect" id="node4" href="util_8c.html#a17dc715f8785b9b65e78a63565dc81ea" title="free_clFile" alt="" coords="319,56,401,83"/>
+<area shape="rect" id="node5" href="util_8c.html#ad3c0127486ad82d88d3759e3070e3d5a" title="free_methods" alt="" coords="451,5,553,32"/>
+<area shape="rect" id="node8" href="util_8c.html#ac9db91ae89656a6890ece126b6fc67df" title="free_attributes" alt="" coords="449,56,555,83"/>
+<area shape="rect" id="node9" href="util_8c.html#a8889a4d727af358184f74e7aa91c9787" title="free_cte_pool" alt="" coords="452,107,552,133"/>
+<area shape="rect" id="node6" href="util_8c.html#ad9c167ca990d8f2a765003c618135a3c" title="free_attribute" alt="" coords="603,31,701,57"/>
+<area shape="rect" id="node7" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="749,31,817,57"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_icgraph.png" border="0" usemap="#execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_icgraph" alt=""/></div>
+<map name="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_icgraph" id="execution_8c_a14b8e87d7a43acd5115b4fbc422c9344_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#ab0b3fcab2492e94ce7bb1b3813f9af01" title="shutdown" alt="" coords="160,5,239,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="287,5,337,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac9694f93f3df65e29d1c00f318b6870c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_methodexecution </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structexecution.html">execution</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>class</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>descriptor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prepara o frame para a execucao de um metodo. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">e</td><td>Interpretador </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">class</td><td>Nome da classe </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">method</td><td>Nome do Metodo </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">descriptor</td><td>Descritor do Metodo </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">args</td><td>Argumentos de Entrada do metodo</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Primeiro, e' checada se a classe ja' esta' carregada. Em seguida, um novo frame e' inserido na pilha de frames e iniciado com os dados do metodo a ser executado. Para cada argumento, e' criada uma entrada na pilha de operandos e na pilha de tipos. Por fim, os operadores sao colocados no array local da pilha de frames do interpretador. </p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções utilizadas por esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_cgraph.png" border="0" usemap="#execution_8c_ac9694f93f3df65e29d1c00f318b6870c_cgraph" alt=""/></div>
+<map name="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_cgraph" id="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_cgraph">
+<area shape="rect" id="node2" href="execution_8c.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="199,324,293,350"/>
+<area shape="rect" id="node30" href="frame_8c.html#afa48a760622df1fa95a006abd219fbfc" title="push_frame" alt="" coords="201,501,291,528"/>
+<area shape="rect" id="node31" href="frame_8c.html#a733f64cd7b15346b97acbeabdabff9ee" title="frame_init" alt="" coords="207,400,285,426"/>
+<area shape="rect" id="node32" href="frame_8c.html#affa129094635f304def02ae8c8e8b144" title="init_opheap" alt="" coords="372,501,460,528"/>
+<area shape="rect" id="node33" href="frame_8c.html#a77e266cfe02e0f2c200384ae7841c8af" title="pop_op" alt="" coords="214,552,278,578"/>
+<area shape="rect" id="node35" href="frame_8c.html#a57fddc12dcb110bf02f2ffb4e8231b7b" title="push_op" alt="" coords="211,602,281,629"/>
+<area shape="rect" id="node3" href="heap_8c.html#a2c9ab99fdcf05de119f3637a09f3b32a" title="search_classheap" alt="" coords="353,349,479,376"/>
+<area shape="rect" id="node4" href="util_8c.html#a514f793b56421233028c12be6dc41c32" title="search_utf8" alt="" coords="545,349,636,376"/>
+<area shape="rect" id="node5" href="classfile_8c.html#ab81a7fd9232d29b23c7cfa19d7ab7019" title="load_ClassFile" alt="" coords="362,197,470,224"/>
+<area shape="rect" id="node25" href="heap_8c.html#a72a64f8133468741b878761a510145c1" title="push_class" alt="" coords="372,248,460,274"/>
+<area shape="rect" id="node27" href="classfile_8c.html#a932eccfba0e63bb1834f3350542d9ba3" title="search_method" alt="" coords="361,400,471,426"/>
+<area shape="rect" id="node28" href="execution_8c.html#a3e947377dd5c7269a14dbbfe9c30a56a" title="execute_method" alt="" coords="357,146,475,173"/>
+<area shape="rect" id="node6" href="classfile_8c.html#a57078163a6fe755c003be01c9a830174" title="readClass" alt="" coords="550,197,631,224"/>
+<area shape="rect" id="node7" href="classfile_8c.html#a2ff625f2c6ad6b98611537bfab23872f" title="load_magic" alt="" coords="860,172,948,198"/>
+<area shape="rect" id="node10" href="classfile_8c.html#aa03a009fae2cabe5c34de8321870e43d" title="load_versions" alt="" coords="853,20,955,46"/>
+<area shape="rect" id="node11" href="classfile_8c.html#ac45ba999c83b890a9f5bd7ce59f0d8da" title="load_constantpool" alt="" coords="1007,222,1133,249"/>
+<area shape="rect" id="node13" href="classfile_8c.html#ab0f0a80e1431bbb374f990da18693279" title="load_classdata" alt="" coords="849,70,959,97"/>
+<area shape="rect" id="node14" href="classfile_8c.html#a0f111f91f033398f76268fc69a420987" title="load_interfaces" alt="" coords="691,121,801,148"/>
+<area shape="rect" id="node15" href="classfile_8c.html#a165fc1e808bec9c2b0095fbacba698ee" title="load_fields" alt="" coords="704,273,788,300"/>
+<area shape="rect" id="node23" href="classfile_8c.html#af58762bedad4803126e7f0833d9cae69" title="load_methods" alt="" coords="695,425,797,452"/>
+<area shape="rect" id="node24" href="classfile_8c.html#ab1879929fc95680fc6a5a7512946435d" title="load_attributes" alt="" coords="693,476,799,502"/>
+<area shape="rect" id="node8" href="types_8c.html#a4cba9f2733d339d7287d10d160c39e79" title="u4Read" alt="" coords="1228,324,1295,350"/>
+<area shape="rect" id="node9" href="types_8c.html#a73788d4e3c1c3577021c1dbf4ca75cc1" title="u2Read" alt="" coords="1389,450,1456,477"/>
+<area shape="rect" id="node12" href="types_8c.html#a77853ce0387c0b914b5a106ff7cf9ae9" title="u1Read" alt="" coords="1228,400,1295,426"/>
+<area shape="rect" id="node16" href="classfile_8c.html#afff2afd9e9fdbfb8658212fd746f7c8e" title="load_attribute" alt="" coords="854,450,954,477"/>
+<area shape="rect" id="node17" href="util_8c.html#a42e0522b9334b7d3b6f956fc121d564e" title="findtype" alt="" coords="1036,374,1104,401"/>
+<area shape="rect" id="node18" href="classfile_8c.html#aec486f18229beb930ffc073e55c8d7bb" title="load_constantvalue_attr" alt="" coords="1181,577,1341,604"/>
+<area shape="rect" id="node19" href="classfile_8c.html#a0fb6361d3f9ad70ce266cc83f2fac0ca" title="load_code_attr" alt="" coords="1017,425,1123,452"/>
+<area shape="rect" id="node20" href="classfile_8c.html#ab07defe4b6daeb1e3503f976e99c2f95" title="load_exceptions_attr" alt="" coords="1190,628,1333,654"/>
+<area shape="rect" id="node21" href="classfile_8c.html#af30a172797f5e31da0fd8927348edb7d" title="load_innerclasses_attr" alt="" coords="1185,678,1337,705"/>
+<area shape="rect" id="node22" href="classfile_8c.html#a70b71dfb5097e7ba3250dff025e2b026" title="load_other_attr" alt="" coords="1016,476,1124,502"/>
+<area shape="rect" id="node26" href="heap_8c.html#a4b965ff1d15456d731f73be16bda2642" title="is_static" alt="" coords="555,248,626,274"/>
+<area shape="rect" id="node29" href="frame_8c.html#a188a90edf66b9880fe0922f4f2ea0143" title="u1ReadFrame" alt="" coords="539,146,643,173"/>
+<area shape="rect" id="node34" href="frame_8c.html#a43d40e1672fa595e511a87a8bf9e54a0" title="operandheap_isempty" alt="" coords="341,552,491,578"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_icgraph.png" border="0" usemap="#execution_8c_ac9694f93f3df65e29d1c00f318b6870c_icgraph" alt=""/></div>
+<map name="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_icgraph" id="execution_8c_ac9694f93f3df65e29d1c00f318b6870c_icgraph">
+<area shape="rect" id="node2" href="execution_8h.html#a58757e410083ab20d851c30aa0bfc085" title="check_class" alt="" coords="199,296,293,323"/>
+<area shape="rect" id="node4" href="instruction__set_8h.html#a1d06171db1c421a03a8494ed3e9445bf" title="invokevirtual" alt="" coords="538,423,633,449"/>
+<area shape="rect" id="node8" href="main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1123,195,1173,221"/>
+<area shape="rect" id="node11" href="instruction__set_8h.html#af28267d518c983b167abfb303aa6bac4" title="invokespecial" alt="" coords="535,119,636,145"/>
+<area shape="rect" id="node12" href="instruction__set_8h.html#aadef73a92f5d3392cac9bf721d0f650d" title="invokestatic" alt="" coords="539,245,631,272"/>
+<area shape="rect" id="node3" href="execution_8h.html#ac9694f93f3df65e29d1c00f318b6870c" title="init_methodexecution" alt="" coords="341,195,487,221"/>
+<area shape="rect" id="node13" href="instruction__set_8h.html#a0e7a87ee391a1138c0c51903892cb6aa" title="getstatic" alt="" coords="549,543,621,569"/>
+<area shape="rect" id="node14" href="instruction__set_8h.html#a360e84dd69e6868a2d3fb5615e64e3b7" title="putstatic" alt="" coords="378,499,450,525"/>
+<area shape="rect" id="node15" href="instruction__set_8c.html#af827caf2264e7d3247f7036dcedfaa8d" title="num_fields" alt="" coords="371,397,457,424"/>
+<area shape="rect" id="node16" href="instruction__set_8h.html#a0a4d488d40b2027e6141fc08ba3c4dc5" title="new_" alt="" coords="559,347,612,373"/>
+<area shape="rect" id="node17" href="instruction__set_8c.html#a6fb3e9d4a6ddc23db87e9820df47f42f" title="field_init" alt="" coords="379,296,449,323"/>
+<area shape="rect" id="node5" href="classfile_8h.html#a0b8f9340a61c0878e8d92ee4406f0c50" title="print_attribute" alt="" coords="684,372,785,399"/>
+<area shape="rect" id="node6" href="classfile_8h.html#ab3f0be960275d085819eadd98074edd7" title="print_fields" alt="" coords="845,397,930,424"/>
+<area shape="rect" id="node9" href="classfile_8h.html#a540a1c2a042c568e9b12de2b054baa1e" title="print_methods" alt="" coords="835,296,939,323"/>
+<area shape="rect" id="node10" href="classfile_8h.html#a5136a09f774806a8578a0302c2e9d543" title="print_attributes" alt="" coords="833,347,941,373"/>
+<area shape="rect" id="node7" href="classfile_8h.html#a878381cd2beddabab293b0e91a7b47c4" title="print_class" alt="" coords="989,321,1075,348"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="execution_8c.html">execution.c</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

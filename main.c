@@ -23,7 +23,7 @@ void shutdown(FILE *fd, FILE *fout, ClassFile* cf, execution* e){
 int main(int argc,char* argv[]){
 
 	execution* e = NULL;
- ClassFile* cf = NULL;
+  ClassFile* cf = NULL;
 	FILE* fd = NULL;
 	FILE* fout = NULL;
 

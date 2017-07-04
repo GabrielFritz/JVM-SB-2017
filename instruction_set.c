@@ -829,16 +829,16 @@ int lshl(execution *e){
 int ishr(execution *e){
     operand_type op1 = pop_op(&(e->frame->top)); //shift amount
     operand_type op2 = pop_op(&(e->frame->top)); //valor shiftado
-    op1.Int &= 0x1F;
-    if(op2.Int<0) {
+    op1.Int &= 0x1F; //o shift amount esta apenas nos 5 ultimos bits do op1
+    if(op2.Int<0) { //tratamento para shift right de numero negativo
         int n=0;
         for(int i=0;i<op1.Int;++i){
             n >>= 1;
-            n |= 0x80000000;
+            n |= 0x80000000; //cada novo bit trazido pelo shift deve ser '1'
         }
         op1.Int = op2.Int>>op1.Int;
         op1.Int |= n;
-    } else {
+    } else { //tratamento para shift right de numero positivo
         op1.Int = op2.Int>>op1.Int;
     }
     push_op(&(e->frame->top),op1,1);
@@ -1652,7 +1652,7 @@ int num_fields(execution* e, ClassFile* cf) {
     return n;
 }
 
-void field_init(execution* e,ClassFile* cf, field* f) {
+void field_init(execution* e,ClassFile* cf, field* f) { //inicializa os static fields da classe no objeto
     int i=0;
     for(field_info* aux=cf->fields; aux<cf->fields+cf->fields_count;++aux) {
         char* descriptor = search_utf8(cf->constant_pool,aux->descriptor_index);
@@ -1690,18 +1690,18 @@ void field_init(execution* e,ClassFile* cf, field* f) {
 int new_(execution *e){
     u2 classi = u2ReadFrame(e->frame);
     u2 classnamei = e->frame->constant_pool[classi-1].info.Class_info.name_index;
-    char* classname = search_utf8(e->frame->constant_pool,classnamei);
-    ClassFile* cf = check_class(e,classname);
-    object* o = (object*) malloc(sizeof(object));
+    char* classname = search_utf8(e->frame->constant_pool,classnamei); //nome da classe a ser New()
+    ClassFile* cf = check_class(e,classname); //verifica se a classe esta no class_heap; Carrega a classe se nao estiver
+    object* o = (object*) malloc(sizeof(object)); //inicializa o ponteiro para o Objeto
     o->num_fields = num_fields(e,cf);
      
     if (o->num_fields > 0) { //Caso existam fields, carrega-los
         o->fields = (field*) malloc(sizeof(field)*o->num_fields);
-        field_init(e,cf,o->fields);
+        field_init(e,cf,o->fields); //resgata os Static Fields do objeto
     }
 
     operand_type op;
-    op.Ref = o;
+    op.Ref = o; //da um push na referencia para o objeto
     push_op(&(e->frame->top),op,1);
 	return 0;
 } 
